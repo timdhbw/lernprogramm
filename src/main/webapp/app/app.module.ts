@@ -14,6 +14,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import {LernprogrammProfilseiteModule} from "app/profilseite/profilseite.module";
+import {LernprogrammAufgabenseiteModule} from "app/aufgabenseite/aufgabenseite.module";
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     LernprogrammHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     LernprogrammEntityModule,
-    LernprogrammAppRoutingModule,
+    LernprogrammProfilseiteModule,
+    LernprogrammAufgabenseiteModule,
+    LernprogrammAppRoutingModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],

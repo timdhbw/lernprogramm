@@ -1,0 +1,7 @@
+type: object
+name: thementyp
+properties:
+  name:
+    type: string
+  bewertung:
+    type: integer

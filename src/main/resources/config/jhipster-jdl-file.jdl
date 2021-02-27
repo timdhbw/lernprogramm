@@ -1,0 +1,4 @@
+entity ProduktEntity {
+	name String,
+	bewertung Integer
+}

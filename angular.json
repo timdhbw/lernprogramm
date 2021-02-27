@@ -31,6 +31,7 @@
   },
   "defaultProject": "lernprogramm",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "f6489f2a-1848-46f6-9380-4ecff51efd25"
   }
 }
