@@ -1,4 +1,54 @@
-entity ProduktEntity {
-	name String,
+entity ProfilEntity {
+  	profilId String,
+ 	vorname String,
+ 	nachname String
+}
+
+entity AufgabenhistorieEntity {
+	datum Date,
+    bewertungsveraenderung Integer
+}
+
+entity BewerteterAufgabentagEntity {
 	bewertung Integer
+}
+
+entity AufgabeEntity {
+	aufgabeId String,
+    aufgabentitel String,
+	bewertung Integer,
+    kategorie KategorieEnum,
+}
+
+entity AufgabentagEntity {
+	tag String,
+    text String
+}
+
+entity AufgabenteilEntity {
+	laufenNr Integer,
+  	aufgabenteiltyp AufgabenteiltypEnum,
+ 	text String
+}
+
+relationship ManyToMany {
+	AufgabeEntity{aufgabentag} to AufgabentagEntity{aufgabe}
+}
+
+relationship OneToMany {
+	AufgabeEntity to AufgabenteilEntity{aufgabe},
+    AufgabentagEntity to BewerteterAufgabentagEntity{aufgabentag}
+    ProfilEntity to BewerteterAufgabentagEntity{profil}
+    ProfilEntity to AufgabenhistorieEntity{profil}
+    AufgabeEntity to AufgabenhistorieEntity{aufgabe}
+    PrfilEntity to AufgabeEntity{autor}
+}
+
+
+enum KategorieEnum {
+    SOFTWAREENTWICKLUNG
+}
+
+enum AufgabenteiltypEnum {
+	TEXT
 }
