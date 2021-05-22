@@ -20,6 +20,7 @@ import {ApiModule} from "target/api.module";
 import {Configuration} from "target/configuration";
 import {AuthServerProvider} from "app/core/auth/auth-jwt.service";
 import {SERVER_API_URL} from "app/app.constants";
+import {LernprogrammFaqModule} from './faq/faq.module';
 
 @NgModule({
   imports: [
@@ -28,11 +29,13 @@ import {SERVER_API_URL} from "app/app.constants";
     LernprogrammSharedModule,
     LernprogrammCoreModule,
     LernprogrammHomeModule,
+    LernprogrammFaqModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     LernprogrammEntityModule,
     LernprogrammProfilseiteModule,
     LernprogrammAufgabenseiteModule,
-    LernprogrammAppRoutingModule
+    LernprogrammAppRoutingModule,
+
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
