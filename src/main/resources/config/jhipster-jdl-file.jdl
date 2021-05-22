@@ -5,7 +5,7 @@ entity ProfilEntity {
 }
 
 entity AufgabenhistorieEntity {
-	datum Date,
+	datum LocalDate,
     bewertungsveraenderung Integer
 }
 
