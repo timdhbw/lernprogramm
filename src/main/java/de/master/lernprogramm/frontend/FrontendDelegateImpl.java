@@ -1,11 +1,11 @@
 package de.master.lernprogramm.frontend;
 
 import de.master.lernprogramm.domain.User;
+import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.service.AufgabeService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -42,10 +42,10 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
 
     @Override
     public ResponseEntity<AufgabeUiDto> getAufgabeById(Integer aufgabeId) {
-        try {
-            return ResponseEntity.ok(aufgabeService.getAufgabeById(aufgabeId));
-        } catch (NotFoundException e) {
+        Aufgabe aufgabe = aufgabeService.getAufgabeById(aufgabeId);
+        if (aufgabe == null) {
             return ResponseEntity.status(204).build();
         }
+        return ResponseEntity.ok(frontendMapper.toUiDto(aufgabe));
     }
 }

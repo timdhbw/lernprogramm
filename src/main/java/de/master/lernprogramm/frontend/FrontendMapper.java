@@ -1,7 +1,9 @@
 package de.master.lernprogramm.frontend;
 
 import de.master.lernprogramm.domain.User;
+import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
+import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,4 +20,6 @@ public interface FrontendMapper {
     @Mapping(target = "punkte", ignore = true)
     @Mapping(target = "rang", ignore = true)
     ProfilUiDto toUiDto(User user);
+
+    AufgabeUiDto toUiDto(Aufgabe aufgabe);
 }

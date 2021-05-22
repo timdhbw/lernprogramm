@@ -1,8 +1,8 @@
 package de.master.lernprogramm.domain.service;
 
-import javassist.NotFoundException;
+import de.master.lernprogramm.domain.objekt.Aufgabe;
 
 public interface AufgabeService {
 
-    de.master.lernprogramm.web.api.dtos.AufgabeUiDto getAufgabeById(Integer aufgabeId) throws NotFoundException;
+    Aufgabe getAufgabeById(Integer aufgabeId);
 }

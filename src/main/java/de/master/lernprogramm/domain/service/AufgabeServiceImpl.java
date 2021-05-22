@@ -1,10 +1,10 @@
 package de.master.lernprogramm.domain.service;
 
-import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
+import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
+import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabenteilUiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
-import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,21 +14,22 @@ import java.util.List;
 @Service
 public class AufgabeServiceImpl implements AufgabeService {
     @Override
-    public AufgabeUiDto getAufgabeById(Integer aufgabeId) throws NotFoundException {
+    public Aufgabe getAufgabeById(Integer aufgabeId) {
         if (aufgabeId == null || aufgabeId < 1 || aufgabeId > 5) {
-            throw new NotFoundException("AufgabeId " + aufgabeId + " nicht gefunden!");
+            return null;
         }
         return getAufgabe(aufgabeId);
     }
 
-    private AufgabeUiDto getAufgabe(Integer aufgabeId) {
-        return new AufgabeUiDto()
-            .aufgabeId(aufgabeId)
-            .autor(new ProfilUiDto().profilId("test1"))
-            .aufgabentitel("Aufgabe " + aufgabeId)
-            .kategorie(AufgabeUiDto.KategorieEnum.SOFTWAREENTWICKLUNG)
-            .aufgabentagList(getAufgabentagList(aufgabeId))
-            .aufgabenteilList(getAufgabenteilList(aufgabeId));
+    private Aufgabe getAufgabe(Integer aufgabeId) {
+        Aufgabe aufgabe = new Aufgabe();
+        aufgabe.setAufgabeId(aufgabeId);
+        aufgabe.setAutor(new ProfilUiDto().profilId("test1"));
+        aufgabe.setAufgabentitel("Aufgabe " + aufgabeId);
+        aufgabe.setKategorie(AufgabenkategorieEnum.SOFTWAREENTWICKLUNG);
+        aufgabe.setAufgabentagList(getAufgabentagList(aufgabeId));
+        aufgabe.setAufgabenteilList(getAufgabenteilList(aufgabeId));
+        return aufgabe;
     }
 
     private List<de.master.lernprogramm.web.api.dtos.AufgabentagUiDto> getAufgabentagList(Integer aufgabeId) {
@@ -55,7 +56,7 @@ public class AufgabeServiceImpl implements AufgabeService {
                     .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgabe über Angular und HTML"));
             case 2:
                 return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                    .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgabe über Vue..."),
+                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgabe über Vue..."),
                     new AufgabenteilUiDto().laufenNr(2)
                         .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("... HTML gehört auch dazu"));
             case 3:
