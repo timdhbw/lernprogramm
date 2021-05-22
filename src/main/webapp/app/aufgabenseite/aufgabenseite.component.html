@@ -1,1 +1,14 @@
-<p>aufgabenseite works!</p>
+<div [ngSwitch]="aufgabe === undefined">
+    <div *ngSwitchCase="true">
+        <p>aufgabenseite works!</p>
+        <input type="number" [(ngModel)]="aufgabeId">
+        <button class="btn btn-success" (click)="getAufgabe()">Hole Aufgabe</button>
+    </div>
+    <div *ngSwitchCase="false">
+        <p>Aufgabe gefunden!</p>
+        <p>AufgabeId: {{aufgabe?.aufgabeId}}</p>
+        <p>Kategorie: {{aufgabe?.kategorie}}, Bewertung {{aufgabe?.bewertung}}</p>
+        <p>Tags: {{getAufgabeTagList()}}</p>
+        <p *ngFor="let aufgabenteil of getAufgabeteilListSorted()">{{aufgabenteil.text}}</p>
+    </div>
+</div>

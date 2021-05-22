@@ -1,0 +1,11 @@
+{
+  "profilseite": {
+    "begruessung": {
+      "anrede": "Moin {{getName()}},",
+      "anredeText": "Schön, dass du wieder da bist!",
+      "rangTitle": "Mein Rang:",
+      "aufgabenTitle": "Meine heutigen Aufgaben:",
+      "neueAufgabe": "Neue Aufgabe anlegen"
+    }
+  }
+}

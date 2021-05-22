@@ -1,0 +1,11 @@
+type: object
+name: Aufgabenteil
+properties:
+  laufenNr:
+    type: integer
+  aufgabentyp:
+    type: string
+    enum:
+      - TEXT
+  text:
+   type: string

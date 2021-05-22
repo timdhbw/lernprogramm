@@ -15,7 +15,8 @@
     "lib": ["es7", "dom"],
     "baseUrl": "./",
     "paths": {
-      "app/*": ["src/main/webapp/app/*"]
+      "app/*": ["src/main/webapp/app/*"],
+      "target/*": ["target/generated-sources/openapi/*"]
     },
     "importHelpers": true,
     "downlevelIteration": true,

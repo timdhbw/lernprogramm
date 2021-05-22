@@ -1,73 +1,56 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
-
-import { LoginService } from 'app/core/login/login.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {LoginService} from "app/core/login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'jhi-login-modal',
+  selector: 'jhi-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginModalComponent implements AfterViewInit {
-  @ViewChild('username', { static: false })
-  username?: ElementRef;
+export class LoginComponent implements OnInit {
+
+  username: string;
+  passwort: string;
+  rememberMe: boolean;
+  @Input() nextPage: string;
 
   authenticationError = false;
 
-  loginForm = this.fb.group({
-    username: [''],
-    password: [''],
-    rememberMe: [false],
-  });
-
-  constructor(private loginService: LoginService, private router: Router, public activeModal: NgbActiveModal, private fb: FormBuilder) {}
-
-  ngAfterViewInit(): void {
-    if (this.username) {
-      this.username.nativeElement.focus();
-    }
+  constructor(private loginService:LoginService, private router: Router) {
+    this.username = '';
+    this.passwort = '';
+    this.rememberMe = false;
+    this.nextPage = '';
   }
 
-  cancel(): void {
-    this.authenticationError = false;
-    this.loginForm.patchValue({
-      username: '',
-      password: '',
-    });
-    this.activeModal.dismiss('cancel');
+  ngOnInit(): void {
   }
 
   login(): void {
+    // eslint-disable-next-line no-console
+    console.log('infoLogin' + this.rememberMe)
     this.loginService
       .login({
-        username: this.loginForm.get('username')!.value,
-        password: this.loginForm.get('password')!.value,
-        rememberMe: this.loginForm.get('rememberMe')!.value,
+        username: this.username,
+        password: this.passwort,
+        rememberMe: this.rememberMe,
       })
       .subscribe(
         () => {
           this.authenticationError = false;
-          this.activeModal.close();
           if (
             this.router.url === '/account/register' ||
             this.router.url.startsWith('/account/activate') ||
-            this.router.url.startsWith('/account/reset/')
+            this.router.url.startsWith('/account/reset/') ||
+            this.router.url === ''
           ) {
-            this.router.navigate(['profilseite']);
+            // eslint-disable-next-line no-console
+            console.log('infoLoginsdfe')
           }
+          this.router.navigate([this.nextPage]);
         },
         () => (this.authenticationError = true)
       );
   }
 
-  register(): void {
-    this.activeModal.dismiss('to state register');
-    this.router.navigate(['/account/register']);
-  }
-
-  requestResetPassword(): void {
-    this.activeModal.dismiss('to state requestReset');
-    this.router.navigate(['/account/reset', 'request']);
-  }
 }

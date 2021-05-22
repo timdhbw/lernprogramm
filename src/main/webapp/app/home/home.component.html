@@ -1,13 +1,12 @@
 <div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
-
-    <div class="col-md-9">
+    <div class="col-md-12">
         <h1 class="display-4" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
 
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
-
+        <p jhiTranslate="home.beschreibung.text"></p>
+        <div class="row justify-content-center">
+        <jhi-login class="col-sm-12 col-md-8 col-lg-6" [nextPage]="'profilseite'"></jhi-login>
+        </div>
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"

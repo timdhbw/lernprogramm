@@ -1,0 +1,31 @@
+{
+  "profilseite": {
+    "begruessung": {
+      "anrede": "Moin",
+      "anredeText": "Schön, dass du wieder da bist!",
+      "rangTitle": "Mein Rang:",
+      "aufgabenTitle": "Meine heutigen Aufgaben:",
+      "neueAufgabe": "Neue Aufgabe anlegen"
+    },
+    "produktEntity": {
+      "home": {
+        "title": "Produkt Entities",
+        "createLabel": "Produkt Entity erstellen",
+        "createOrEditLabel": "Produkt Entity erstellen oder bearbeiten",
+        "search": "Suche nach Produkt Entity",
+        "notFound": "No Produkt Entities found"
+      },
+      "created": "Produkt Entity erstellt mit ID {{ param }}",
+      "updated": "Produkt Entity aktualisiert mit ID {{ param }}",
+      "deleted": "Produkt Entity gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Produkt Entity {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Produkt Entity"
+      },
+      "name": "Name",
+      "bewertung": "Bewertung"
+    }
+  }
+}

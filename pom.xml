@@ -89,6 +89,7 @@
         <jacoco.itReportFile>${jacoco.itReportFolder}/integrationTest.exec</jacoco.itReportFile>
         <junit.utReportFolder>${project.testresult.directory}/test</junit.utReportFolder>
         <junit.itReportFolder>${project.testresult.directory}/integrationTest</junit.itReportFolder>
+        <lombok.version>1.18.12</lombok.version>
         <!-- jhipster-needle-maven-property -->
     </properties>
 
@@ -341,6 +342,11 @@
             <artifactId>metrics-core</artifactId>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -478,7 +484,20 @@
                                 <version>${jaxb-runtime.version}</version>
                             </path>
                             <!-- jhipster-needle-maven-add-annotation-processor -->
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
                         </annotationProcessorPaths>
+                        <compilerArgs>
+                            <compilerArg>
+                                -Amapstruct.defaultComponentModel=spring
+                            </compilerArg>
+                            <compilerArg>
+                                -Amapstruct.unmappedTargetPolicy=ERROR
+                            </compilerArg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -850,21 +869,35 @@
                     <version>${openapi-generator-maven-plugin.version}</version>
                     <executions>
                         <execution>
+                            <id>backend</id>
                             <goals>
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
                                 <inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>
+                                <output>${project.basedir}/target/generated-sources/annotations</output>
                                 <generatorName>spring</generatorName>
                                 <apiPackage>de.master.lernprogramm.web.api</apiPackage>
-                                <modelPackage>de.master.lernprogramm.web.api.model</modelPackage>
+                                <modelPackage>de.master.lernprogramm.web.api.dtos</modelPackage>
                                 <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                                 <importMappings>Problem=org.zalando.problem.Problem</importMappings>
                                 <skipValidateSpec>false</skipValidateSpec>
+                                <modelNameSuffix>UiDto</modelNameSuffix>
                                 <configOptions>
                                     <delegatePattern>true</delegatePattern>
                                     <title>lernprogramm</title>
                                 </configOptions>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>angular</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>
+                                <generatorName>typescript-angular</generatorName>
+                                <modelNameSuffix>UiDto</modelNameSuffix>
                             </configuration>
                         </execution>
                     </executions>

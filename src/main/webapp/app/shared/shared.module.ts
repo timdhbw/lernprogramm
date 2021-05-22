@@ -3,12 +3,13 @@ import { LernprogrammSharedLibsModule } from './shared-libs.module';
 import { FindLanguageFromKeyPipe } from './language/find-language-from-key.pipe';
 import { AlertComponent } from './alert/alert.component';
 import { AlertErrorComponent } from './alert/alert-error.component';
-import { LoginModalComponent } from './login/login.component';
+import { LoginModalComponent } from './login-window/login.component';
 import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [LernprogrammSharedLibsModule],
-  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective],
+  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent],
   entryComponents: [LoginModalComponent],
   exports: [
     LernprogrammSharedLibsModule,
@@ -17,6 +18,7 @@ import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
     AlertErrorComponent,
     LoginModalComponent,
     HasAnyAuthorityDirective,
+    LoginComponent,
   ],
 })
 export class LernprogrammSharedModule {}

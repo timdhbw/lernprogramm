@@ -1,0 +1,24 @@
+{
+  "lernprogrammApp": {
+    "produktEntity": {
+      "home": {
+        "title": "Produkt Entities",
+        "createLabel": "Create a new Produkt Entity",
+        "createOrEditLabel": "Create or edit a Produkt Entity",
+        "search": "Search for Produkt Entity",
+        "notFound": "No Produkt Entities found"
+      },
+      "created": "A new Produkt Entity is created with identifier {{ param }}",
+      "updated": "A Produkt Entity is updated with identifier {{ param }}",
+      "deleted": "A Produkt Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Produkt Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "Produkt Entity"
+      },
+      "name": "Name",
+      "bewertung": "Bewertung"
+    }
+  }
+}

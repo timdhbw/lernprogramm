@@ -16,9 +16,14 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import {LernprogrammProfilseiteModule} from "app/profilseite/profilseite.module";
 import {LernprogrammAufgabenseiteModule} from "app/aufgabenseite/aufgabenseite.module";
+import {ApiModule} from "target/api.module";
+import {Configuration} from "target/configuration";
+import {AuthServerProvider} from "app/core/auth/auth-jwt.service";
+import {SERVER_API_URL} from "app/app.constants";
 
 @NgModule({
   imports: [
+    ApiModule,
     BrowserModule,
     LernprogrammSharedModule,
     LernprogrammCoreModule,
@@ -31,5 +36,18 @@ import {LernprogrammAufgabenseiteModule} from "app/aufgabenseite/aufgabenseite.m
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
+  providers: [
+    {
+      provide: Configuration,
+      useFactory: (authService: AuthServerProvider) => new Configuration(
+        {
+          basePath: SERVER_API_URL + "/api",
+          accessToken: authService.getToken()
+        }
+      ),
+      deps: [AuthServerProvider],
+      multi: false
+    }
+  ],
 })
 export class LernprogrammAppModule {}

@@ -1,0 +1,17 @@
+type: object
+name: Profil
+properties:
+  profilId:
+    type: string
+  vorname:
+    type: string
+  nachname:
+    type: string
+  thementypen:
+    type: array
+    items:
+      $ref: 'aufgabentagbewertet.yml'
+  punkte:
+    type: integer
+  rang:
+    type: integer
