@@ -1,5 +1,5 @@
 entity ProfilEntity {
-  	profilId String,
+  	profilId String required,
  	vorname String,
  	nachname String
 }
@@ -14,20 +14,19 @@ entity BewerteterAufgabentagEntity {
 }
 
 entity AufgabeEntity {
-	aufgabeId String,
     aufgabentitel String,
 	bewertung Integer,
-    kategorie KategorieEnum,
+    kategorie KategorieEnum required,
 }
 
 entity AufgabentagEntity {
-	tag String,
+	tag String required,
     text String
 }
 
 entity AufgabenteilEntity {
 	laufenNr Integer,
-  	aufgabenteiltyp AufgabenteiltypEnum,
+  	aufgabenteiltyp AufgabenteiltypEnum required,
  	text String
 }
 
@@ -41,7 +40,7 @@ relationship OneToMany {
     ProfilEntity to BewerteterAufgabentagEntity{profil}
     ProfilEntity to AufgabenhistorieEntity{profil}
     AufgabeEntity to AufgabenhistorieEntity{aufgabe}
-    PrfilEntity to AufgabeEntity{autor}
+    ProfilEntity to AufgabeEntity{autor}
 }
 
 
