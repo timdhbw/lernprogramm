@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-aufgabe-entity-heading" jhiTranslate="lernprogrammApp.aufgabeEntity.home.createOrEditLabel">Create or edit a Aufgabe Entity</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentitel" for="field_aufgabentitel">Aufgabentitel</label>
+                    <input type="text" class="form-control" name="aufgabentitel" id="field_aufgabentitel"
+                           formControlName="aufgabentitel"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="lernprogrammApp.aufgabeEntity.bewertung" for="field_bewertung">Bewertung</label>
+                    <input type="number" class="form-control" name="bewertung" id="field_bewertung"
+                           formControlName="bewertung"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="lernprogrammApp.aufgabeEntity.kategorie" for="field_kategorie">Kategorie</label>
+                    <select class="form-control" name="kategorie" formControlName="kategorie" id="field_kategorie">
+                        <option value="SOFTWAREENTWICKLUNG">{{ 'lernprogrammApp.KategorieEnum.SOFTWAREENTWICKLUNG' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('kategorie')!.invalid && (editForm.get('kategorie')!.dirty || editForm.get('kategorie')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('kategorie')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentag" for="field_aufgabentags">Aufgabentag</label>
+                    <select class="form-control" id="field_aufgabentags" multiple name="aufgabentags" formControlName="aufgabentags">
+                        <option [ngValue]="getSelected(editForm.get('aufgabentags')!.value, aufgabentagEntityOption)" *ngFor="let aufgabentagEntityOption of aufgabentagentities; trackBy: trackById">{{ aufgabentagEntityOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="lernprogrammApp.aufgabeEntity.autor" for="field_autor">Autor</label>
+                    <select class="form-control" id="field_autor" name="autor" formControlName="autor">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="profilEntityOption.id === editForm.get('autor')!.value?.id ? editForm.get('autor')!.value : profilEntityOption" *ngFor="let profilEntityOption of profilentities; trackBy: trackById">{{ profilEntityOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

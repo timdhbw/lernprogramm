@@ -1,0 +1,26 @@
+{
+  "lernprogrammApp": {
+    "aufgabenteilEntity": {
+      "home": {
+        "title": "Aufgabenteil Entities",
+        "createLabel": "Aufgabenteil Entity erstellen",
+        "createOrEditLabel": "Aufgabenteil Entity erstellen oder bearbeiten",
+        "search": "Suche nach Aufgabenteil Entity",
+        "notFound": "No Aufgabenteil Entities found"
+      },
+      "created": "Aufgabenteil Entity erstellt mit ID {{ param }}",
+      "updated": "Aufgabenteil Entity aktualisiert mit ID {{ param }}",
+      "deleted": "Aufgabenteil Entity gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Aufgabenteil Entity {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Aufgabenteil Entity"
+      },
+      "laufenNr": "Laufen Nr",
+      "aufgabenteiltyp": "Aufgabenteiltyp",
+      "text": "Text",
+      "aufgabe": "Aufgabe"
+    }
+  }
+}

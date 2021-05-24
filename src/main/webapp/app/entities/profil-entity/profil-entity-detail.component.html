@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profilEntity">
+            <h2><span jhiTranslate="lernprogrammApp.profilEntity.detail.title">Profil Entity</span> {{ profilEntity.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="lernprogrammApp.profilEntity.profilId">Profil Id</span></dt>
+                <dd>
+                    <span>{{ profilEntity.profilId }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.profilEntity.vorname">Vorname</span></dt>
+                <dd>
+                    <span>{{ profilEntity.vorname }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.profilEntity.nachname">Nachname</span></dt>
+                <dd>
+                    <span>{{ profilEntity.nachname }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profil-entity', profilEntity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

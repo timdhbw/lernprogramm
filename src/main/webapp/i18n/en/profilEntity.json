@@ -1,0 +1,28 @@
+{
+  "lernprogrammApp": {
+    "profilEntity": {
+      "home": {
+        "title": "Profil Entities",
+        "createLabel": "Create a new Profil Entity",
+        "createOrEditLabel": "Create or edit a Profil Entity",
+        "search": "Search for Profil Entity",
+        "notFound": "No Profil Entities found"
+      },
+      "created": "A new Profil Entity is created with identifier {{ param }}",
+      "updated": "A Profil Entity is updated with identifier {{ param }}",
+      "deleted": "A Profil Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profil Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "Profil Entity"
+      },
+      "profilId": "Profil Id",
+      "vorname": "Vorname",
+      "nachname": "Nachname",
+      "bewerteterAufgabentagEntity": "Bewerteter Aufgabentag Entity",
+      "aufgabenhistorieEntity": "Aufgabenhistorie Entity",
+      "aufgabeEntity": "Aufgabe Entity"
+    }
+  }
+}

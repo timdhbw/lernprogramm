@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="aufgabeEntity">
+            <h2><span jhiTranslate="lernprogrammApp.aufgabeEntity.detail.title">Aufgabe Entity</span> {{ aufgabeEntity.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentitel">Aufgabentitel</span></dt>
+                <dd>
+                    <span>{{ aufgabeEntity.aufgabentitel }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabeEntity.bewertung">Bewertung</span></dt>
+                <dd>
+                    <span>{{ aufgabeEntity.bewertung }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabeEntity.kategorie">Kategorie</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'lernprogrammApp.KategorieEnum.' + aufgabeEntity.kategorie }}">{{ aufgabeEntity.kategorie }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentag">Aufgabentag</span></dt>
+                <dd>
+                    <span *ngFor="let aufgabentag of aufgabeEntity.aufgabentags; let last = last">
+                        <a [routerLink]="['/aufgabentag-entity', aufgabentag?.id, 'view']">{{ aufgabentag.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabeEntity.autor">Autor</span></dt>
+                <dd>
+                    <div *ngIf="aufgabeEntity.autor">
+                        <a [routerLink]="['/profil-entity', aufgabeEntity.autor?.id, 'view']">{{ aufgabeEntity.autor?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/aufgabe-entity', aufgabeEntity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

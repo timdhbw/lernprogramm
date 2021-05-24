@@ -1,0 +1,36 @@
+{
+  "name": "BewerteterAufgabentagEntity",
+  "fields": [
+    {
+      "fieldName": "bewertung",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aufgabentagEntity",
+      "otherEntityRelationshipName": "bewerteterAufgabentagEntity",
+      "relationshipName": "aufgabentag",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profilEntity",
+      "otherEntityRelationshipName": "bewerteterAufgabentagEntity",
+      "relationshipName": "profil",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210522110105",
+  "entityTableName": "bewerteter_aufgabentag_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

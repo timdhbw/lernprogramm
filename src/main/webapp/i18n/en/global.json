@@ -8,6 +8,12 @@
       "entities": {
         "main": "Entities",
         "produktEntity": "Produkt Entity",
+        "profilEntity": "Profil Entity",
+        "aufgabenhistorieEntity": "Aufgabenhistorie Entity",
+        "bewerteterAufgabentagEntity": "Bewerteter Aufgabentag Entity",
+        "aufgabeEntity": "Aufgabe Entity",
+        "aufgabentagEntity": "Aufgabentag Entity",
+        "aufgabenteilEntity": "Aufgabenteil Entity",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

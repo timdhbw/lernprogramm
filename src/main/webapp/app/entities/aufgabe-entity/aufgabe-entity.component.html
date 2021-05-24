@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="lernprogrammApp.aufgabeEntity.home.title">Aufgabe Entities</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-aufgabe-entity" [routerLink]="['/aufgabe-entity/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="lernprogrammApp.aufgabeEntity.home.createLabel">
+            Create a new Aufgabe Entity
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'lernprogrammApp.aufgabeEntity.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="aufgabeEntities?.length === 0">
+        <span jhiTranslate="lernprogrammApp.aufgabeEntity.home.notFound">No aufgabeEntities found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="aufgabeEntities && aufgabeEntities.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentitel">Aufgabentitel</span></th>
+                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.bewertung">Bewertung</span></th>
+                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.kategorie">Kategorie</span></th>
+                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentag">Aufgabentag</span></th>
+                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.autor">Autor</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aufgabeEntity of aufgabeEntities ;trackBy: trackId">
+                    <td><a [routerLink]="['/aufgabe-entity', aufgabeEntity.id, 'view']">{{ aufgabeEntity.id }}</a></td>
+                    <td>{{ aufgabeEntity.aufgabentitel }}</td>
+                    <td>{{ aufgabeEntity.bewertung }}</td>
+                    <td jhiTranslate="{{ 'lernprogrammApp.KategorieEnum.' + aufgabeEntity.kategorie }}">{{ aufgabeEntity.kategorie }}</td>
+                    <td>
+                        <span *ngFor="let aufgabentag of aufgabeEntity.aufgabentags; let last = last">
+                            <a class="form-control-static" [routerLink]="['/aufgabentag-entity', aufgabentag?.id, 'view']">{{ aufgabentag.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <div *ngIf="aufgabeEntity.autor">
+                            <a [routerLink]="['/profil-entity', aufgabeEntity.autor?.id, 'view']" >{{ aufgabeEntity.autor?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/aufgabe-entity', aufgabeEntity.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/aufgabe-entity', aufgabeEntity.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(aufgabeEntity)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

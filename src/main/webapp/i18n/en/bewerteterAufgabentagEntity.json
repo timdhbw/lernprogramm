@@ -1,0 +1,25 @@
+{
+  "lernprogrammApp": {
+    "bewerteterAufgabentagEntity": {
+      "home": {
+        "title": "Bewerteter Aufgabentag Entities",
+        "createLabel": "Create a new Bewerteter Aufgabentag Entity",
+        "createOrEditLabel": "Create or edit a Bewerteter Aufgabentag Entity",
+        "search": "Search for Bewerteter Aufgabentag Entity",
+        "notFound": "No Bewerteter Aufgabentag Entities found"
+      },
+      "created": "A new Bewerteter Aufgabentag Entity is created with identifier {{ param }}",
+      "updated": "A Bewerteter Aufgabentag Entity is updated with identifier {{ param }}",
+      "deleted": "A Bewerteter Aufgabentag Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bewerteter Aufgabentag Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "Bewerteter Aufgabentag Entity"
+      },
+      "bewertung": "Bewertung",
+      "aufgabentag": "Aufgabentag",
+      "profil": "Profil"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "AufgabenteilEntity",
+  "fields": [
+    {
+      "fieldName": "laufenNr",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "aufgabenteiltyp",
+      "fieldType": "AufgabenteiltypEnum",
+      "fieldValues": "TEXT",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aufgabeEntity",
+      "otherEntityRelationshipName": "aufgabenteilEntity",
+      "relationshipName": "aufgabe",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210522110405",
+  "entityTableName": "aufgabenteil_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

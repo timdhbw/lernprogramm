@@ -1,0 +1,40 @@
+{
+  "name": "AufgabenhistorieEntity",
+  "fields": [
+    {
+      "fieldName": "datum",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "bewertungsveraenderung",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profilEntity",
+      "otherEntityRelationshipName": "aufgabenhistorieEntity",
+      "relationshipName": "profil",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aufgabeEntity",
+      "otherEntityRelationshipName": "aufgabenhistorieEntity",
+      "relationshipName": "aufgabe",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210522110005",
+  "entityTableName": "aufgabenhistorie_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

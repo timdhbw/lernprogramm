@@ -1,0 +1,26 @@
+{
+  "lernprogrammApp": {
+    "aufgabentagEntity": {
+      "home": {
+        "title": "Aufgabentag Entities",
+        "createLabel": "Aufgabentag Entity erstellen",
+        "createOrEditLabel": "Aufgabentag Entity erstellen oder bearbeiten",
+        "search": "Suche nach Aufgabentag Entity",
+        "notFound": "No Aufgabentag Entities found"
+      },
+      "created": "Aufgabentag Entity erstellt mit ID {{ param }}",
+      "updated": "Aufgabentag Entity aktualisiert mit ID {{ param }}",
+      "deleted": "Aufgabentag Entity gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Aufgabentag Entity {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Aufgabentag Entity"
+      },
+      "tag": "Tag",
+      "text": "Text",
+      "bewerteterAufgabentagEntity": "Bewerteter Aufgabentag Entity",
+      "aufgabe": "Aufgabe"
+    }
+  }
+}

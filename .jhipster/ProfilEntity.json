@@ -1,0 +1,51 @@
+{
+  "name": "ProfilEntity",
+  "fields": [
+    {
+      "fieldName": "profilId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "vorname",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nachname",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "bewerteterAufgabentagEntity",
+      "otherEntityRelationshipName": "profil",
+      "relationshipName": "bewerteterAufgabentagEntity"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "aufgabenhistorieEntity",
+      "otherEntityRelationshipName": "profil",
+      "relationshipName": "aufgabenhistorieEntity"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "aufgabeEntity",
+      "otherEntityRelationshipName": "autor",
+      "relationshipName": "aufgabeEntity"
+    }
+  ],
+  "changelogDate": "20210522105905",
+  "entityTableName": "profil_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

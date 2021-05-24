@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="aufgabenhistorieEntity">
+            <h2><span jhiTranslate="lernprogrammApp.aufgabenhistorieEntity.detail.title">Aufgabenhistorie Entity</span> {{ aufgabenhistorieEntity.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="lernprogrammApp.aufgabenhistorieEntity.datum">Datum</span></dt>
+                <dd>
+                    <span>{{ aufgabenhistorieEntity.datum }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabenhistorieEntity.bewertungsveraenderung">Bewertungsveraenderung</span></dt>
+                <dd>
+                    <span>{{ aufgabenhistorieEntity.bewertungsveraenderung }}</span>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabenhistorieEntity.profil">Profil</span></dt>
+                <dd>
+                    <div *ngIf="aufgabenhistorieEntity.profil">
+                        <a [routerLink]="['/profil-entity', aufgabenhistorieEntity.profil?.id, 'view']">{{ aufgabenhistorieEntity.profil?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="lernprogrammApp.aufgabenhistorieEntity.aufgabe">Aufgabe</span></dt>
+                <dd>
+                    <div *ngIf="aufgabenhistorieEntity.aufgabe">
+                        <a [routerLink]="['/aufgabe-entity', aufgabenhistorieEntity.aufgabe?.id, 'view']">{{ aufgabenhistorieEntity.aufgabe?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/aufgabenhistorie-entity', aufgabenhistorieEntity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

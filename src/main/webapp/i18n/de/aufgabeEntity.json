@@ -1,0 +1,29 @@
+{
+  "lernprogrammApp": {
+    "aufgabeEntity": {
+      "home": {
+        "title": "Aufgabe Entities",
+        "createLabel": "Aufgabe Entity erstellen",
+        "createOrEditLabel": "Aufgabe Entity erstellen oder bearbeiten",
+        "search": "Suche nach Aufgabe Entity",
+        "notFound": "No Aufgabe Entities found"
+      },
+      "created": "Aufgabe Entity erstellt mit ID {{ param }}",
+      "updated": "Aufgabe Entity aktualisiert mit ID {{ param }}",
+      "deleted": "Aufgabe Entity gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Aufgabe Entity {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Aufgabe Entity"
+      },
+      "aufgabentitel": "Aufgabentitel",
+      "bewertung": "Bewertung",
+      "kategorie": "Kategorie",
+      "aufgabenteilEntity": "Aufgabenteil Entity",
+      "aufgabenhistorieEntity": "Aufgabenhistorie Entity",
+      "aufgabentag": "Aufgabentag",
+      "autor": "Autor"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "AufgabentagEntity",
+  "fields": [
+    {
+      "fieldName": "tag",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "bewerteterAufgabentagEntity",
+      "otherEntityRelationshipName": "aufgabentag",
+      "relationshipName": "bewerteterAufgabentagEntity"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "aufgabeEntity",
+      "otherEntityRelationshipName": "aufgabentag",
+      "relationshipName": "aufgabe",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210522110305",
+  "entityTableName": "aufgabentag_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,61 @@
+{
+  "name": "AufgabeEntity",
+  "fields": [
+    {
+      "fieldName": "aufgabentitel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bewertung",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "kategorie",
+      "fieldType": "KategorieEnum",
+      "fieldValues": "SOFTWAREENTWICKLUNG",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "aufgabenteilEntity",
+      "otherEntityRelationshipName": "aufgabe",
+      "relationshipName": "aufgabenteilEntity"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "aufgabenhistorieEntity",
+      "otherEntityRelationshipName": "aufgabe",
+      "relationshipName": "aufgabenhistorieEntity"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "aufgabentagEntity",
+      "otherEntityRelationshipName": "aufgabe",
+      "relationshipName": "aufgabentag",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profilEntity",
+      "otherEntityRelationshipName": "aufgabeEntity",
+      "relationshipName": "autor",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210522110205",
+  "entityTableName": "aufgabe_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

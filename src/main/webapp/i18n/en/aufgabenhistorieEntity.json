@@ -1,0 +1,26 @@
+{
+  "lernprogrammApp": {
+    "aufgabenhistorieEntity": {
+      "home": {
+        "title": "Aufgabenhistorie Entities",
+        "createLabel": "Create a new Aufgabenhistorie Entity",
+        "createOrEditLabel": "Create or edit a Aufgabenhistorie Entity",
+        "search": "Search for Aufgabenhistorie Entity",
+        "notFound": "No Aufgabenhistorie Entities found"
+      },
+      "created": "A new Aufgabenhistorie Entity is created with identifier {{ param }}",
+      "updated": "A Aufgabenhistorie Entity is updated with identifier {{ param }}",
+      "deleted": "A Aufgabenhistorie Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Aufgabenhistorie Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "Aufgabenhistorie Entity"
+      },
+      "datum": "Datum",
+      "bewertungsveraenderung": "Bewertungsveraenderung",
+      "profil": "Profil",
+      "aufgabe": "Aufgabe"
+    }
+  }
+}
