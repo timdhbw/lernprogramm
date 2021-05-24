@@ -2,9 +2,9 @@ package de.master.lernprogramm.domain.service;
 
 import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
+import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabenteilUiDto;
-import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,11 +24,11 @@ public class AufgabeServiceImpl implements AufgabeService {
     private Aufgabe getAufgabe(Integer aufgabeId) {
         Aufgabe aufgabe = new Aufgabe();
         aufgabe.setAufgabeId(aufgabeId);
-        aufgabe.setAutor(new ProfilUiDto().profilId("test1"));
+        aufgabe.setAutor(new Profil());
         aufgabe.setAufgabentitel("Aufgabe " + aufgabeId);
         aufgabe.setKategorie(AufgabenkategorieEnum.SOFTWAREENTWICKLUNG);
-        aufgabe.setAufgabentagList(getAufgabentagList(aufgabeId));
-        aufgabe.setAufgabenteilList(getAufgabenteilList(aufgabeId));
+        aufgabe.setAufgabentagList(null);
+        aufgabe.setAufgabenteilList(null);
         return aufgabe;
     }
 

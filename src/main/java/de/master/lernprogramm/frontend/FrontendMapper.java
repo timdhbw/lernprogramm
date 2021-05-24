@@ -21,5 +21,8 @@ public interface FrontendMapper {
     @Mapping(target = "rang", ignore = true)
     ProfilUiDto toUiDto(User user);
 
+    @Mapping(target = "aufgabenteilList", ignore = true)
+    @Mapping(target = "autor", ignore = true)
     AufgabeUiDto toUiDto(Aufgabe aufgabe);
+
 }
