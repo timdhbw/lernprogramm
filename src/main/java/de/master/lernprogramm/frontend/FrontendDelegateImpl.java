@@ -3,6 +3,7 @@ package de.master.lernprogramm.frontend;
 import de.master.lernprogramm.domain.User;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.service.AufgabeService;
+import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
@@ -25,18 +26,22 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
 
     private final FrontendMapper frontendMapper;
 
-    public FrontendDelegateImpl(UserService userService, AufgabeService aufgabeService, FrontendMapper frontendMapper) {
+    private final ProfilService profilService;
+
+    public FrontendDelegateImpl(UserService userService, AufgabeService aufgabeService, FrontendMapper frontendMapper, ProfilService profilService) {
         this.userService = userService;
         this.aufgabeService = aufgabeService;
         this.frontendMapper = frontendMapper;
+        this.profilService = profilService;
     }
 
     @Override
     public ResponseEntity<ProfilUiDto> getProfil() {
-        log.info("GetProfil");
+        log.trace("GetProfil");
         Optional<User> optionalUser = userService.getUserWithAuthorities();
-        log.info("Optional User: {}", optionalUser);
-        return optionalUser.map(user -> ResponseEntity.ok(frontendMapper.toUiDto(user)))
+        log.trace("Optional User: {}", optionalUser);
+        return optionalUser.map(user -> ResponseEntity
+            .ok(frontendMapper.toUiDto(profilService.getProfilById(user.getId().toString()))))
             .orElseGet(() -> ResponseEntity.status(204).build());
     }
 
