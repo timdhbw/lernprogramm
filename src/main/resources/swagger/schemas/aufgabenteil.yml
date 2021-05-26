@@ -3,7 +3,7 @@ name: Aufgabenteil
 properties:
   laufenNr:
     type: integer
-  aufgabentyp:
+  aufgabenteiltyp:
     type: string
     enum:
       - TEXT

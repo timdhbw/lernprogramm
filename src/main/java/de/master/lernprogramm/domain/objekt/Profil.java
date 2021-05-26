@@ -15,4 +15,7 @@ public class Profil {
     private List<Aufgabenhistorie> aufgabenhistorieList;
     private List<Aufgabe> aufgabeList;
 
+    private int punkte;
+    private int rang;
+
 }

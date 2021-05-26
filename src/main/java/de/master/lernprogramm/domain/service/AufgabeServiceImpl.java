@@ -1,10 +1,11 @@
 package de.master.lernprogramm.domain.service;
 
+import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
+import de.master.lernprogramm.domain.objekt.Aufgabentag;
+import de.master.lernprogramm.domain.objekt.Aufgabenteil;
 import de.master.lernprogramm.domain.objekt.Profil;
-import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
-import de.master.lernprogramm.web.api.dtos.AufgabenteilUiDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,73 +28,78 @@ public class AufgabeServiceImpl implements AufgabeService {
         aufgabe.setAutor(new Profil());
         aufgabe.setAufgabentitel("Aufgabe " + aufgabeId);
         aufgabe.setKategorie(AufgabenkategorieEnum.SOFTWAREENTWICKLUNG);
-        aufgabe.setAufgabentagList(null);
-        aufgabe.setAufgabenteilList(null);
+        aufgabe.setAufgabentagList(getAufgabentagList(aufgabeId));
+        aufgabe.setAufgabenteilList(getAufgabenteilList(aufgabeId));
         return aufgabe;
     }
 
-    private List<de.master.lernprogramm.web.api.dtos.AufgabentagUiDto> getAufgabentagList(Integer aufgabeId) {
+    private List<Aufgabentag> getAufgabentagList(Integer aufgabeId) {
         switch (aufgabeId) {
             case 1:
-                return Arrays.asList(new AufgabentagUiDto().tag("angular"), new AufgabentagUiDto().tag("html"));
+                return Arrays.asList(Aufgabentag.builder().tag("angular").build(),
+                    Aufgabentag.builder().tag("html").build());
             case 2:
-                return Arrays.asList(new AufgabentagUiDto().tag("vue"), new AufgabentagUiDto().tag("html"), new AufgabentagUiDto().tag("css"));
+                return Arrays.asList(Aufgabentag.builder().tag("vue").build(),
+                    Aufgabentag.builder().tag("html").build(), Aufgabentag.builder().tag("css").build());
             case 3:
-                return Arrays.asList(new AufgabentagUiDto().tag("css"), new AufgabentagUiDto().tag("html5"));
+                return Arrays.asList(Aufgabentag.builder().tag("css").build(),
+                    Aufgabentag.builder().tag("html5").build());
             case 4:
-                return Arrays.asList(new AufgabentagUiDto().tag("angular"), new AufgabentagUiDto().tag("vue"));
+                return Arrays.asList(Aufgabentag.builder().tag("angular").build(),
+                    Aufgabentag.builder().tag("vue").build());
             case 5:
-                return Arrays.asList(new AufgabentagUiDto().tag("angular"), new AufgabentagUiDto().tag("html5"), new AufgabentagUiDto().tag("css"));
+                return Arrays.asList(Aufgabentag.builder().tag("angular").build(),
+                    Aufgabentag.builder().tag("html5").build(), Aufgabentag.builder().tag("css").build());
             default:
                 return new ArrayList<>();
         }
     }
 
-    private List<de.master.lernprogramm.web.api.dtos.AufgabenteilUiDto> getAufgabenteilList(Integer aufgabeId) {
+    private List<Aufgabenteil> getAufgabenteilList(Integer aufgabeId) {
         switch (aufgabeId) {
             case 1:
-                return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                    .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgabe über Angular und HTML"));
+                return Arrays.asList(Aufgabenteil.builder().laufenNr(1).aufgabenteiltyp(AufgabenteiltypEnum.TEXT)
+                    .text("Aufgabe über Angular und HTML").build());
             case 2:
-                return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgabe über Vue..."),
-                    new AufgabenteilUiDto().laufenNr(2)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("... HTML gehört auch dazu"));
+                return Arrays.asList(Aufgabenteil.builder().laufenNr(1)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Aufgabe über Vue...").build(),
+                    Aufgabenteil.builder().laufenNr(2)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("... HTML gehört auch dazu").build());
             case 3:
-                return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Jeder"),
-                    new AufgabenteilUiDto().laufenNr(7)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("CSS"),
-                    new AufgabenteilUiDto().laufenNr(2)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("hasst"),
-                    new AufgabenteilUiDto().laufenNr(6)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("und"),
-                    new AufgabenteilUiDto().laufenNr(3)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Aufgaben"),
-                    new AufgabenteilUiDto().laufenNr(5)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("HTML5"),
-                    new AufgabenteilUiDto().laufenNr(4)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("mit"),
-                    new AufgabenteilUiDto().laufenNr(8)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("!!!"));
+                return Arrays.asList(Aufgabenteil.builder().laufenNr(1)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Jeder").build(),
+                    Aufgabenteil.builder().laufenNr(7)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("CSS").build(),
+                    Aufgabenteil.builder().laufenNr(2)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("hasst").build(),
+                    Aufgabenteil.builder().laufenNr(6)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("und").build(),
+                    Aufgabenteil.builder().laufenNr(3)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Aufgaben").build(),
+                    Aufgabenteil.builder().laufenNr(5)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("HTML5").build(),
+                    Aufgabenteil.builder().laufenNr(4)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("mit").build(),
+                    Aufgabenteil.builder().laufenNr(8)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("!!!").build());
             case 4:
-                return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Angular"),
-                    new AufgabenteilUiDto().laufenNr(2)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("und"),
-                    new AufgabenteilUiDto().laufenNr(3)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Vue"),
-                    new AufgabenteilUiDto().laufenNr(4)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("nerven"));
+                return Arrays.asList(Aufgabenteil.builder().laufenNr(1)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Angular").build(),
+                    Aufgabenteil.builder().laufenNr(2)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("und").build(),
+                    Aufgabenteil.builder().laufenNr(3)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Vue").build(),
+                    Aufgabenteil.builder().laufenNr(4)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("nerven").build());
             case 5:
-                return Arrays.asList(new AufgabenteilUiDto().laufenNr(1)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Was wäre"),
-                    new AufgabenteilUiDto().laufenNr(2)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("Angular"),
-                    new AufgabenteilUiDto().laufenNr(3)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("ohne"),
-                    new AufgabenteilUiDto().laufenNr(4)
-                        .aufgabentyp(AufgabenteilUiDto.AufgabentypEnum.TEXT).text("HTML und CSS?"));
+                return Arrays.asList(Aufgabenteil.builder().laufenNr(1)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Was wäre").build(),
+                    Aufgabenteil.builder().laufenNr(2)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Angular").build(),
+                    Aufgabenteil.builder().laufenNr(3)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("ohne").build(),
+                    Aufgabenteil.builder().laufenNr(4)
+                        .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("HTML und CSS?").build());
             default:
                 return new ArrayList<>();
         }

@@ -2,8 +2,9 @@ package de.master.lernprogramm.frontend;
 
 import de.master.lernprogramm.domain.User;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
-import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
+import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
+import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -21,8 +22,8 @@ public interface FrontendMapper {
     @Mapping(target = "rang", ignore = true)
     ProfilUiDto toUiDto(User user);
 
-    @Mapping(target = "aufgabenteilList", ignore = true)
-    @Mapping(target = "autor", ignore = true)
     AufgabeUiDto toUiDto(Aufgabe aufgabe);
 
+    @Mapping(target = "thementypen", source = "bewerteterAufgabentagList")
+    ProfilUiDto toUiDto(Profil profil);
 }
