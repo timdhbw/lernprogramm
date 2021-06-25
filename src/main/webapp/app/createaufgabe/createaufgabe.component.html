@@ -1,0 +1,29 @@
+<p>createaufgabe works!</p>
+<div class="row">
+    <h2>Neue Aufgabe erstellen</h2>
+    <div class="col-12">
+        <label for="aufgabentitel">Aufgabentitel</label>
+        <input id="aufgabentitel" type="text"/>
+    </div>
+    <div class="col-12">
+        <label for="initialeBerwtung">initialeBewertung</label>
+        <input id="initialeBerwtung" type="number" min="1" max="5" />
+    </div>
+    <div class="col-12">
+        <label for="kate">kategorie</label>
+        <input id="kate" type="text"/>
+    </div>
+    <div class="col-12">
+        <label for="tags">tags</label>
+        <input id="tags" type="text"/>
+    </div>
+    <div class="col-12">
+        <h4>Aufgabenteie</h4>
+        <button class="btn">Add aufgabenteil</button>
+    </div>
+    <div *ngFor="let aufgabenteil of aufgabenteilList" class="col-12">
+        <label>AufgabenteilTyp: {{aufgabenteil.aufgabenteiltyp}}</label>
+        <label>AufgabenteilText: {{aufgabenteil.text}}</label>
+        <button class="btn">Add aufgabenteil</button>
+    </div>
+</div>
