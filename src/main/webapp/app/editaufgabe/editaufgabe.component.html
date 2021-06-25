@@ -1,0 +1,36 @@
+<p>createaufgabe works!</p>
+<div class="row">
+    <h2>Neue Aufgabe erstellen</h2>
+    <div class="col-12">
+        <label for="aufgabentitel">Aufgabentitel</label>
+        <input id="aufgabentitel" [(ngModel)]="getAufgabe().aufgabentitel" [disabled]="!aufgabeNeuanlage" type="text"/>
+    </div>
+    <div class="col-12">
+        <label for="initialeBerwtung">initialeBewertung</label>
+        <input [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage" id="initialeBerwtung" type="number"
+               min="1" max="5"/>
+    </div>
+    <div class="col-12">
+        <label for="kate">kategorie</label>
+        <input [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kate" type="text"/>
+    </div>
+    <div class="col-12">
+        <label for="tags">tags</label>
+        <div id="tags">
+            <div *ngFor="let tag of getAufgabe().aufgabentagList">
+                <label>{{tag.tag}}</label>
+                <button>X</button>
+            </div>
+        </div>
+        <button class="btn">Add Tag</button>
+    </div>
+    <div class="col-12">
+        <h4>Aufgabenteile</h4>
+        <button class="btn" (click)="addAufgabenteil()">Add aufgabenteil</button>
+    </div>
+    <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
+        <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
+        <label>AufgabenteilText: {{aufgabenteil.text}}</label>
+        <button class="btn" (click)="addAufgabenteil()">Add aufgabenteil</button>
+    </div>
+</div>

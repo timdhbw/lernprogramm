@@ -21,7 +21,7 @@ import {Configuration} from "target/configuration";
 import {AuthServerProvider} from "app/core/auth/auth-jwt.service";
 import {SERVER_API_URL} from "app/app.constants";
 import {LernprogrammFaqModule} from './faq/faq.module';
-import { LernprogrammCreateaufgabeModule } from './createaufgabe/createaufgabe.module';
+import { LernprogrammEditaufgabeModule } from './editaufgabe/editaufgabe.module';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { LernprogrammCreateaufgabeModule } from './createaufgabe/createaufgabe.m
     LernprogrammEntityModule,
     LernprogrammProfilseiteModule,
     LernprogrammAufgabenseiteModule,
-    LernprogrammCreateaufgabeModule,
+    LernprogrammEditaufgabeModule,
     LernprogrammAppRoutingModule,
 
   ],

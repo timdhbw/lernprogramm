@@ -1,11 +1,11 @@
 import { Route } from '@angular/router';
 
-import {CreateaufgabeComponent} from "./createaufgabe.component";
+import {EditaufgabeComponent} from "./editaufgabe.component";
 import {Authority} from "../shared/constants/authority.constants";
 
-export const CREATEAUFGABE_ROUTE: Route = {
-  path: 'createaufgabe',
-  component: CreateaufgabeComponent,
+export const EDITAUFGABE_ROUTE: Route = {
+  path: 'editaufgabe',
+  component: EditaufgabeComponent,
   data: {
     authorities: [Authority.ADMIN, Authority.USER],
     pageTitle: 'home.title',
