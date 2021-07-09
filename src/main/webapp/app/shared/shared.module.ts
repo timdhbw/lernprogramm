@@ -6,6 +6,7 @@ import { AlertErrorComponent } from './alert/alert-error.component';
 import { LoginModalComponent } from './login-window/login.component';
 import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
 import { LoginComponent } from './login/login.component';
+import {EnumUtil} from "app/shared/util/enum-util";
 
 @NgModule({
   imports: [LernprogrammSharedLibsModule],
@@ -20,5 +21,6 @@ import { LoginComponent } from './login/login.component';
     HasAnyAuthorityDirective,
     LoginComponent,
   ],
+  providers: [EnumUtil]
 })
 export class LernprogrammSharedModule {}

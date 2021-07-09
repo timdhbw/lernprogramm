@@ -29,6 +29,10 @@ export class ProfilseiteComponent implements OnInit {
     this.router.navigate(["aufgabenseite"]);
   }
 
+  navigateToNewAufgabe(): void {
+    this.router.navigate(["editaufgabe/new"]);
+  }
+
   ngOnInit(): void {
   }
 

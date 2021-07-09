@@ -12,7 +12,9 @@
     </div>
     <div class="col-12">
         <label for="kate">kategorie</label>
-        <input [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kate" type="text"/>
+        <select [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kategorie">
+            <option *ngFor="let kategorie of getKategorieListe()">{{kategorie}}</option>
+        </select>
     </div>
     <div class="col-12">
         <label for="tags">tags</label>

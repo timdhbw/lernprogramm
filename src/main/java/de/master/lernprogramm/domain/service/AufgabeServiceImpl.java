@@ -6,6 +6,7 @@ import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.objekt.Aufgabentag;
 import de.master.lernprogramm.domain.objekt.Aufgabenteil;
 import de.master.lernprogramm.domain.objekt.Profil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,13 +14,22 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AufgabeServiceImpl implements AufgabeService {
     @Override
     public Aufgabe getAufgabeById(Integer aufgabeId) {
-        if (aufgabeId == null || aufgabeId < 1 || aufgabeId > 5) {
+        log.info("AufgabeId: {}", aufgabeId);
+        if (aufgabeId == null) {
+            return createNewAufgabe();
+        }
+        if (aufgabeId < 1 || aufgabeId > 5) {
             return null;
         }
         return getAufgabe(aufgabeId);
+    }
+
+    private Aufgabe createNewAufgabe() {
+        return getAufgabe(1);
     }
 
     private Aufgabe getAufgabe(Integer aufgabeId) {
