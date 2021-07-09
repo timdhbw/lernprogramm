@@ -11,7 +11,7 @@
                min="1" max="5"/>
     </div>
     <div class="col-12">
-        <label for="kate">kategorie</label>
+        <label for="kategorie">kategorie</label>
         <select [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kategorie">
             <option *ngFor="let kategorie of getKategorieListe()">{{kategorie}}</option>
         </select>
@@ -24,7 +24,7 @@
                 <button>X</button>
             </div>
         </div>
-        <button class="btn">Add Tag</button>
+        <jhi-add-tag [aufgabe]="getAufgabe()"></jhi-add-tag>
     </div>
     <div class="col-12">
         <h4>Aufgabenteile</h4>

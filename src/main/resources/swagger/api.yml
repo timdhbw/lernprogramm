@@ -17,7 +17,7 @@ paths:
       description: erhalte Informationen über das Profil
       operationId: getProfil
       security:
-        - jwt: []
+        - jwt: [ ]
       responses:
         '200':
           description: Antwort auf getProfil
@@ -58,6 +58,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /frontend/aufgabe/tags:
+    get:
+      tags:
+        - frontend
+      description: Bekomme alle existierenden AufgabenTags
+      operationId: getExistingTagList
+      security:
+        - jwt: [ ]
+      responses:
+        '200':
+          description: Antwort auf getExistingTagList
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "schemas/aufgabentag.yml"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   responses:
@@ -91,5 +114,5 @@ components:
       description: Basic Authentication
       scheme: basic
 security:
-  - jwt: []
-  - basic: []
+  - jwt: [ ]
+  - basic: [ ]

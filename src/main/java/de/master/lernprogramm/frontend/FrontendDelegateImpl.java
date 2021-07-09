@@ -6,11 +6,14 @@ import de.master.lernprogramm.domain.service.AufgabeService;
 import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
+import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -52,5 +55,10 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
             return ResponseEntity.status(204).build();
         }
         return ResponseEntity.ok(frontendMapper.toUiDto(aufgabe));
+    }
+
+    @Override
+    public ResponseEntity<List<AufgabentagUiDto>> getExistingTagList() {
+        return ResponseEntity.ok(Arrays.asList(new AufgabentagUiDto().tag("TestTAg")));
     }
 }

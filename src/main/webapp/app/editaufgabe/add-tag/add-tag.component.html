@@ -1,0 +1,11 @@
+<div [ngSwitch]="showSelect">
+    <div *ngSwitchCase="false">
+        <button class="btn btn-success" (click)="showSelect = true">Add Tag</button>
+    </div>
+    <div *ngSwitchCase="true">
+        <select [(ngModel)]="newTag">
+            <option *ngFor="let tag of possibleTags" [ngValue]="tag">{{tag.tag}}</option>
+        </select>
+        <button *ngIf="newTag" class="btn btn-success" (click)="addTag()">Füge {{newTag.tag}} hinzu</button>
+    </div>
+</div>
