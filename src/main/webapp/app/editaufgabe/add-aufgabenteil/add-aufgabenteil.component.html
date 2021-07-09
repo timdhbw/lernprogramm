@@ -1,0 +1,13 @@
+<div [ngSwitch]="showNeuTeil">
+    <div *ngSwitchCase="false">
+        <button class="btn" (click)="neuerAufgabenteil()">Add aufgabenteil</button>
+    </div>
+    <div *ngSwitchCase="true">
+        <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp">
+            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()">{{aufgabenTyp}}</option>
+        </select>
+        <label for="textfeld">Text</label>
+        <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>
+        <button class="btn btn-success" (click)="saveNewAufgabenteil()">Füge Aufgabenteil hinzu</button>
+    </div>
+</div>

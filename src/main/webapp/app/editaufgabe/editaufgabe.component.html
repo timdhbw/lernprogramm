@@ -21,18 +21,18 @@
         <div id="tags">
             <div *ngFor="let tag of getAufgabe().aufgabentagList">
                 <label>{{tag.tag}}</label>
-                <button>X</button>
+                <button class="btn btn-danger" (click)="removeTag(tag)">X</button>
             </div>
         </div>
         <jhi-add-tag [aufgabe]="getAufgabe()"></jhi-add-tag>
     </div>
     <div class="col-12">
         <h4>Aufgabenteile</h4>
-        <button class="btn" (click)="addAufgabenteil()">Add aufgabenteil</button>
+        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
     </div>
     <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
         <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
         <label>AufgabenteilText: {{aufgabenteil.text}}</label>
-        <button class="btn" (click)="addAufgabenteil()">Add aufgabenteil</button>
+        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="aufgabenteil.laufenNr + 1"></jhi-add-aufgabenteil>
     </div>
 </div>

@@ -51,14 +51,10 @@ export class EditaufgabeComponent implements OnInit {
     this.frontendService.getAufgabeById(aufgabeId).toPromise().then(aufgabe => this.aufgabe = aufgabe);
   }
 
-  private createNeueAufgabe(): void {
-    this.aufgabe.aufgabentitel = "Test";
-    this.aufgabe.kategorie = "SOFTWAREENTWICKLUNG";
-    this.aufgabe.bewertung = 4;
-    this.aufgabe.aufgabentagList = [];
-    this.aufgabe.aufgabentagList.push({tag: "Test1"} as AufgabentagUiDto);
-    this.aufgabe.aufgabentagList.push({tag: "Test2"} as AufgabentagUiDto);
-    this.aufgabe.aufgabentagList.push({tag: "Test3"} as AufgabentagUiDto);
-    this.aufgabe.aufgabenteilList = [];
+  removeTag(tag: AufgabentagUiDto): void {
+    const index: number | undefined = this.aufgabe.aufgabentagList?.indexOf(tag);
+    if (index !== undefined && index !== -1) {
+      this.aufgabe.aufgabentagList?.splice(index, 1);
+    }
   }
 }
