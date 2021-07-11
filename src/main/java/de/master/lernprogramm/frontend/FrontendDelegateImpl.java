@@ -61,4 +61,14 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     public ResponseEntity<List<AufgabentagUiDto>> getExistingTagList() {
         return ResponseEntity.ok(Arrays.asList(new AufgabentagUiDto().tag("TestTAg")));
     }
+
+    @Override
+    public ResponseEntity<List<AufgabeUiDto>> getAufgabenByUserId(String userId) {
+        return ResponseEntity.ok(Arrays.asList(new AufgabeUiDto()));
+    }
+
+    @Override
+    public ResponseEntity<AufgabeUiDto> saveAufgabe(AufgabeUiDto aufgabeUiDto) {
+        return ResponseEntity.ok(aufgabeUiDto);
+    }
 }

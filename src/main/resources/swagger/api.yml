@@ -85,6 +85,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /frontend/aufgabe/user:
+    get:
+      tags:
+        - frontend
+      description: Bekomme eine Aufgabe für die entsprechende Id
+      operationId: getAufgabenByUserId
+      parameters:
+        - in: query
+          name: userId
+          description: UserId der Aufgabe, die geholt werden soll
+          schema:
+            type: string
+      security:
+        - jwt: [ ]
+      responses:
+        '200':
+          description: Antwort auf getAufgabenByUserId
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'schemas/aufgabe.yml'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /frontend/aufgabe/tags:
     get:
       tags:
