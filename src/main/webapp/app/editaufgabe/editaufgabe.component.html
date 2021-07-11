@@ -1,26 +1,27 @@
-<p>createaufgabe works!</p>
 <div class="row">
-    <h2>Neue Aufgabe erstellen</h2>
-    <div class="col-12">
+    <h2 class="col-12">Neue Aufgabe erstellen</h2>
+    <div class="col-12 form-group">
         <label for="aufgabentitel">Aufgabentitel</label>
-        <input id="aufgabentitel" [(ngModel)]="getAufgabe().aufgabentitel" [disabled]="!aufgabeNeuanlage" type="text"/>
+        <input class="form-control" id="aufgabentitel" [(ngModel)]="getAufgabe().aufgabentitel"
+               [disabled]="!aufgabeNeuanlage" type="text"/>
     </div>
-    <div class="col-12">
+    <div class="col-12 form-group">
         <label for="initialeBerwtung">initialeBewertung</label>
-        <input [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage" id="initialeBerwtung" type="number"
+        <input class="form-control" [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage"
+               id="initialeBerwtung" type="number"
                min="1" max="5"/>
     </div>
-    <div class="col-12">
+    <div class="col-12 form-group">
         <label for="kategorie">kategorie</label>
-        <select [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kategorie">
+        <select class="form-control" [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kategorie">
             <option *ngFor="let kategorie of getKategorieListe()">{{kategorie}}</option>
         </select>
     </div>
     <div class="col-12">
         <label for="tags">tags</label>
-        <div id="tags">
-            <div *ngFor="let tag of getAufgabe().aufgabentagList">
-                <label>{{tag.tag}}</label>
+        <div id="tags" class="row mx-1">
+            <div class="border col mr-1 px-0" *ngFor="let tag of getAufgabe().aufgabentagList">
+                <label class="px-1">{{tag.tag}}</label>
                 <button class="btn btn-danger" (click)="removeTag(tag)">X</button>
             </div>
         </div>
