@@ -58,6 +58,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - frontend
+      description: Speicher die Aufgabe
+      operationId: saveAufgabe
+      requestBody:
+        description: Zu speichernde Aufgabe
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/aufgabe.yml'
+      security:
+        - jwt: [ ]
+      responses:
+        '200':
+          description: Antwort auf getAufgabeById
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/aufgabe.yml'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /frontend/aufgabe/tags:
     get:
       tags:

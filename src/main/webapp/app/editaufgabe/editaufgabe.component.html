@@ -33,6 +33,11 @@
     <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
         <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
         <label>AufgabenteilText: {{aufgabenteil.text}}</label>
-        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
+        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()"
+                              [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
+    </div>
+    <div class="col-12">
+        <button (click)="saveAufgabe()" class="btn btn-success">Speicher Aufgabe</button>
+        <button (click)="abbrechen()" class="btn btn-danger">Abbrechen</button>
     </div>
 </div>
