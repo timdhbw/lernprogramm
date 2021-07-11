@@ -4,7 +4,7 @@
     </div>
     <div *ngSwitchCase="true">
         <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp">
-            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()">{{aufgabenTyp}}</option>
+            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()" [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
         </select>
         <label for="textfeld">Text</label>
         <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>

@@ -57,4 +57,11 @@ export class EditaufgabeComponent implements OnInit {
       this.aufgabe.aufgabentagList?.splice(index, 1);
     }
   }
+
+  getNumberPlusOne(number: number | undefined): number {
+    if (number) {
+      return number + 1;
+    }
+    return 0;
+  }
 }

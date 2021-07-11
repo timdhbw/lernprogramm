@@ -19,10 +19,11 @@ export class AddAufgabenteilComponent implements OnInit {
 
   showNeuTeil: boolean;
 
-  newAufgabenteil: AufgabenteilUiDto | undefined;
+  newAufgabenteil: AufgabenteilUiDto;
 
   constructor(private enumUtil: EnumUtil) {
     this.showNeuTeil = false;
+    this.newAufgabenteil = {} as AufgabenteilUiDto;
   }
 
   ngOnInit(): void {
@@ -39,8 +40,27 @@ export class AddAufgabenteilComponent implements OnInit {
 
   saveNewAufgabenteil(): void {
     if (this.newAufgabenteil !== undefined) {
+      this.newAufgabenteil.laufenNr = this.laufendeNr;
       this.showNeuTeil = false;
       this.aufgabe?.aufgabenteilList?.push(this.newAufgabenteil);
+      this.aufgabe?.aufgabenteilList?.forEach(aufgabenteil => {
+        if (aufgabenteil.laufenNr && this.newAufgabenteil?.laufenNr && aufgabenteil.laufenNr >= this.newAufgabenteil?.laufenNr) {
+          aufgabenteil.laufenNr++;
+        }
+      });
+      this.orderAufgabenteile();
+      this.newAufgabenteil = {} as AufgabenteilUiDto;
+    }
+  }
+
+  private orderAufgabenteile(): void {
+    if (this.aufgabe?.aufgabenteilList) {
+      this.aufgabe.aufgabenteilList.sort((a,b) => {
+        if (a.laufenNr && b.laufenNr) {
+         return  a.laufenNr - b.laufenNr
+        }
+        return 0;
+      });
     }
   }
 }

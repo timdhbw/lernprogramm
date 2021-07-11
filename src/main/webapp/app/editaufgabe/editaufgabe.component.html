@@ -33,6 +33,6 @@
     <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
         <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
         <label>AufgabenteilText: {{aufgabenteil.text}}</label>
-        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="aufgabenteil.laufenNr + 1"></jhi-add-aufgabenteil>
+        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
     </div>
 </div>
