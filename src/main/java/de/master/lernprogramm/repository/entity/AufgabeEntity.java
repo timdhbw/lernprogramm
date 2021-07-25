@@ -1,15 +1,13 @@
 package de.master.lernprogramm.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.master.lernprogramm.domain.enumeration.KategorieEnum;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import de.master.lernprogramm.domain.enumeration.KategorieEnum;
 
 /**
  * A AufgabeEntity.
@@ -22,7 +20,7 @@ public class AufgabeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
