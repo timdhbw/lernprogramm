@@ -1,5 +1,9 @@
 type: object
 name: Aufgabentag
 properties:
+  aufgabentagId:
+    type: integer
   tag:
+    type: string
+  text:
     type: string

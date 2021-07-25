@@ -7,8 +7,8 @@ properties:
     type: string
   bewertung:
     type: integer
-  autor:
-    $ref: "profil.yml"
+  autorId:
+    type: integer
   kategorie:
      type: string
      enum:

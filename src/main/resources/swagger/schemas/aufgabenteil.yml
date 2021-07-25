@@ -1,6 +1,8 @@
 type: object
 name: Aufgabenteil
 properties:
+  aufgabenteilId:
+    type: integer
   laufenNr:
     type: integer
   aufgabenteiltyp:

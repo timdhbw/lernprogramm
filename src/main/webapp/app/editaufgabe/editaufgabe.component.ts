@@ -66,9 +66,8 @@ export class EditaufgabeComponent implements OnInit {
   }
 
   saveAufgabe(): void {
-    this.frontendService.saveAufgabe(this.aufgabe);
+    this.frontendService.saveAufgabe(this.aufgabe).toPromise().then(value => this.router.navigate(['profilseite']));
     alert("Aufgabe gespeichert!");
-    this.router.navigate(['profilseite']);
   }
 
   abbrechen(): void {

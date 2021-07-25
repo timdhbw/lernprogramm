@@ -8,6 +8,7 @@ import lombok.Data;
 @Builder
 public class Aufgabenteil {
 
+    private Integer aufgabenteilId;
     private Integer laufenNr;
     private AufgabenteiltypEnum aufgabenteiltyp;
     private String text;

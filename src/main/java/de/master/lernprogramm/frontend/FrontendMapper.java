@@ -26,4 +26,8 @@ public interface FrontendMapper {
 
     @Mapping(target = "thementypen", source = "bewerteterAufgabentagList")
     ProfilUiDto toUiDto(Profil profil);
+
+    Aufgabe toDomain(AufgabeUiDto aufgabeUiDto);
+
+
 }

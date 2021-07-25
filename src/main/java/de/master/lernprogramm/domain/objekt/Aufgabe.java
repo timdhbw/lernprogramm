@@ -11,7 +11,7 @@ public class Aufgabe {
     private Integer aufgabeId;
     private String aufgabentitel;
     private Integer bewertung;
-    private Profil autor;
+    private Integer autorId;
     private AufgabenkategorieEnum kategorie;
     private List<Aufgabentag> aufgabentagList;
     private List<Aufgabenteil> aufgabenteilList;

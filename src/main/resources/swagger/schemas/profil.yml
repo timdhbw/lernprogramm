@@ -2,7 +2,7 @@ type: object
 name: Profil
 properties:
   profilId:
-    type: string
+    type: integer
   vorname:
     type: string
   nachname:

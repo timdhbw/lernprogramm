@@ -69,6 +69,12 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
 
     @Override
     public ResponseEntity<AufgabeUiDto> saveAufgabe(AufgabeUiDto aufgabeUiDto) {
-        return ResponseEntity.ok(aufgabeUiDto);
+        Optional<User> optionalUser = userService.getUserWithAuthorities();
+        Integer autorId = null;
+        if (optionalUser.isPresent()) {
+            autorId = optionalUser.get().getId().intValue();
+        }
+        return ResponseEntity.ok(frontendMapper.toUiDto(aufgabeService
+            .saveAufgabe(frontendMapper.toDomain(aufgabeUiDto.autorId(autorId)))));
     }
 }

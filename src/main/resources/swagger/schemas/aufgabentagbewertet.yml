@@ -1,6 +1,8 @@
 type: object
 name: AufgabentagBewertet
 properties:
+  aufgabentagBewertetId:
+    type: integer
   aufgabentag:
     $ref: 'aufgabentag.yml'
   bewertung:

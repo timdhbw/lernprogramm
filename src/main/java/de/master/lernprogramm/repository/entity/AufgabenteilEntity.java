@@ -1,13 +1,11 @@
 package de.master.lernprogramm.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
-import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 
 /**
  * A AufgabenteilEntity.
@@ -36,6 +34,7 @@ public class AufgabenteilEntity implements Serializable {
     private String text;
 
     @ManyToOne
+    @JoinColumn(updatable = false)
     @JsonIgnoreProperties(value = "aufgabenteilEntities", allowSetters = true)
     private AufgabeEntity aufgabe;
 

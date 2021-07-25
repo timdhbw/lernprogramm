@@ -5,7 +5,7 @@ import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.objekt.Aufgabentag;
 import de.master.lernprogramm.domain.objekt.Aufgabenteil;
-import de.master.lernprogramm.domain.objekt.Profil;
+import de.master.lernprogramm.repository.AufgabeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class AufgabeServiceImpl implements AufgabeService {
+
+    private final AufgabeRepository aufgabeRepository;
+
+    public AufgabeServiceImpl(AufgabeRepository aufgabeRepository, ProfilService profilService) {
+        this.aufgabeRepository = aufgabeRepository;
+    }
+
     @Override
     public Aufgabe getAufgabeById(Integer aufgabeId) {
         log.info("AufgabeId: {}", aufgabeId);
@@ -28,6 +35,14 @@ public class AufgabeServiceImpl implements AufgabeService {
         return getAufgabe(aufgabeId);
     }
 
+    @Override
+    public Aufgabe saveAufgabe(Aufgabe aufgabe) {
+        log.info("AufgabeToSave: {}", aufgabe);
+        Aufgabe saved = aufgabeRepository.saveAufgabe(aufgabe);
+        log.info("Saved Aufgabe: {}", saved);
+        return saved;
+    }
+
     private Aufgabe createNewAufgabe() {
         return getAufgabe(1);
     }
@@ -35,7 +50,7 @@ public class AufgabeServiceImpl implements AufgabeService {
     private Aufgabe getAufgabe(Integer aufgabeId) {
         Aufgabe aufgabe = new Aufgabe();
         aufgabe.setAufgabeId(aufgabeId);
-        aufgabe.setAutor(new Profil());
+        aufgabe.setAutorId(1);
         aufgabe.setAufgabentitel("Aufgabe " + aufgabeId);
         aufgabe.setKategorie(AufgabenkategorieEnum.SOFTWAREENTWICKLUNG);
         aufgabe.setAufgabentagList(getAufgabentagList(aufgabeId));

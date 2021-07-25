@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class BewerteterAufgabentag {
 
+    private Integer aufgabentagBewertetId;
     private Integer bewertung;
     private Aufgabentag aufgabentag;
 }
