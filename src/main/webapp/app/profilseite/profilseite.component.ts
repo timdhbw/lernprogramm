@@ -12,9 +12,14 @@ export class ProfilseiteComponent implements OnInit {
 
   profil: ProfilUiDto;
 
+  newAufgabeId: string;
+
   constructor(private frontendService: FrontendService, private router:Router) {
     this.profil = {} as ProfilUiDto;
+    this.newAufgabeId = 'FEHLER';
     this.fillProfil();
+    this.frontendService.getRandomNextAufgabe().toPromise()
+      .then(randomId => this.newAufgabeId = randomId);
   }
 
   private fillProfil(): void {

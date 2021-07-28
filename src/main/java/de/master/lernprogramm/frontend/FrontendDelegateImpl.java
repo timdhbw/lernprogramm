@@ -68,6 +68,15 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     }
 
     @Override
+    public ResponseEntity<String> getRandomNextAufgabe() {
+        Optional<User> optionalUser = userService.getUserWithAuthorities();
+        if (!optionalUser.isPresent()) {
+            return null;
+        }
+        return ResponseEntity.ok(aufgabeService.getRandomNextAufgabeForUser(optionalUser.get()));
+    }
+
+    @Override
     public ResponseEntity<AufgabeUiDto> saveAufgabe(AufgabeUiDto aufgabeUiDto) {
         Optional<User> optionalUser = userService.getUserWithAuthorities();
         Integer autorId = null;

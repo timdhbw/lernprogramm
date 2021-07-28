@@ -8,6 +8,9 @@ import de.master.lernprogramm.repository.mapper.AufgabeEntityMapper;
 import de.master.lernprogramm.repository.mapper.ProfilEntityMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AufgabeRepositoryImpl implements AufgabeRepository{
 
@@ -39,6 +42,14 @@ public class AufgabeRepositoryImpl implements AufgabeRepository{
         aufgabeEntityToSave.setAutor(profilEntityMapper.toEntity(profil));
         aufgabeEntityToSave.getAufgabenteilEntities().forEach(this::saveAufgabenteile);
         return aufgabeEntityMapper.toDomain(aufgabeEntityRepository.save(aufgabeEntityToSave));
+    }
+
+    @Override
+    public List<Integer> getAllPossibleAufgabenIds() {
+        return aufgabeEntityRepository.getAllIds()
+            .stream()
+            .map(Long::intValue)
+            .collect(Collectors.toList());
     }
 
     private void saveAufgabenteile(AufgabenteilEntity aufgabenteilEntity) {

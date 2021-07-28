@@ -1,17 +1,22 @@
 package de.master.lernprogramm.domain.service;
 
+import de.master.lernprogramm.domain.User;
 import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.objekt.Aufgabentag;
 import de.master.lernprogramm.domain.objekt.Aufgabenteil;
+import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.repository.AufgabeRepository;
+import de.master.lernprogramm.util.Randomizer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -19,8 +24,11 @@ public class AufgabeServiceImpl implements AufgabeService {
 
     private final AufgabeRepository aufgabeRepository;
 
+    private final ProfilService profilService;
+
     public AufgabeServiceImpl(AufgabeRepository aufgabeRepository, ProfilService profilService) {
         this.aufgabeRepository = aufgabeRepository;
+        this.profilService = profilService;
     }
 
     @Override
@@ -41,6 +49,23 @@ public class AufgabeServiceImpl implements AufgabeService {
         Aufgabe saved = aufgabeRepository.saveAufgabe(aufgabe);
         log.info("Saved Aufgabe: {}", saved);
         return saved;
+    }
+
+    @Override
+    public String getRandomNextAufgabeForUser(User user) {
+        final List<Integer> possibleIds = aufgabeRepository.getAllPossibleAufgabenIds();
+        getAbgeschlosseneAufgabenIdsVonUser(user).forEach(possibleIds::remove);
+        return Randomizer.getRandomItemOfList(possibleIds).toString();
+    }
+
+    private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {
+        Profil profil = profilService.getProfilById(user.getId().toString());
+        if (profil.getAufgabeList() == null) {
+          return new ArrayList<>();
+        }
+        return profil.getAufgabeList().stream()
+            .map(Aufgabe::getAufgabeId)
+            .collect(Collectors.toList());
     }
 
     private Aufgabe createNewAufgabe() {
@@ -83,8 +108,10 @@ public class AufgabeServiceImpl implements AufgabeService {
     private List<Aufgabenteil> getAufgabenteilList(Integer aufgabeId) {
         switch (aufgabeId) {
             case 1:
-                return Arrays.asList(Aufgabenteil.builder().laufenNr(1).aufgabenteiltyp(AufgabenteiltypEnum.TEXT)
-                    .text("Aufgabe über Angular und HTML").build());
+                return Collections.singletonList(Aufgabenteil.builder()
+                    .laufenNr(1).aufgabenteiltyp(AufgabenteiltypEnum.TEXT)
+                    .text("Aufgabe über Angular und HTML")
+                    .build());
             case 2:
                 return Arrays.asList(Aufgabenteil.builder().laufenNr(1)
                         .aufgabenteiltyp(AufgabenteiltypEnum.TEXT).text("Aufgabe über Vue...").build(),

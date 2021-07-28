@@ -26,4 +26,7 @@ public interface AufgabeEntityRepository extends JpaRepository<AufgabeEntity, Lo
 
     @Query("select aufgabeEntity from AufgabeEntity aufgabeEntity left join fetch aufgabeEntity.aufgabentags where aufgabeEntity.id =:id")
     Optional<AufgabeEntity> findOneWithEagerRelationships(@Param("id") Long id);
+
+    @Query("select aufgabeEntity.id from AufgabeEntity aufgabeEntity")
+    List<Long> getAllIds();
 }
