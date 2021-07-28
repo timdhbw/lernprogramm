@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FrontendService} from "target/api/frontend.service";
 import {AufgabeUiDto} from "target/model/aufgabe";
 import {AufgabenteilUiDto} from "target/model/aufgabenteil";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'jhi-aufgabenseite',
@@ -14,8 +15,14 @@ export class AufgabenseiteComponent implements OnInit {
 
   aufgabe: AufgabeUiDto | undefined;
 
-  constructor(private frontendService: FrontendService) {
+  queryParams: string | undefined;
+
+  constructor(private frontendService: FrontendService, private route: ActivatedRoute) {
     this.aufgabeId = 1;
+  }
+
+  ngOnInit(): void {
+    this.queryParams = this.route.snapshot.queryParams.aufgabeId + ' # ' + JSON.stringify(this.route);
   }
 
   getAufgabe(): void {
@@ -37,9 +44,6 @@ export class AufgabenseiteComponent implements OnInit {
 
   getAufgabeTagList(): string | undefined {
     return this.aufgabe?.aufgabentagList?.map(tag => tag.tag).join(", ");
-  }
-
-  ngOnInit(): void {
   }
 
 }

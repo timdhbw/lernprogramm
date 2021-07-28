@@ -2,6 +2,7 @@
     <div *ngSwitchCase="true">
         <p>aufgabenseite works!</p>
         <input type="number" [(ngModel)]="aufgabeId">
+        <p>QueryParams: {{queryParams}}</p>
         <button class="btn btn-success" (click)="getAufgabe()">Hole Aufgabe</button>
     </div>
     <div *ngSwitchCase="false">

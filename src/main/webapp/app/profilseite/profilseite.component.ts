@@ -31,7 +31,7 @@ export class ProfilseiteComponent implements OnInit {
   }
 
   navigateToAufgabe(): void {
-    this.router.navigate(["aufgabenseite"]);
+    this.router.navigate(["aufgabenseite"], { queryParams: { aufgabeId: this.newAufgabeId } });
   }
   ngOnInit(): void {
   }
