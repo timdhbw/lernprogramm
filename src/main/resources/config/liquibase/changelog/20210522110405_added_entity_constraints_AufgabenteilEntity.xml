@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AufgabenteilEntity.
+    -->
+    <changeSet id="20210522110405-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="aufgabe_id"
+                                 baseTableName="aufgabenteil_entity"
+                                 constraintName="fk_aufgabenteil_entity_aufgabe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="aufgabe_entity"/>
+
+    </changeSet>
+</databaseChangeLog>

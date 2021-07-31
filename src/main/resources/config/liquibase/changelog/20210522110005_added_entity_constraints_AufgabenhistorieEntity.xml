@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AufgabenhistorieEntity.
+    -->
+    <changeSet id="20210522110005-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="profil_id"
+                                 baseTableName="aufgabenhistorie_entity"
+                                 constraintName="fk_aufgabenhistorie_entity_profil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profil_entity"/>
+
+        <addForeignKeyConstraint baseColumnNames="aufgabe_id"
+                                 baseTableName="aufgabenhistorie_entity"
+                                 constraintName="fk_aufgabenhistorie_entity_aufgabe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="aufgabe_entity"/>
+
+    </changeSet>
+</databaseChangeLog>

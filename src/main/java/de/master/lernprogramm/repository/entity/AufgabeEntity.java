@@ -35,7 +35,7 @@ public class AufgabeEntity implements Serializable {
     @Column(name = "kategorie", nullable = false)
     private KategorieEnum kategorie;
 
-    @OneToMany(mappedBy = "aufgabe")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe", cascade = CascadeType.ALL)
     private Set<AufgabenteilEntity> aufgabenteilEntities = new HashSet<>();
 
     @OneToMany(mappedBy = "aufgabe")

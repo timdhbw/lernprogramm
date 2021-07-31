@@ -37,10 +37,11 @@ public class AufgabeServiceImpl implements AufgabeService {
         if (aufgabeId == null) {
             return createNewAufgabe();
         }
-        if (aufgabeId < 1 || aufgabeId > 5) {
-            return null;
-        }
-        return getAufgabe(aufgabeId);
+        return aufgabeRepository.getAufgabeById(aufgabeId);
+//        if (aufgabeId < 1 || aufgabeId > 5) {
+//            return null;
+//        }
+//        return getAufgabe(aufgabeId);
     }
 
     @Override

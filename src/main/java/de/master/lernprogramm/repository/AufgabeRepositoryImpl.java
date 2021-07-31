@@ -6,12 +6,14 @@ import de.master.lernprogramm.repository.entity.AufgabeEntity;
 import de.master.lernprogramm.repository.entity.AufgabenteilEntity;
 import de.master.lernprogramm.repository.mapper.AufgabeEntityMapper;
 import de.master.lernprogramm.repository.mapper.ProfilEntityMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class AufgabeRepositoryImpl implements AufgabeRepository{
 
     private final AufgabeEntityRepository aufgabeEntityRepository;
@@ -50,6 +52,16 @@ public class AufgabeRepositoryImpl implements AufgabeRepository{
             .stream()
             .map(Long::intValue)
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public Aufgabe getAufgabeById(Integer aufgabeId) {
+        if (aufgabeId == null) {
+            log.error("AufgabeId ist null");
+            return null;
+        }
+        return aufgabeEntityMapper.toDomain(aufgabeEntityRepository
+            .findById(aufgabeId.longValue()).orElse(null));
     }
 
     private void saveAufgabenteile(AufgabenteilEntity aufgabenteilEntity) {

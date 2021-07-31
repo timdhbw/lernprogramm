@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity BewerteterAufgabentagEntity.
+    -->
+    <changeSet id="20210522110105-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="aufgabentag_id"
+                                 baseTableName="bewerteter_aufgabentag_entity"
+                                 constraintName="fk_bewerteter_aufgabentag_entity_aufgabentag_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="aufgabentag_entity"/>
+
+        <addForeignKeyConstraint baseColumnNames="profil_id"
+                                 baseTableName="bewerteter_aufgabentag_entity"
+                                 constraintName="fk_bewerteter_aufgabentag_entity_profil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profil_entity"/>
+
+    </changeSet>
+</databaseChangeLog>

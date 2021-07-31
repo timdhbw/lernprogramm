@@ -51,6 +51,7 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     @Override
     public ResponseEntity<AufgabeUiDto> getAufgabeById(Integer aufgabeId) {
         Aufgabe aufgabe = aufgabeService.getAufgabeById(aufgabeId);
+        log.info("Aufgabe für Aufgabe id '{}': {}", aufgabeId, aufgabe);
         if (aufgabe == null) {
             return ResponseEntity.status(204).build();
         }
