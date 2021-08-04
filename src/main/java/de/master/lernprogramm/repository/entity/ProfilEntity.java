@@ -33,13 +33,13 @@ public class ProfilEntity implements Serializable {
     @Column(name = "nachname")
     private String nachname;
 
-    @OneToMany(mappedBy = "profil")
+    @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL, mappedBy = "profil")
     private Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities = new HashSet<>();
 
-    @OneToMany(mappedBy = "profil")
+    @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL, mappedBy = "profil")
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
-    @OneToMany(mappedBy = "autor")
+    @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL, mappedBy = "autor")
     private Set<AufgabeEntity> aufgabeEntities = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
