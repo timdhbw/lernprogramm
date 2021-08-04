@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
     <!--
         Added the entity AufgabeEntity.
     -->
@@ -43,7 +43,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="aufgabe_entity_id, aufgabentag_id" tableName="aufgabe_entity_aufgabentag"/>
-        
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
@@ -64,6 +64,15 @@
             <column name="aufgabentitel" type="string"/>
             <column name="bewertung" type="numeric"/>
             <column name="kategorie" type="string"/>
+            <column name="autor_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+        <loadData
+                  file="config/liquibase/fake-data/aufgabe_entity_aufgabentag.csv"
+                  separator=";"
+                  tableName="aufgabe_entity_aufgabentag">
+            <column name="aufgabentag_id" type="numeric"/>
+            <column name="aufgabe_entity_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

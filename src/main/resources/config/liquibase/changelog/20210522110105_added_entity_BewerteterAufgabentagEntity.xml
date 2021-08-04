@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
     <!--
         Added the entity BewerteterAufgabentagEntity.
     -->
@@ -48,6 +48,8 @@
                   tableName="bewerteter_aufgabentag_entity">
             <column name="id" type="numeric"/>
             <column name="bewertung" type="numeric"/>
+            <column name="profil_id" type="numeric"/>
+            <column name="aufgabentag_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
