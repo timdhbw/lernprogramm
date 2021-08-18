@@ -34,7 +34,7 @@ public class AufgabentagEntity implements Serializable {
     @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL, mappedBy = "aufgabentag")
     private Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities = new HashSet<>();
 
-    @ManyToMany(mappedBy = "aufgabentags")
+    @ManyToMany(mappedBy = "aufgabentags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<AufgabeEntity> aufgabes = new HashSet<>();
 

@@ -41,7 +41,7 @@ public class AufgabeEntity implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe", cascade = CascadeType.ALL)
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "aufgabe_entity_aufgabentag",
                joinColumns = @JoinColumn(name = "aufgabe_entity_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "aufgabentag_id", referencedColumnName = "id"))

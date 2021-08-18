@@ -24,8 +24,8 @@ export class AufgabenseiteComponent implements OnInit {
   ngOnInit(): void {
     this.queryParams = this.route.snapshot.queryParams.aufgabeId;
     this.aufgabeId = this.route.snapshot.queryParams.aufgabeId;
-    // this.frontendService.getAufgabeById(this.route.snapshot.queryParams.aufgabeId).toPromise()
-    //   .then(aufgb => this.aufgabe = aufgb);
+    this.frontendService.getAufgabeById(this.aufgabeId).toPromise()
+      .then(aufgb => this.aufgabe = aufgb);
   }
 
   getAufgabe(): void {
