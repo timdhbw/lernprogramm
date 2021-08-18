@@ -14,7 +14,6 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210227121251_added_entity_ProduktEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522105905_added_entity_ProfilEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110005_added_entity_AufgabenhistorieEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110105_added_entity_BewerteterAufgabentagEntity.xml" relativeToChangelogFile="false"/>
