@@ -6,6 +6,8 @@ import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A AufgabenteilEntity.
@@ -18,8 +20,7 @@ public class AufgabenteilEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
@@ -34,8 +35,10 @@ public class AufgabenteilEntity implements Serializable {
     @Column(name = "text")
     private String text;
 
+    @OneToMany(mappedBy = "aufgabenteil", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<MultipleChoiceAntwortEntity> multipleChoiceAntwortEntities = new HashSet<>();
+
     @ManyToOne
-    @JoinColumn(updatable = false)
     @JsonIgnoreProperties(value = "aufgabenteilEntities", allowSetters = true)
     private AufgabeEntity aufgabe;
 
@@ -85,6 +88,31 @@ public class AufgabenteilEntity implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Set<MultipleChoiceAntwortEntity> getMultipleChoiceAntwortEntities() {
+        return multipleChoiceAntwortEntities;
+    }
+
+    public AufgabenteilEntity multipleChoiceAntwortEntities(Set<MultipleChoiceAntwortEntity> multipleChoiceAntwortEntities) {
+        this.multipleChoiceAntwortEntities = multipleChoiceAntwortEntities;
+        return this;
+    }
+
+    public AufgabenteilEntity addMultipleChoiceAntwortEntity(MultipleChoiceAntwortEntity multipleChoiceAntwortEntity) {
+        this.multipleChoiceAntwortEntities.add(multipleChoiceAntwortEntity);
+        multipleChoiceAntwortEntity.setAufgabenteil(this);
+        return this;
+    }
+
+    public AufgabenteilEntity removeMultipleChoiceAntwortEntity(MultipleChoiceAntwortEntity multipleChoiceAntwortEntity) {
+        this.multipleChoiceAntwortEntities.remove(multipleChoiceAntwortEntity);
+        multipleChoiceAntwortEntity.setAufgabenteil(null);
+        return this;
+    }
+
+    public void setMultipleChoiceAntwortEntities(Set<MultipleChoiceAntwortEntity> multipleChoiceAntwortEntities) {
+        this.multipleChoiceAntwortEntities = multipleChoiceAntwortEntities;
     }
 
     public AufgabeEntity getAufgabe() {

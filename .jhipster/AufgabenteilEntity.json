@@ -8,7 +8,7 @@
     {
       "fieldName": "aufgabenteiltyp",
       "fieldType": "AufgabenteiltypEnum",
-      "fieldValues": "TEXT",
+      "fieldValues": ["TEXT", "MULTIPLECHOICE"],
       "fieldValidateRules": [
         "required"
       ]
@@ -19,6 +19,12 @@
     }
   ],
   "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "multipleChoiceAntwortEntity",
+      "otherEntityRelationshipName": "aufgabenteil",
+      "relationshipName": "multipleChoiceAntwortEntity"
+    },
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "aufgabeEntity",

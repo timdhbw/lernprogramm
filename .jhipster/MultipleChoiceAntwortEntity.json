@@ -1,0 +1,37 @@
+{
+  "name": "MultipleChoiceAntwortEntity",
+  "fields": [
+    {
+      "fieldName": "checked",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "checkedRichtig",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aufgabenteilEntity",
+      "otherEntityRelationshipName": "multipleChoiceAntwortEntity",
+      "relationshipName": "aufgabenteil",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210822094152",
+  "entityTableName": "multiple_choice_antwort_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,26 @@
+{
+  "lernprogrammApp": {
+    "multipleChoiceAntwortEntity": {
+      "home": {
+        "title": "Multiple Choice Antwort Entities",
+        "createLabel": "Create a new Multiple Choice Antwort Entity",
+        "createOrEditLabel": "Create or edit a Multiple Choice Antwort Entity",
+        "search": "Search for Multiple Choice Antwort Entity",
+        "notFound": "No Multiple Choice Antwort Entities found"
+      },
+      "created": "A new Multiple Choice Antwort Entity is created with identifier {{ param }}",
+      "updated": "A Multiple Choice Antwort Entity is updated with identifier {{ param }}",
+      "deleted": "A Multiple Choice Antwort Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Multiple Choice Antwort Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "Multiple Choice Antwort Entity"
+      },
+      "checked": "Checked",
+      "checkedRichtig": "Checked Richtig",
+      "label": "Label",
+      "aufgabenteil": "Aufgabenteil"
+    }
+  }
+}

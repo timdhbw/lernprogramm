@@ -3,9 +3,11 @@ package de.master.lernprogramm.repository.mapper;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.objekt.Aufgabentag;
 import de.master.lernprogramm.domain.objekt.Aufgabenteil;
+import de.master.lernprogramm.domain.objekt.MultipleChoiceAntwort;
 import de.master.lernprogramm.repository.entity.AufgabeEntity;
 import de.master.lernprogramm.repository.entity.AufgabentagEntity;
 import de.master.lernprogramm.repository.entity.AufgabenteilEntity;
+import de.master.lernprogramm.repository.entity.MultipleChoiceAntwortEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -24,7 +26,13 @@ public interface AufgabeEntityMapper {
 
     @Mapping(target = "id", source = "aufgabenteilId")
     @Mapping(target = "aufgabe", ignore = true)
+    @Mapping(target = "removeMultipleChoiceAntwortEntity", ignore = true)
+    @Mapping(target = "multipleChoiceAntwortEntities", source = "multiplechoiceAntwortenList")
     AufgabenteilEntity toEntity(Aufgabenteil aufgabenteil);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "aufgabenteil", ignore = true)
+    MultipleChoiceAntwortEntity toEntiyt(MultipleChoiceAntwort multipleChoiceAntwort);
 
     @Mapping(target = "autorId", source = "autor.id")
     @Mapping(target = "aufgabeId", source = "id")
@@ -36,5 +44,6 @@ public interface AufgabeEntityMapper {
     Aufgabentag toDomain(AufgabentagEntity aufgabentagEntity);
 
     @Mapping(target = "aufgabenteilId", source = "id")
+    @Mapping(target = "multiplechoiceAntwortenList", source = "multipleChoiceAntwortEntities")
     Aufgabenteil toDomain(AufgabenteilEntity aufgabenteilEntity);
 }

@@ -1,3 +1,4 @@
+import { IMultipleChoiceAntwortEntity } from 'app/shared/model/multiple-choice-antwort-entity.model';
 import { IAufgabeEntity } from 'app/shared/model/aufgabe-entity.model';
 import { AufgabenteiltypEnum } from 'app/shared/model/enumerations/aufgabenteiltyp-enum.model';
 
@@ -6,6 +7,7 @@ export interface IAufgabenteilEntity {
   laufenNr?: number;
   aufgabenteiltyp?: AufgabenteiltypEnum;
   text?: string;
+  multipleChoiceAntwortEntities?: IMultipleChoiceAntwortEntity[];
   aufgabe?: IAufgabeEntity;
 }
 
@@ -15,6 +17,7 @@ export class AufgabenteilEntity implements IAufgabenteilEntity {
     public laufenNr?: number,
     public aufgabenteiltyp?: AufgabenteiltypEnum,
     public text?: string,
+    public multipleChoiceAntwortEntities?: IMultipleChoiceAntwortEntity[],
     public aufgabe?: IAufgabeEntity
   ) {}
 }

@@ -36,6 +36,13 @@ import { RouterModule } from '@angular/router';
         path: 'aufgabenteil-entity',
         loadChildren: () => import('./aufgabenteil-entity/aufgabenteil-entity.module').then(m => m.LernprogrammAufgabenteilEntityModule),
       },
+      {
+        path: 'multiple-choice-antwort-entity',
+        loadChildren: () =>
+          import('./multiple-choice-antwort-entity/multiple-choice-antwort-entity.module').then(
+            m => m.LernprogrammMultipleChoiceAntwortEntityModule
+          ),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
