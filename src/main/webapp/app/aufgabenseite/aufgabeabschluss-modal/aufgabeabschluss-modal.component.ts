@@ -8,7 +8,11 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class AufgabeabschlussModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  bewertung: number;
+
+  constructor(public activeModal: NgbActiveModal) {
+    this.bewertung = 0;
+  }
 
   ngOnInit(): void {
   }

@@ -1,3 +1,8 @@
 <h3>OK Nice, du hast du Aufgabe Abgeschlossen!</h3>
 <p>Wenn du willst, kannst du die Aufgabe noch bewerten:</p>
+<ng-rating-bar
+    [(value)]="bewertung"
+    [ratingCount]="5"
+></ng-rating-bar>
+<p>Aktuelle Bewertung: {{bewertung}}</p>
 <button class="btn btn-success" (click)="close()">Mach nen Closer</button>

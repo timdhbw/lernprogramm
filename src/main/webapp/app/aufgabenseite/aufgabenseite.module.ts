@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 import {AUFGABENSEITE_ROUTE} from "app/aufgabenseite/aufgabenseite.route";
 import {LernprogrammSharedModule} from "app/shared/shared.module";
 import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabeabschluss-modal.component';
+import {NgRatingBarModule} from "ng-rating-bar";
 
 
 
@@ -11,7 +12,8 @@ import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabe
   declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent],
   imports: [
     RouterModule.forChild([AUFGABENSEITE_ROUTE]),
-    LernprogrammSharedModule
+    LernprogrammSharedModule,
+    NgRatingBarModule
   ]
 })
 export class LernprogrammAufgabenseiteModule { }
