@@ -11,5 +11,6 @@
         <p>Kategorie: {{aufgabe?.kategorie}}, Bewertung {{aufgabe?.bewertung}}</p>
         <p>Tags: {{getAufgabeTagList()}}</p>
         <p *ngFor="let aufgabenteil of getAufgabeteilListSorted()">{{aufgabenteil.text}}</p>
+        <button class="btn btn-success" (click)="schliesseAufgabe()">Schließe Aufgabe ab</button>
     </div>
 </div>

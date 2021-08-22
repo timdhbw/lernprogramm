@@ -3,11 +3,12 @@ import { AufgabenseiteComponent } from './aufgabenseite.component';
 import {RouterModule} from "@angular/router";
 import {AUFGABENSEITE_ROUTE} from "app/aufgabenseite/aufgabenseite.route";
 import {LernprogrammSharedModule} from "app/shared/shared.module";
+import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabeabschluss-modal.component';
 
 
 
 @NgModule({
-  declarations: [AufgabenseiteComponent],
+  declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent],
   imports: [
     RouterModule.forChild([AUFGABENSEITE_ROUTE]),
     LernprogrammSharedModule
