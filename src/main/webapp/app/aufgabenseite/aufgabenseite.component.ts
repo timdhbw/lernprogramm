@@ -35,7 +35,9 @@ export class AufgabenseiteComponent implements OnInit {
   }
 
   schliesseAufgabe(): void {
-    this.aufgabenabschlussModalService.open();
+    if (this.aufgabe) {
+      this.aufgabenabschlussModalService.open(this.aufgabe);
+    }
   }
 
   getAufgabeteilListSorted(): Array<AufgabenteilUiDto> | undefined {

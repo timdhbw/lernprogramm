@@ -158,6 +158,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /frontend/aufgabe/abschluss:
+    get:
+      tags:
+        - frontend
+      description: Aufruf, nachdem der User eine Aufgabe abgeschlossen hat
+      operationId: getAufgabeIstAbgeschlossen
+      parameters:
+        - in: query
+          name: aufgabeId
+          required: true
+          description: AufgabenId von der Aufgabe, die Abgeschlossen wurde
+          schema:
+            type: integer
+        - in: query
+          name: ergebnisUser
+          required: true
+          description: Ergebnis des User bei der Aufgabe
+          schema:
+            type: integer
+        - in: query
+          name: bewertungAufgabe
+          description: Bewertung der Aufgabe durch den User
+          schema:
+            type: integer
+      security:
+        - jwt: [ ]
+      responses:
+        '200':
+          description: Antwort auf getAufgabeIstAbgeschlossen
+          content:
+            application/json:
+              schema:
+                type: boolean
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   responses:

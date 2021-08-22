@@ -1,0 +1,10 @@
+type: object
+name: MultipleChoiceAntwort
+properties:
+  checked:
+    type: boolean
+  checkedRichtig:
+    type: boolean
+  label:
+    type: string
+

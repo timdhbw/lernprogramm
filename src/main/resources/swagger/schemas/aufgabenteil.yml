@@ -9,5 +9,10 @@ properties:
     type: string
     enum:
       - TEXT
+      - MULTIPLECHOICE
   text:
    type: string
+  multiplechoiceAntwortenList:
+    type: array
+    items:
+      $ref: "multipleChoiceAntwort.yml"

@@ -24,6 +24,12 @@ entity AufgabentagEntity {
     text String
 }
 
+entity MultipleChoiceAntwortEntity {
+    checked boolean,
+    checkedRichtig boolean,
+    label String
+}
+
 entity AufgabenteilEntity {
 	laufenNr Integer,
   	aufgabenteiltyp AufgabenteiltypEnum required,
@@ -36,6 +42,7 @@ relationship ManyToMany {
 
 relationship OneToMany {
 	AufgabeEntity to AufgabenteilEntity{aufgabe},
+	AufgabenteilEntity to MultipleChoiceAntwortEntity{aufgabenteil}
     AufgabentagEntity to BewerteterAufgabentagEntity{aufgabentag}
     ProfilEntity to BewerteterAufgabentagEntity{profil}
     ProfilEntity to AufgabenhistorieEntity{profil}
