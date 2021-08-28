@@ -1,0 +1,12 @@
+<div [ngSwitch]="showNeuMultiple">
+    <div *ngFor="let multipleChoice of aufgabenteil?.multiplechoiceAntwortenList">
+        <label>{{multipleChoice.label}}</label><label> isCheckedRichtig: {{multipleChoice.checkedRichtig}}</label>
+    </div>
+    <button *ngSwitchCase="false">Add new MultipleChoice</button>
+    <div *ngSwitchCase="true">
+        <label for="newMulti">ChoiceText</label>
+        <input type="text" id="newMulti"/>
+        <label for="isCorrect">isCorrect</label>
+        <input type="checkbox" id="isCorrect">
+    </div>
+</div>

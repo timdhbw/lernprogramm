@@ -8,6 +8,7 @@
         </select>
         <label for="textfeld">Text</label>
         <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>
+        <jhi-edit-multiple-choice *ngIf="newAufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'"></jhi-edit-multiple-choice>
         <button class="btn btn-success" (click)="saveNewAufgabenteil()">Füge Aufgabenteil hinzu</button>
     </div>
 </div>
