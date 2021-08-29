@@ -5,11 +5,12 @@ import {AUFGABENSEITE_ROUTE} from "app/aufgabenseite/aufgabenseite.route";
 import {LernprogrammSharedModule} from "app/shared/shared.module";
 import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabeabschluss-modal.component';
 import {NgRatingBarModule} from "ng-rating-bar";
+import { AufgabenteilAnzeigeComponent } from './aufgabenteil-anzeige/aufgabenteil-anzeige.component';
 
 
 
 @NgModule({
-  declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent],
+  declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent, AufgabenteilAnzeigeComponent],
   imports: [
     RouterModule.forChild([AUFGABENSEITE_ROUTE]),
     LernprogrammSharedModule,

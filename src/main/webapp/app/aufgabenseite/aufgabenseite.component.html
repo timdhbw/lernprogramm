@@ -10,7 +10,7 @@
         <p>AufgabeId: {{aufgabe?.aufgabeId}}</p>
         <p>Kategorie: {{aufgabe?.kategorie}}, Bewertung {{aufgabe?.bewertung}}</p>
         <p>Tags: {{getAufgabeTagList()}}</p>
-        <p *ngFor="let aufgabenteil of getAufgabeteilListSorted()">{{aufgabenteil.text}}</p>
+        <jhi-aufgabenteil-anzeige *ngFor="let aufgabenteil of getAufgabeteilListSorted()" [aufgabenteil]="aufgabenteil"></jhi-aufgabenteil-anzeige>
         <button class="btn btn-success" (click)="schliesseAufgabe()">Schließe Aufgabe ab</button>
     </div>
 </div>
