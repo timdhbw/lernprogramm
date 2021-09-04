@@ -3,15 +3,13 @@ package de.master.lernprogramm.domain.service;
 import de.master.lernprogramm.domain.User;
 import de.master.lernprogramm.domain.enumeration.AufgabenteiltypEnum;
 import de.master.lernprogramm.domain.enums.AufgabenkategorieEnum;
-import de.master.lernprogramm.domain.objekt.Aufgabe;
-import de.master.lernprogramm.domain.objekt.Aufgabentag;
-import de.master.lernprogramm.domain.objekt.Aufgabenteil;
-import de.master.lernprogramm.domain.objekt.Profil;
+import de.master.lernprogramm.domain.objekt.*;
 import de.master.lernprogramm.repository.AufgabeRepository;
 import de.master.lernprogramm.util.Randomizer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,7 +60,10 @@ public class AufgabeServiceImpl implements AufgabeService {
     @Override
     public void bewerteAufgabe(Integer aufgabeId, Integer aufgabeBewertung) {
         Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
-        aufgabe.setBewertung(aufgabeBewertung);
+        AufgabenbewertungHistorie aufgabenbewertungHistorie = new AufgabenbewertungHistorie();
+        aufgabenbewertungHistorie.setDatum(LocalDate.now());
+        aufgabenbewertungHistorie.setBewertungsveraenderung(aufgabeBewertung);
+        aufgabe.addAufgabenbewertungHistorie(aufgabenbewertungHistorie);
     }
 
     private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {

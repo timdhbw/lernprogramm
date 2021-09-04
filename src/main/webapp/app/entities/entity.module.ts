@@ -43,6 +43,11 @@ import { RouterModule } from '@angular/router';
             m => m.LernprogrammMultipleChoiceAntwortEntityModule
           ),
       },
+      {
+        path: 'aufgabenbwtunghist-entity',
+        loadChildren: () =>
+          import('./aufgabenbwtunghist-entity/aufgabenbwtunghist-entity.module').then(m => m.LernprogrammAufgabenbwtunghistEntityModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

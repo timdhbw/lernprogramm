@@ -21,12 +21,14 @@
     <include file="config/liquibase/changelog/20210522110305_added_entity_AufgabentagEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110405_added_entity_AufgabenteilEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210822094152_added_entity_MultipleChoiceAntwortEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210904120211_added_entity_AufgabenbwtunghistEntity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20210522110005_added_entity_constraints_AufgabenhistorieEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110105_added_entity_constraints_BewerteterAufgabentagEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110205_added_entity_constraints_AufgabeEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210522110405_added_entity_constraints_AufgabenteilEntity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210822094152_added_entity_constraints_MultipleChoiceAntwortEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210904120211_added_entity_constraints_AufgabenbwtunghistEntity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

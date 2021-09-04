@@ -18,9 +18,9 @@
         "title": "Aufgabe Entity"
       },
       "aufgabentitel": "Aufgabentitel",
-      "bewertung": "Bewertung",
       "kategorie": "Kategorie",
       "aufgabenteilEntity": "Aufgabenteil Entity",
+      "aufgabenbwtunghistEntity": "Aufgabenbwtunghist Entity",
       "aufgabenhistorieEntity": "Aufgabenhistorie Entity",
       "aufgabentag": "Aufgabentag",
       "autor": "Autor"

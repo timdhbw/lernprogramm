@@ -42,7 +42,6 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentitel">Aufgabentitel</span></th>
-                    <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.bewertung">Bewertung</span></th>
                     <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.kategorie">Kategorie</span></th>
                     <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.aufgabentag">Aufgabentag</span></th>
                     <th scope="col" ><span jhiTranslate="lernprogrammApp.aufgabeEntity.autor">Autor</span></th>
@@ -53,7 +52,6 @@
                 <tr *ngFor="let aufgabeEntity of aufgabeEntities ;trackBy: trackId">
                     <td><a [routerLink]="['/aufgabe-entity', aufgabeEntity.id, 'view']">{{ aufgabeEntity.id }}</a></td>
                     <td>{{ aufgabeEntity.aufgabentitel }}</td>
-                    <td>{{ aufgabeEntity.bewertung }}</td>
                     <td jhiTranslate="{{ 'lernprogrammApp.KategorieEnum.' + aufgabeEntity.kategorie }}">{{ aufgabeEntity.kategorie }}</td>
                     <td>
                         <span *ngFor="let aufgabentag of aufgabeEntity.aufgabentags; let last = last">

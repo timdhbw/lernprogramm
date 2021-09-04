@@ -21,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(AufgabeEntityService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new AufgabeEntity(0, 'AAAAAAA', 0, KategorieEnum.SOFTWAREENTWICKLUNG);
+      elemDefault = new AufgabeEntity(0, 'AAAAAAA', KategorieEnum.SOFTWAREENTWICKLUNG);
     });
 
     describe('Service methods', () => {
@@ -56,7 +56,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             aufgabentitel: 'BBBBBB',
-            bewertung: 1,
             kategorie: 'BBBBBB',
           },
           elemDefault
@@ -75,7 +74,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             aufgabentitel: 'BBBBBB',
-            bewertung: 1,
             kategorie: 'BBBBBB',
           },
           elemDefault

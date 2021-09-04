@@ -27,6 +27,7 @@ public interface FrontendMapper {
     @Mapping(target = "thementypen", source = "bewerteterAufgabentagList")
     ProfilUiDto toUiDto(Profil profil);
 
+    @Mapping(target = "aufgabenberwtungHistList", ignore = true)
     Aufgabe toDomain(AufgabeUiDto aufgabeUiDto);
 
 

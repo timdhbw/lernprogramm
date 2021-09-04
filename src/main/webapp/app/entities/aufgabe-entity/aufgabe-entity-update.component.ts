@@ -26,7 +26,6 @@ export class AufgabeEntityUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     aufgabentitel: [],
-    bewertung: [],
     kategorie: [null, [Validators.required]],
     aufgabentags: [],
     autor: [],
@@ -56,7 +55,6 @@ export class AufgabeEntityUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: aufgabeEntity.id,
       aufgabentitel: aufgabeEntity.aufgabentitel,
-      bewertung: aufgabeEntity.bewertung,
       kategorie: aufgabeEntity.kategorie,
       aufgabentags: aufgabeEntity.aufgabentags,
       autor: aufgabeEntity.autor,
@@ -82,7 +80,6 @@ export class AufgabeEntityUpdateComponent implements OnInit {
       ...new AufgabeEntity(),
       id: this.editForm.get(['id'])!.value,
       aufgabentitel: this.editForm.get(['aufgabentitel'])!.value,
-      bewertung: this.editForm.get(['bewertung'])!.value,
       kategorie: this.editForm.get(['kategorie'])!.value,
       aufgabentags: this.editForm.get(['aufgabentags'])!.value,
       autor: this.editForm.get(['autor'])!.value,

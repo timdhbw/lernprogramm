@@ -6,10 +6,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "bewertung",
-      "fieldType": "Integer"
-    },
-    {
       "fieldName": "kategorie",
       "fieldType": "KategorieEnum",
       "fieldValues": "SOFTWAREENTWICKLUNG",
@@ -24,6 +20,12 @@
       "otherEntityName": "aufgabenteilEntity",
       "otherEntityRelationshipName": "aufgabe",
       "relationshipName": "aufgabenteilEntity"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "aufgabenbwtunghistEntity",
+      "otherEntityRelationshipName": "aufgabe",
+      "relationshipName": "aufgabenbwtunghistEntity"
     },
     {
       "relationshipType": "one-to-many",

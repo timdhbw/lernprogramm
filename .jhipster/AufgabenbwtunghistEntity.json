@@ -1,0 +1,33 @@
+{
+  "name": "AufgabenbwtunghistEntity",
+  "fields": [
+    {
+      "fieldName": "datum",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "bewertungsveraenderung",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aufgabeEntity",
+      "otherEntityRelationshipName": "aufgabenbwtunghistEntity",
+      "relationshipName": "aufgabe",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210904120211",
+  "entityTableName": "aufgabenbwtunghist_entity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

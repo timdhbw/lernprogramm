@@ -20,15 +20,12 @@ public class AufgabeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
     @Column(name = "aufgabentitel")
     private String aufgabentitel;
-
-    @Column(name = "bewertung")
-    private Integer bewertung;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -38,13 +35,16 @@ public class AufgabeEntity implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe", cascade = CascadeType.ALL)
     private Set<AufgabenteilEntity> aufgabenteilEntities = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<AufgabenbwtunghistEntity> aufgabenbwtunghistEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "aufgabe_entity_aufgabentag",
-               joinColumns = @JoinColumn(name = "aufgabe_entity_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "aufgabentag_id", referencedColumnName = "id"))
+        joinColumns = @JoinColumn(name = "aufgabe_entity_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "aufgabentag_id", referencedColumnName = "id"))
     private Set<AufgabentagEntity> aufgabentags = new HashSet<>();
 
     @ManyToOne
@@ -71,19 +71,6 @@ public class AufgabeEntity implements Serializable {
 
     public void setAufgabentitel(String aufgabentitel) {
         this.aufgabentitel = aufgabentitel;
-    }
-
-    public Integer getBewertung() {
-        return bewertung;
-    }
-
-    public AufgabeEntity bewertung(Integer bewertung) {
-        this.bewertung = bewertung;
-        return this;
-    }
-
-    public void setBewertung(Integer bewertung) {
-        this.bewertung = bewertung;
     }
 
     public KategorieEnum getKategorie() {
@@ -122,6 +109,31 @@ public class AufgabeEntity implements Serializable {
 
     public void setAufgabenteilEntities(Set<AufgabenteilEntity> aufgabenteilEntities) {
         this.aufgabenteilEntities = aufgabenteilEntities;
+    }
+
+    public Set<AufgabenbwtunghistEntity> getAufgabenbwtunghistEntities() {
+        return aufgabenbwtunghistEntities;
+    }
+
+    public AufgabeEntity aufgabenbwtunghistEntities(Set<AufgabenbwtunghistEntity> aufgabenbwtunghistEntities) {
+        this.aufgabenbwtunghistEntities = aufgabenbwtunghistEntities;
+        return this;
+    }
+
+    public AufgabeEntity addAufgabenbwtunghistEntity(AufgabenbwtunghistEntity aufgabenbwtunghistEntity) {
+        this.aufgabenbwtunghistEntities.add(aufgabenbwtunghistEntity);
+        aufgabenbwtunghistEntity.setAufgabe(this);
+        return this;
+    }
+
+    public AufgabeEntity removeAufgabenbwtunghistEntity(AufgabenbwtunghistEntity aufgabenbwtunghistEntity) {
+        this.aufgabenbwtunghistEntities.remove(aufgabenbwtunghistEntity);
+        aufgabenbwtunghistEntity.setAufgabe(null);
+        return this;
+    }
+
+    public void setAufgabenbwtunghistEntities(Set<AufgabenbwtunghistEntity> aufgabenbwtunghistEntities) {
+        this.aufgabenbwtunghistEntities = aufgabenbwtunghistEntities;
     }
 
     public Set<AufgabenhistorieEntity> getAufgabenhistorieEntities() {
@@ -210,7 +222,6 @@ public class AufgabeEntity implements Serializable {
         return "AufgabeEntity{" +
             "id=" + getId() +
             ", aufgabentitel='" + getAufgabentitel() + "'" +
-            ", bewertung=" + getBewertung() +
             ", kategorie='" + getKategorie() + "'" +
             "}";
     }

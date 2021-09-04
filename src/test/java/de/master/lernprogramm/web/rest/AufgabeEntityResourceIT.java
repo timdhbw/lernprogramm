@@ -1,14 +1,14 @@
 package de.master.lernprogramm.web.rest;
 
 import de.master.lernprogramm.LernprogrammApp;
-import de.master.lernprogramm.repository.entity.AufgabeEntity;
+import de.master.lernprogramm.domain.enumeration.KategorieEnum;
 import de.master.lernprogramm.repository.AufgabeEntityRepository;
+import de.master.lernprogramm.repository.entity.AufgabeEntity;
 import de.master.lernprogramm.repository.search.AufgabeEntitySearchRepository;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,8 +30,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import de.master.lernprogramm.domain.enumeration.KategorieEnum;
 /**
  * Integration tests for the {@link AufgabeEntityResource} REST controller.
  */
@@ -42,9 +41,6 @@ public class AufgabeEntityResourceIT {
 
     private static final String DEFAULT_AUFGABENTITEL = "AAAAAAAAAA";
     private static final String UPDATED_AUFGABENTITEL = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_BEWERTUNG = 1;
-    private static final Integer UPDATED_BEWERTUNG = 2;
 
     private static final KategorieEnum DEFAULT_KATEGORIE = KategorieEnum.SOFTWAREENTWICKLUNG;
     private static final KategorieEnum UPDATED_KATEGORIE = KategorieEnum.SOFTWAREENTWICKLUNG;
@@ -80,7 +76,6 @@ public class AufgabeEntityResourceIT {
     public static AufgabeEntity createEntity(EntityManager em) {
         AufgabeEntity aufgabeEntity = new AufgabeEntity()
             .aufgabentitel(DEFAULT_AUFGABENTITEL)
-            .bewertung(DEFAULT_BEWERTUNG)
             .kategorie(DEFAULT_KATEGORIE);
         return aufgabeEntity;
     }
@@ -93,7 +88,6 @@ public class AufgabeEntityResourceIT {
     public static AufgabeEntity createUpdatedEntity(EntityManager em) {
         AufgabeEntity aufgabeEntity = new AufgabeEntity()
             .aufgabentitel(UPDATED_AUFGABENTITEL)
-            .bewertung(UPDATED_BEWERTUNG)
             .kategorie(UPDATED_KATEGORIE);
         return aufgabeEntity;
     }
@@ -118,7 +112,6 @@ public class AufgabeEntityResourceIT {
         assertThat(aufgabeEntityList).hasSize(databaseSizeBeforeCreate + 1);
         AufgabeEntity testAufgabeEntity = aufgabeEntityList.get(aufgabeEntityList.size() - 1);
         assertThat(testAufgabeEntity.getAufgabentitel()).isEqualTo(DEFAULT_AUFGABENTITEL);
-        assertThat(testAufgabeEntity.getBewertung()).isEqualTo(DEFAULT_BEWERTUNG);
         assertThat(testAufgabeEntity.getKategorie()).isEqualTo(DEFAULT_KATEGORIE);
 
         // Validate the AufgabeEntity in Elasticsearch
@@ -179,7 +172,6 @@ public class AufgabeEntityResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(aufgabeEntity.getId().intValue())))
             .andExpect(jsonPath("$.[*].aufgabentitel").value(hasItem(DEFAULT_AUFGABENTITEL)))
-            .andExpect(jsonPath("$.[*].bewertung").value(hasItem(DEFAULT_BEWERTUNG)))
             .andExpect(jsonPath("$.[*].kategorie").value(hasItem(DEFAULT_KATEGORIE.toString())));
     }
 
@@ -215,7 +207,6 @@ public class AufgabeEntityResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(aufgabeEntity.getId().intValue()))
             .andExpect(jsonPath("$.aufgabentitel").value(DEFAULT_AUFGABENTITEL))
-            .andExpect(jsonPath("$.bewertung").value(DEFAULT_BEWERTUNG))
             .andExpect(jsonPath("$.kategorie").value(DEFAULT_KATEGORIE.toString()));
     }
     @Test
@@ -240,7 +231,6 @@ public class AufgabeEntityResourceIT {
         em.detach(updatedAufgabeEntity);
         updatedAufgabeEntity
             .aufgabentitel(UPDATED_AUFGABENTITEL)
-            .bewertung(UPDATED_BEWERTUNG)
             .kategorie(UPDATED_KATEGORIE);
 
         restAufgabeEntityMockMvc.perform(put("/api/aufgabe-entities")
@@ -253,7 +243,6 @@ public class AufgabeEntityResourceIT {
         assertThat(aufgabeEntityList).hasSize(databaseSizeBeforeUpdate);
         AufgabeEntity testAufgabeEntity = aufgabeEntityList.get(aufgabeEntityList.size() - 1);
         assertThat(testAufgabeEntity.getAufgabentitel()).isEqualTo(UPDATED_AUFGABENTITEL);
-        assertThat(testAufgabeEntity.getBewertung()).isEqualTo(UPDATED_BEWERTUNG);
         assertThat(testAufgabeEntity.getKategorie()).isEqualTo(UPDATED_KATEGORIE);
 
         // Validate the AufgabeEntity in Elasticsearch
@@ -315,7 +304,6 @@ public class AufgabeEntityResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(aufgabeEntity.getId().intValue())))
             .andExpect(jsonPath("$.[*].aufgabentitel").value(hasItem(DEFAULT_AUFGABENTITEL)))
-            .andExpect(jsonPath("$.[*].bewertung").value(hasItem(DEFAULT_BEWERTUNG)))
             .andExpect(jsonPath("$.[*].kategorie").value(hasItem(DEFAULT_KATEGORIE.toString())));
     }
 }

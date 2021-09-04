@@ -15,6 +15,7 @@
         "aufgabentagEntity": "Aufgabentag Entity",
         "aufgabenteilEntity": "Aufgabenteil Entity",
         "multipleChoiceAntwortEntity": "Multiple Choice Antwort Entity",
+        "aufgabenbwtunghistEntity": "Aufgabenbwtunghist Entity",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
