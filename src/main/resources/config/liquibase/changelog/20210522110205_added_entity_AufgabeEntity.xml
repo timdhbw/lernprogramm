@@ -59,7 +59,6 @@
                   tableName="aufgabe_entity">
             <column name="id" type="numeric"/>
             <column name="aufgabentitel" type="string"/>
-            <column name="bewertung" type="numeric"/>
             <column name="kategorie" type="string"/>
             <column name="autor_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

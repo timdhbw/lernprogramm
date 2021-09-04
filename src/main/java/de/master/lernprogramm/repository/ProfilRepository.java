@@ -4,5 +4,5 @@ import de.master.lernprogramm.domain.objekt.Profil;
 
 public interface ProfilRepository {
 
-    Profil getProfilById(Integer profilId);
+    Profil getProfilByProfilId(String profilId);
 }

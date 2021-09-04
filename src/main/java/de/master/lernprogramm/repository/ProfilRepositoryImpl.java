@@ -2,8 +2,10 @@ package de.master.lernprogramm.repository;
 
 import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.repository.mapper.ProfilEntityMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ProfilRepositoryImpl implements ProfilRepository{
 
@@ -17,10 +19,10 @@ public class ProfilRepositoryImpl implements ProfilRepository{
     }
 
     @Override
-    public Profil getProfilById(Integer profilId) {
+    public Profil getProfilByProfilId(String profilId) {
         if (profilId == null) {
             return null;
         }
-        return profilEntityMapper.toDomain(profilEntityRepository.findById(profilId.longValue()).orElse(null));
+        return profilEntityMapper.toDomain(profilEntityRepository.findFirstByProfilId(profilId));
     }
 }

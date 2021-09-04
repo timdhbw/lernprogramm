@@ -39,7 +39,7 @@ public class AufgabeRepositoryImpl implements AufgabeRepository{
         if (aufgabeToSave == null) {
             return null;
         }
-        Profil profil = profilRepository.getProfilById(aufgabeToSave.getAutorId());
+        Profil profil = profilRepository.getProfilByProfilId(aufgabeToSave.getAutorId().toString());
         AufgabeEntity aufgabeEntityToSave = aufgabeEntityMapper.toEntity(aufgabeToSave);
         aufgabeEntityToSave.setAutor(profilEntityMapper.toEntity(profil));
         aufgabeEntityToSave.getAufgabenteilEntities().forEach(this::saveAufgabenteile);

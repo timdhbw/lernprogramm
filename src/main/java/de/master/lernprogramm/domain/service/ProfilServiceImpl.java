@@ -5,10 +5,12 @@ import de.master.lernprogramm.domain.objekt.Aufgabenhistorie;
 import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.repository.AufgabeRepository;
 import de.master.lernprogramm.repository.ProfilRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+@Slf4j
 @Service
 public class ProfilServiceImpl implements ProfilService {
 
@@ -29,17 +31,19 @@ public class ProfilServiceImpl implements ProfilService {
         if (profilId == null) {
             return null;
         }
-        Profil profil = new Profil();
-        profil.setProfilId(profilId);
-        profil.setNachname("vName" + profilId);
-        profil.setVorname("vVorname" + profilId);
+        log.info("Suche Profil für ProfilId: '{}'", profilId);
+        Profil profil = profilRepository.getProfilByProfilId(profilId);
+        log.info("Gefundenes Profil für ProfilId '{}' : {}", profilId, profil);
+//        profil.setProfilId(profilId);
+//        profil.setNachname("vName" + profilId);
+//        profil.setVorname("vVorname" + profilId);
 //        punkteberechnungService.berechnePunkteFuerProfil(profil);
         return profil;
     }
 
     @Override
     public void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, Integer ergebnisUser) {
-        Profil profil = profilRepository.getProfilById(userId);
+        Profil profil = profilRepository.getProfilByProfilId(userId.toString());
         Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
 
         Aufgabenhistorie aufgabenhistorie = new Aufgabenhistorie();

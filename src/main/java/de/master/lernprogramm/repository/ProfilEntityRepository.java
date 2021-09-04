@@ -1,8 +1,7 @@
 package de.master.lernprogramm.repository;
 
 import de.master.lernprogramm.repository.entity.ProfilEntity;
-
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ProfilEntityRepository extends JpaRepository<ProfilEntity, Long> {
+
+    ProfilEntity findFirstByProfilId(String profilId);
 }
