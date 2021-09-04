@@ -59,6 +59,12 @@ public class AufgabeServiceImpl implements AufgabeService {
         return Randomizer.getRandomItemOfList(possibleIds).toString();
     }
 
+    @Override
+    public void bewerteAufgabe(Integer aufgabeId, Integer aufgabeBewertung) {
+        Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
+        aufgabe.setBewertung(aufgabeBewertung);
+    }
+
     private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {
         Profil profil = profilService.getProfilById(user.getId().toString());
         if (profil.getAufgabeList() == null) {

@@ -10,4 +10,6 @@ public interface AufgabeService {
     Aufgabe saveAufgabe(Aufgabe aufgabe);
 
     String getRandomNextAufgabeForUser(User user);
+
+    void bewerteAufgabe(Integer aufgabeId, Integer aufgabeBewertung);
 }
