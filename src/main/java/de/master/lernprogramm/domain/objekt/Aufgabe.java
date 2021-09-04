@@ -28,8 +28,8 @@ public class Aufgabe {
         if (aufgabenberwtungHistList == null || aufgabenberwtungHistList.isEmpty()) {
             return null;
         }
-        return (int) aufgabenberwtungHistList.stream()
+        return (int) Math.round(aufgabenberwtungHistList.stream()
             .mapToInt(AufgabenbewertungHistorie::getBewertungsveraenderung)
-            .average().orElse(0.0);
+            .average().orElse(0.0));
     }
 }
