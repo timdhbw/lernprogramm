@@ -10,11 +10,10 @@ import {FrontendService} from "target/api/frontend.service";
 })
 export class AufgabenverwaltungComponent implements OnInit {
 
-  eigeneAufgaben: AufgabeUiDto[];
+  @Input()
+  eigeneAufgaben: AufgabeUiDto[] | undefined;
 
-  constructor(private router: Router, private frontendService: FrontendService) {
-    this.eigeneAufgaben = [];
-    frontendService.getAufgabenByUserId().toPromise().then(aufgaben => this.eigeneAufgaben = aufgaben);
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {

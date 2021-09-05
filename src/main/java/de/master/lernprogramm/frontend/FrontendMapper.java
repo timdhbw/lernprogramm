@@ -20,11 +20,13 @@ public interface FrontendMapper {
     @Mapping(target = "thementypen", ignore = true)
     @Mapping(target = "punkte", ignore = true)
     @Mapping(target = "rang", ignore = true)
+    @Mapping(target = "aufgaben", ignore = true)
     ProfilUiDto toUiDto(User user);
 
     AufgabeUiDto toUiDto(Aufgabe aufgabe);
 
     @Mapping(target = "thementypen", source = "bewerteterAufgabentagList")
+    @Mapping(target = "aufgaben", source = "aufgabeList")
     ProfilUiDto toUiDto(Profil profil);
 
     @Mapping(target = "aufgabenberwtungHistList", ignore = true)

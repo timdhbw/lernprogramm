@@ -3,7 +3,9 @@
     <div>
         <label>Meine erstellten Aufgaben</label>
         <ul>
-            <li *ngFor=""></li>
+            <li *ngFor="let aufgabe of eigeneAufgaben">
+                {{aufgabe.aufgabentitel}} (AufgabeId: {{aufgabe.aufgabeId}})
+            </li>
         </ul>
     </div>
 </div>

@@ -15,3 +15,7 @@ properties:
     type: integer
   rang:
     type: integer
+  aufgaben:
+    type: array
+    items:
+      $ref: 'aufgabe.yml'
