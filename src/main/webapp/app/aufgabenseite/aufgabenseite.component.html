@@ -1,14 +1,13 @@
 <div [ngSwitch]="aufgabe === undefined">
     <div *ngSwitchCase="true">
-        <p>aufgabenseite works!</p>
         <input type="number" [(ngModel)]="aufgabeId">
         <p>QueryParams: {{queryParams}}</p>
         <button class="btn btn-success" (click)="getAufgabe()">Hole Aufgabe</button>
     </div>
     <div *ngSwitchCase="false">
-        <p>Aufgabe gefunden!</p>
-        <p>AufgabeId: {{aufgabe?.aufgabeId}}</p>
-        <p>Kategorie: {{aufgabe?.kategorie}}, Bewertung {{aufgabe?.bewertung}}</p>
+        <h3>{{aufgabe?.aufgabentitel}}</h3>
+        <p>Kategorie: {{aufgabe?.kategorie}}</p>
+        <p>Rating: <ng-rating-bar [ratingCount]="5" [disabled]="true" [value]="bewertung"></ng-rating-bar></p>
         <p>Tags: {{getAufgabeTagList()}}</p>
         <jhi-aufgabenteil-anzeige *ngFor="let aufgabenteil of getAufgabeteilListSorted()" [aufgabenteil]="aufgabenteil"></jhi-aufgabenteil-anzeige>
         <button class="btn btn-success" (click)="schliesseAufgabe()">Schließe Aufgabe ab</button>

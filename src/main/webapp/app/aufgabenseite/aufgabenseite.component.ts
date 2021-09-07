@@ -27,6 +27,14 @@ export class AufgabenseiteComponent implements OnInit {
     this.aufgabeId = this.route.snapshot.queryParams.aufgabeId;
     this.frontendService.getAufgabeById(this.aufgabeId).toPromise()
       .then(aufgb => this.aufgabe = aufgb);
+
+  }
+
+  get bewertung(): number {
+    if (this.aufgabe?.bewertung !== undefined) {
+      return  this.aufgabe.bewertung;
+    }
+    return 0;
   }
 
   getAufgabe(): void {
