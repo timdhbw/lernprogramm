@@ -10,6 +10,7 @@ properties:
     enum:
       - TEXT
       - MULTIPLECHOICE
+      - HTML
   text:
    type: string
   multiplechoiceAntwortenList:

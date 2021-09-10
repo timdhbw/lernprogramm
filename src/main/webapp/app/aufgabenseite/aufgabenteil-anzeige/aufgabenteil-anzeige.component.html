@@ -9,4 +9,6 @@
             <label for="'multi' + i">{{multi.label}}</label>
         </div>
     </div>
+    <div *ngSwitchCase="'HTML'" [innerHTML]="aufgabenteil?.text">
+    </div>
 </div>
