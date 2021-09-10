@@ -1,12 +1,12 @@
-<div [ngSwitch]="aufgabenteil?.aufgabenteiltyp">
+<div [ngSwitch]="aufgabenteil?.aufgabenteiltyp" class="my-2 my-md-3">
     <div *ngSwitchCase="'TEXT'">
         <label>{{aufgabenteil?.text}}</label>
     </div>
     <div *ngSwitchCase="'MULTIPLECHOICE'">
         <label>{{aufgabenteil?.text}}</label>
-        <div *ngFor="let multi of aufgabenteil?.multiplechoiceAntwortenList; let i = index">
-            <label for="'multi' + i">{{multi.label}}</label>
+        <div *ngFor="let multi of aufgabenteil?.multiplechoiceAntwortenList; let i = index" class="px-md-2">
             <input type="checkbox" id="'multi' + i" [(ngModel)]="multi.checked"/>
+            <label for="'multi' + i">{{multi.label}}</label>
         </div>
     </div>
 </div>
