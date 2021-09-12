@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AufgabeUiDto} from "target/model/aufgabe";
-import {FrontendService} from "target/api/frontend.service";
 
 @Component({
   selector: 'jhi-aufgabenverwaltung',

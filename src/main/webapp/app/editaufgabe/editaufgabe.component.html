@@ -6,7 +6,7 @@
                [disabled]="!aufgabeNeuanlage" type="text"/>
     </div>
     <div class="col-12 form-group">
-        <label for="initialeBerwtung">initialeBewertung</label>
+        <label for="initialeBerwtung">Initiale Bewertung der Schwierigkeit</label>
         <input class="form-control" [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage"
                id="initialeBerwtung" type="number"
                min="1" max="5"/>
@@ -32,8 +32,23 @@
         <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
     </div>
     <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
-        <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
-        <label>AufgabenteilText: {{aufgabenteil.text}}</label>
+        <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'HTML'">
+            <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
+            <label>AufgabenteilText: {{aufgabenteil.text}}</label>
+        </div>
+        <div *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'">
+            <ul>
+                <li *ngFor="let multi of aufgabenteil.multiplechoiceAntwortenList">
+                    {{multi.label}} {{multi.checkedRichtig ? '(korrekt)': ''}}
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="aufgabenteil.aufgabenteiltyp === 'HTML'">
+            <label>HTML Tag:</label>
+            <label>{{aufgabenteil.text}}</label>
+            <label>Vorschau:</label>
+            <div [innerHTML]="aufgabenteil.text"></div>
+        </div>
         <jhi-add-aufgabenteil [aufgabe]="getAufgabe()"
                               [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
     </div>

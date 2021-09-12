@@ -4,11 +4,19 @@
     </div>
     <div *ngSwitchCase="true">
         <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp">
-            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()" [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
+            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
+                    [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
         </select>
-        <label for="textfeld">Text</label>
-        <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>
-        <jhi-edit-multiple-choice *ngIf="newAufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'"></jhi-edit-multiple-choice>
+        <div *ngIf="newAufgabenteil.aufgabenteiltyp !== 'HTML'">
+            <label for="textfeld">Text</label>
+            <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>
+        </div>
+        <jhi-edit-multiple-choice
+            *ngIf="newAufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'"></jhi-edit-multiple-choice>
+        <div *ngIf="newAufgabenteil.aufgabenteiltyp === 'HTML'" class="form-group">
+            <label for="newHTMLText">YoutubeVideo</label>
+            <textarea id="newHTMLText"></textarea>
+        </div>
         <button class="btn btn-success" (click)="saveNewAufgabenteil()">Füge Aufgabenteil hinzu</button>
     </div>
 </div>
