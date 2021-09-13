@@ -9,6 +9,7 @@
             <label for="'multi' + i">{{multi.label}}</label>
         </div>
     </div>
-    <div *ngSwitchCase="'HTML'" [innerHTML]="aufgabenteil?.text">
-    </div>
+    <jhi-plain-html-field *ngSwitchCase="'HTML'" [htmlText]="aufgabenteil?.text">
+    </jhi-plain-html-field>
+    <jhi-youtube-embeded *ngSwitchCase="'YOUTUBE'" [youtubeUrl]="aufgabenteil?.text"></jhi-youtube-embeded>
 </div>

@@ -3,11 +3,11 @@
         <button class="btn" (click)="neuerAufgabenteil()">Add aufgabenteil</button>
     </div>
     <div *ngSwitchCase="true">
-        <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp">
+        <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp" class="form-control">
             <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
                     [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
         </select>
-        <div *ngIf="newAufgabenteil.aufgabenteiltyp !== 'YOUTUBE'">
+        <div *ngIf="newAufgabenteil.aufgabenteiltyp !== 'YOUTUBE' && newAufgabenteil.aufgabenteiltyp !== 'HTML'">
             <label for="textfeld">Text</label>
             <input id="textfeld" type="text" [(ngModel)]="newAufgabenteil.text"/>
         </div>
@@ -16,6 +16,10 @@
         <div *ngIf="newAufgabenteil.aufgabenteiltyp === 'YOUTUBE'" class="form-group">
             <label for="youtubeLink">YoutubeVideo</label>
             <input id="youtubeLink" type="url" [(ngModel)]="newAufgabenteil.text"/>
+        </div>
+        <div *ngIf="newAufgabenteil.aufgabenteiltyp === 'HTML'" class="form-group">
+            <label for="newHTMLText">Plain HTML</label>
+            <textarea id="newHTMLText" class="form-control" rows="5" [(ngModel)]="newAufgabenteil.text"></textarea>
         </div>
         <button class="btn btn-success" (click)="saveNewAufgabenteil()">Füge Aufgabenteil hinzu</button>
     </div>
