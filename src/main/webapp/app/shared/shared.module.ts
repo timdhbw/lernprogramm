@@ -7,20 +7,22 @@ import { LoginModalComponent } from './login-window/login.component';
 import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
 import { LoginComponent } from './login/login.component';
 import {EnumUtil} from "app/shared/util/enum-util";
+import { YoutubeEmbededComponent } from './youtube-embeded/youtube-embeded.component';
 
 @NgModule({
   imports: [LernprogrammSharedLibsModule],
-  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent],
+  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent, YoutubeEmbededComponent],
   entryComponents: [LoginModalComponent],
-  exports: [
-    LernprogrammSharedLibsModule,
-    FindLanguageFromKeyPipe,
-    AlertComponent,
-    AlertErrorComponent,
-    LoginModalComponent,
-    HasAnyAuthorityDirective,
-    LoginComponent,
-  ],
+    exports: [
+        LernprogrammSharedLibsModule,
+        FindLanguageFromKeyPipe,
+        AlertComponent,
+        AlertErrorComponent,
+        LoginModalComponent,
+        HasAnyAuthorityDirective,
+        LoginComponent,
+        YoutubeEmbededComponent,
+    ],
   providers: [EnumUtil]
 })
 export class LernprogrammSharedModule {}

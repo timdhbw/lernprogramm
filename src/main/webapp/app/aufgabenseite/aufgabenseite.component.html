@@ -5,20 +5,7 @@
         <button class="btn btn-success" (click)="getAufgabe()">Hole Aufgabe</button>
     </div>
     <div *ngSwitchCase="false">
-        <div class="row">
-            <h3 class="col">{{aufgabe?.aufgabentitel}}</h3>
-        </div>
-
-        <div class="row align-items-end">
-            <div class="col-12 col-md-6">
-                <p>Kategorie: {{aufgabe?.kategorie}}</p>
-                <p>Tags: {{getAufgabeTagList()}}</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p>Aufgaben Bewertung: <ng-rating-bar [ratingCount]="5" [disabled]="true" [value]="bewertung"></ng-rating-bar></p>
-            </div>
-        </div>
-        <jhi-aufgabenteil-anzeige *ngFor="let aufgabenteil of getAufgabeteilListSorted()" [aufgabenteil]="aufgabenteil"></jhi-aufgabenteil-anzeige>
+        <jhi-aufgabe-anzeige [aufgabe]="aufgabe"></jhi-aufgabe-anzeige>
         <button class="btn btn-success" (click)="schliesseAufgabe()">Schließe Aufgabe ab</button>
     </div>
 </div>

@@ -1,0 +1,17 @@
+<div>
+    <div class="row">
+        <h3 class="col">{{aufgabe?.aufgabentitel}}</h3>
+    </div>
+
+    <div class="row align-items-end">
+        <div class="col">
+            <p>Kategorie: {{aufgabe?.kategorie}}</p>
+            <p>Tags: {{getAufgabeTagList()}}</p>
+        </div>
+        <div class="col">
+            <p>Aufgabe Schwierigkeit:</p>
+            <ng-rating-bar [ratingCount]="5" [disabled]="true" [value]="bewertung"></ng-rating-bar>
+        </div>
+    </div>
+    <jhi-aufgabenteil-anzeige *ngFor="let aufgabenteil of getAufgabeteilListSorted()" [aufgabenteil]="aufgabenteil"></jhi-aufgabenteil-anzeige>
+</div>

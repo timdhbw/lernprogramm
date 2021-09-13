@@ -6,15 +6,20 @@ import {LernprogrammSharedModule} from "app/shared/shared.module";
 import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabeabschluss-modal.component';
 import {NgRatingBarModule} from "ng-rating-bar";
 import { AufgabenteilAnzeigeComponent } from './aufgabenteil-anzeige/aufgabenteil-anzeige.component';
+import { AufgabeAnzeigeComponent } from './aufgabe-anzeige/aufgabe-anzeige.component';
 
 
 
 @NgModule({
-  declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent, AufgabenteilAnzeigeComponent],
-  imports: [
-    RouterModule.forChild([AUFGABENSEITE_ROUTE]),
-    LernprogrammSharedModule,
-    NgRatingBarModule
-  ]
+    declarations: [AufgabenseiteComponent, AufgabeabschlussModalComponent, AufgabenteilAnzeigeComponent, AufgabeAnzeigeComponent],
+  exports: [
+    AufgabenseiteComponent,
+    AufgabeAnzeigeComponent
+  ],
+    imports: [
+        RouterModule.forChild([AUFGABENSEITE_ROUTE]),
+        LernprogrammSharedModule,
+        NgRatingBarModule
+    ]
 })
 export class LernprogrammAufgabenseiteModule { }

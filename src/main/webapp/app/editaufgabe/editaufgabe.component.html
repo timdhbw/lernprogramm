@@ -1,59 +1,72 @@
 <div class="row">
     <h2 class="col-12">Neue Aufgabe erstellen</h2>
-    <div class="col-12 form-group">
-        <label for="aufgabentitel">Aufgabentitel</label>
-        <input class="form-control" id="aufgabentitel" [(ngModel)]="getAufgabe().aufgabentitel"
-               [disabled]="!aufgabeNeuanlage" type="text"/>
-    </div>
-    <div class="col-12 form-group">
-        <label for="initialeBerwtung">Initiale Bewertung der Schwierigkeit</label>
-        <input class="form-control" [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage"
-               id="initialeBerwtung" type="number"
-               min="1" max="5"/>
-    </div>
-    <div class="col-12 form-group">
-        <label for="kategorie">kategorie</label>
-        <select class="form-control" [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage" id="kategorie">
-            <option *ngFor="let kategorie of getKategorieListe()">{{kategorie}}</option>
-        </select>
-    </div>
-    <div class="col-12">
-        <label for="tags">tags</label>
-        <div id="tags" class="row mx-1">
-            <div class="border col mr-1 px-0" *ngFor="let tag of getAufgabe().aufgabentagList">
-                <label class="px-1">{{tag.tag}}</label>
-                <button class="btn btn-danger" (click)="removeTag(tag)">X</button>
+    <div class="col-12 col-md-6">
+        <div class="col-12 form-group">
+            <label for="aufgabentitel">Aufgabentitel</label>
+            <input class="form-control" id="aufgabentitel" [(ngModel)]="getAufgabe().aufgabentitel"
+                   [disabled]="!aufgabeNeuanlage" type="text"/>
+        </div>
+        <div class="col-12 form-group">
+            <label for="initialeBerwtung">Initiale Bewertung der Schwierigkeit</label>
+            <input class="form-control" [(ngModel)]="getAufgabe().bewertung" [disabled]="!aufgabeNeuanlage"
+                   id="initialeBerwtung" type="number"
+                   min="1" max="5"/>
+        </div>
+        <div class="col-12 form-group">
+            <label for="kategorie">kategorie</label>
+            <select class="form-control" [(ngModel)]="getAufgabe().kategorie" [disabled]="!aufgabeNeuanlage"
+                    id="kategorie">
+                <option *ngFor="let kategorie of getKategorieListe()">{{kategorie}}</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="tags">tags</label>
+            <div id="tags" class="row mx-1">
+                <div class="border col mr-1 px-0" *ngFor="let tag of getAufgabe().aufgabentagList">
+                    <label class="px-1">{{tag.tag}}</label>
+                    <button class="btn btn-danger" (click)="removeTag(tag)">X</button>
+                </div>
             </div>
+            <jhi-add-tag [aufgabe]="getAufgabe()"></jhi-add-tag>
         </div>
-        <jhi-add-tag [aufgabe]="getAufgabe()"></jhi-add-tag>
+        <div class="col-12">
+            <h4>Aufgabenteile</h4>
+            <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
+        </div>
+        <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
+            <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'HTML' && aufgabenteil.aufgabenteiltyp !== 'YOUTUBE'">
+                <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
+                <label>AufgabenteilText: {{aufgabenteil.text}}</label>
+            </div>
+            <div *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'">
+                <ul>
+                    <li *ngFor="let multi of aufgabenteil.multiplechoiceAntwortenList">
+                        {{multi.label}} {{multi.checkedRichtig ? '(korrekt)' : ''}}
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="aufgabenteil.aufgabenteiltyp === 'HTML'">
+                <label>HTML Tag:</label>
+                <label>{{aufgabenteil.text}}</label>
+                <label>Vorschau:</label>
+                <div [innerHTML]="aufgabenteil.text"></div>
+            </div>
+            <div *ngIf="aufgabenteil.aufgabenteiltyp === 'YOUTUBE'">
+                <label>YoutubeUrl:</label>
+                <label>{{aufgabenteil.text}}</label>
+                <label>Vorschau:</label>
+                <jhi-youtube-embeded [youtubeUrl]="aufgabenteil.text"></jhi-youtube-embeded>
+            </div>
+            <jhi-add-aufgabenteil [aufgabe]="getAufgabe()"
+                                  [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
+        </div>
+        <div class="col-12">
+            <button (click)="saveAufgabe()" class="btn btn-success">Speicher Aufgabe</button>
+            <button (click)="abbrechen()" class="btn btn-danger">Abbrechen</button>
+        </div>
     </div>
-    <div class="col-12">
-        <h4>Aufgabenteile</h4>
-        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
-    </div>
-    <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
-        <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'HTML'">
-            <label>AufgabenteilTyp: {{aufgabenteil.laufenNr}}</label>
-            <label>AufgabenteilText: {{aufgabenteil.text}}</label>
-        </div>
-        <div *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'">
-            <ul>
-                <li *ngFor="let multi of aufgabenteil.multiplechoiceAntwortenList">
-                    {{multi.label}} {{multi.checkedRichtig ? '(korrekt)': ''}}
-                </li>
-            </ul>
-        </div>
-        <div *ngIf="aufgabenteil.aufgabenteiltyp === 'HTML'">
-            <label>HTML Tag:</label>
-            <label>{{aufgabenteil.text}}</label>
-            <label>Vorschau:</label>
-            <div [innerHTML]="aufgabenteil.text"></div>
-        </div>
-        <jhi-add-aufgabenteil [aufgabe]="getAufgabe()"
-                              [laufendeNr]="getNumberPlusOne(aufgabenteil.laufenNr)"></jhi-add-aufgabenteil>
-    </div>
-    <div class="col-12">
-        <button (click)="saveAufgabe()" class="btn btn-success">Speicher Aufgabe</button>
-        <button (click)="abbrechen()" class="btn btn-danger">Abbrechen</button>
+    <div class="col-12 col-md-6">
+        <h3>Vorschau</h3>
+        <jhi-aufgabe-anzeige [aufgabe]="getAufgabe()"></jhi-aufgabe-anzeige>
     </div>
 </div>
