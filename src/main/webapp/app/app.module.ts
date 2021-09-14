@@ -22,11 +22,13 @@ import {AuthServerProvider} from "app/core/auth/auth-jwt.service";
 import {SERVER_API_URL} from "app/app.constants";
 import {LernprogrammFaqModule} from './faq/faq.module';
 import { LernprogrammEditaufgabeModule } from './editaufgabe/editaufgabe.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
     ApiModule,
     BrowserModule,
+    BrowserAnimationsModule,
     LernprogrammSharedModule,
     LernprogrammCoreModule,
     LernprogrammHomeModule,

@@ -32,11 +32,14 @@ $teal:    #20c997 !default;
 $cyan:    #3498DB !default;
 
 $primary:       $blue !default;
+$font-color-primary: $white !default;
 $secondary:     $gray-700 !default;
 $success:       $green !default;
+$font-color-success: $white !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
+$font-color-danger: $white !default;
 $light:         $gray-500 !default;
 $dark:          $gray-800 !default;
 

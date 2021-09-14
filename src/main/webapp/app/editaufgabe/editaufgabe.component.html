@@ -20,6 +20,9 @@
             </select>
         </div>
         <div class="col-12">
+            <jhi-edit-tag-leiste [aufgabe]="getAufgabe()"></jhi-edit-tag-leiste>
+        </div>
+        <div class="col-12">
             <label for="tags">tags</label>
             <div id="tags" class="row mx-1">
                 <div class="border col mr-1 px-0" *ngFor="let tag of getAufgabe().aufgabentagList">

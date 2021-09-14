@@ -9,9 +9,10 @@ import { LoginComponent } from './login/login.component';
 import {EnumUtil} from "app/shared/util/enum-util";
 import { YoutubeEmbededComponent } from './youtube-embeded/youtube-embeded.component';
 import { PlainHtmlFieldComponent } from './plain-html-field/plain-html-field.component';
+import {AngularMaterialModule} from "app/shared/angular-material/angular-material.module";
 
 @NgModule({
-  imports: [LernprogrammSharedLibsModule],
+  imports: [LernprogrammSharedLibsModule, AngularMaterialModule],
   declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent, YoutubeEmbededComponent, PlainHtmlFieldComponent],
   entryComponents: [LoginModalComponent],
   exports: [
@@ -24,6 +25,7 @@ import { PlainHtmlFieldComponent } from './plain-html-field/plain-html-field.com
     LoginComponent,
     YoutubeEmbededComponent,
     PlainHtmlFieldComponent,
+    AngularMaterialModule
   ],
   providers: [EnumUtil]
 })
