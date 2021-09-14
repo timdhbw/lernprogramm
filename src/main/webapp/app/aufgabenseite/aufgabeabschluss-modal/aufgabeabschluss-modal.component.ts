@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {AufgabeUiDto} from "target/model/aufgabe";
 import {FrontendService} from "target/api/frontend.service";
-import {MultipleChoiceAntwortUiDto} from "target/model/multipleChoiceAntwort";
 import {AufgabenteilUiDto} from "target/model/aufgabenteil";
 
 @Component({

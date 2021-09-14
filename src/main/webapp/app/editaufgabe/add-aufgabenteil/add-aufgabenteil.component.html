@@ -1,6 +1,6 @@
 <div [ngSwitch]="showNeuTeil">
     <div *ngSwitchCase="false">
-        <button class="btn" (click)="neuerAufgabenteil()">Add aufgabenteil</button>
+        <button class="btn btn-secondary" (click)="neuerAufgabenteil()"><fa-icon icon="plus"></fa-icon> Add aufgabenteil</button>
     </div>
     <div *ngSwitchCase="true">
         <select [(ngModel)]="newAufgabenteil.aufgabenteiltyp" class="form-control">
@@ -21,6 +21,6 @@
             <label for="newHTMLText">Plain HTML</label>
             <textarea id="newHTMLText" class="form-control" rows="5" [(ngModel)]="newAufgabenteil.text"></textarea>
         </div>
-        <button class="btn btn-success" (click)="saveNewAufgabenteil()">Füge Aufgabenteil hinzu</button>
+        <button class="btn btn-success" (click)="saveNewAufgabenteil()"><fa-icon icon="check"></fa-icon> Füge Aufgabenteil hinzu</button>
     </div>
 </div>

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AufgabeUiDto} from "target/model/aufgabe";
 import {AufgabenteilUiDto} from "target/model/aufgabenteil";
 
 @Component({
