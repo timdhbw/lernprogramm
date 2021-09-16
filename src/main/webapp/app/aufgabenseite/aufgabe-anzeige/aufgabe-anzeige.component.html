@@ -4,9 +4,11 @@
     </div>
 
     <div class="row align-items-end">
+
         <div class="col">
             <p>Kategorie: {{aufgabe?.kategorie}}</p>
-            <p>Tags: {{getAufgabeTagList()}}</p>
+            <label>Tags:</label>
+            <jhi-edit-tag-leiste [aufgabe]="aufgabe" [addAble]="false" [selectable]="false" [removable]="false"></jhi-edit-tag-leiste>
         </div>
         <div class="col">
             <p>Aufgabe Schwierigkeit:</p>

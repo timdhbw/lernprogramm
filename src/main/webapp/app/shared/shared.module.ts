@@ -10,10 +10,11 @@ import {EnumUtil} from "app/shared/util/enum-util";
 import { YoutubeEmbededComponent } from './youtube-embeded/youtube-embeded.component';
 import { PlainHtmlFieldComponent } from './plain-html-field/plain-html-field.component';
 import {AngularMaterialModule} from "app/shared/angular-material/angular-material.module";
+import {EditTagLeisteComponent} from "app/shared/edit-tag-leiste/edit-tag-leiste.component";
 
 @NgModule({
   imports: [LernprogrammSharedLibsModule, AngularMaterialModule],
-  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent, YoutubeEmbededComponent, PlainHtmlFieldComponent],
+  declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective, LoginComponent, YoutubeEmbededComponent, PlainHtmlFieldComponent, EditTagLeisteComponent],
   entryComponents: [LoginModalComponent],
   exports: [
     LernprogrammSharedLibsModule,
@@ -25,7 +26,8 @@ import {AngularMaterialModule} from "app/shared/angular-material/angular-materia
     LoginComponent,
     YoutubeEmbededComponent,
     PlainHtmlFieldComponent,
-    AngularMaterialModule
+    AngularMaterialModule,
+    EditTagLeisteComponent
   ],
   providers: [EnumUtil]
 })

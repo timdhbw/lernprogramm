@@ -7,6 +7,7 @@ import { AufgabeabschlussModalComponent } from './aufgabeabschluss-modal/aufgabe
 import {NgRatingBarModule} from "ng-rating-bar";
 import { AufgabenteilAnzeigeComponent } from './aufgabenteil-anzeige/aufgabenteil-anzeige.component';
 import { AufgabeAnzeigeComponent } from './aufgabe-anzeige/aufgabe-anzeige.component';
+import {LernprogrammEditaufgabeModule} from "app/editaufgabe/editaufgabe.module";
 
 
 
@@ -19,7 +20,7 @@ import { AufgabeAnzeigeComponent } from './aufgabe-anzeige/aufgabe-anzeige.compo
     imports: [
         RouterModule.forChild([AUFGABENSEITE_ROUTE]),
         LernprogrammSharedModule,
-        NgRatingBarModule
+        NgRatingBarModule,
     ]
 })
 export class LernprogrammAufgabenseiteModule { }

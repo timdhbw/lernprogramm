@@ -2,10 +2,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component, Input, OnInit} from '@angular/core';
 import {AufgabeUiDto} from "target/model/aufgabe";
 import {MatChipInputEvent} from "@angular/material/chips";
-
-export interface Fruit {
-  name: string;
-}
+import {AufgabentagUiDto} from "target/model/aufgabentag";
 
 @Component({
   selector: 'jhi-edit-tag-leiste',
@@ -14,21 +11,21 @@ export interface Fruit {
 })
 export class EditTagLeisteComponent implements OnInit {
 
-  selectable = true;
+  @Input()
+  selectable = false;
+  @Input()
   removable = true;
+  @Input()
   addOnBlur = true;
+  @Input()
+  addAble = true;
   @Input()
   aufgabe: AufgabeUiDto | undefined;
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits: Fruit[] = [
-    {name: 'Lemon'},
-    {name: 'Lime'},
-    {name: 'Apple'},
-  ];
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -37,22 +34,26 @@ export class EditTagLeisteComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.fruits.push({name: value.trim()});
-    }
+    if (this.aufgabe?.aufgabentagList) {
+      // Add our tag
+      if ((value || '').trim()) {
+        this.aufgabe.aufgabentagList.push({tag: value.trim()});
+      }
 
-    // Reset the input value
-    if (input) {
-      input.value = '';
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
     }
   }
 
-  remove(fruit: Fruit): void {
-    const index = this.fruits.indexOf(fruit);
+  remove(tag: AufgabentagUiDto): void {
+    if (this.aufgabe?.aufgabentagList) {
+      const index = this.aufgabe.aufgabentagList.indexOf(tag);
 
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
+      if (index >= 0) {
+        this.aufgabe.aufgabentagList.splice(index, 1);
+      }
     }
   }
 
