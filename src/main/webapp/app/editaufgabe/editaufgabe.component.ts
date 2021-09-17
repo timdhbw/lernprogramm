@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FrontendService} from "target/api/frontend.service";
 import {EnumUtil} from "app/shared/util/enum-util";
 import KategorieUiDtoEnum = AufgabeUiDto.KategorieUiDtoEnum;
+import {JhiAlertService} from "ng-jhipster";
 
 @Component({
   selector: 'jhi-createaufgabe',
@@ -18,7 +19,7 @@ export class EditaufgabeComponent implements OnInit {
 
   aufgabeNeuanlage: boolean;
 
-  constructor(private route: ActivatedRoute, private frontendService: FrontendService, private router: Router, private enumUtil: EnumUtil) {
+  constructor(private route: ActivatedRoute, private frontendService: FrontendService, private router: Router, private enumUtil: EnumUtil, private alertService: JhiAlertService) {
     this.aufgabe = {} as AufgabeUiDto;
     const aufgabeId: string | null = this.route.snapshot.paramMap.get("aufgabeId");
     this.aufgabeNeuanlage = aufgabeId === null || aufgabeId === "new";
@@ -66,12 +67,14 @@ export class EditaufgabeComponent implements OnInit {
   }
 
   saveAufgabe(): void {
-    this.frontendService.saveAufgabe(this.aufgabe).toPromise().then(() => this.router.navigate(['profilseite']));
-    alert("Aufgabe gespeichert!");
+    this.frontendService.saveAufgabe(this.aufgabe).toPromise().then(() => {
+      this.alertService.success("Aufgabe erfolgreich gespeichert!")
+      this.router.navigate(['profilseite']);
+    })
+  .catch(() => this.alertService.error("Aufgabe konnte nicht gespeichert werden!"));
   }
 
   abbrechen(): void {
-    alert("Aufgabe nicht gespeichert!");
     this.router.navigate(['profilseite']);
   }
 }

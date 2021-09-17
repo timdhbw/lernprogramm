@@ -53,7 +53,7 @@ spring:
       enabled: false
   jpa:
     database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-    show-sql: true
+    show-sql: false
   data:
     elasticsearch:
       properties:

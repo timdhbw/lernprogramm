@@ -32,16 +32,16 @@ public class AufgabeEntity implements Serializable {
     @Column(name = "kategorie", nullable = false)
     private KategorieEnum kategorie;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aufgabe")
     private Set<AufgabenteilEntity> aufgabenteilEntities = new HashSet<>();
 
-    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER)
     private Set<AufgabenbwtunghistEntity> aufgabenbwtunghistEntities = new HashSet<>();
 
-    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "aufgabe", fetch = FetchType.EAGER)
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "aufgabe_entity_aufgabentag",
         joinColumns = @JoinColumn(name = "aufgabe_entity_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "aufgabentag_id", referencedColumnName = "id"))
