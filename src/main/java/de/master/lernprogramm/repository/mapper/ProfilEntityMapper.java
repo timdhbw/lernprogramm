@@ -5,7 +5,7 @@ import de.master.lernprogramm.repository.entity.ProfilEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(uses = {AufgabeEntityMapper.class})
 public interface ProfilEntityMapper {
     @Mapping(target = "id", source = "profilId")
     @Mapping(target = "removeBewerteterAufgabentagEntity", ignore = true)
@@ -17,9 +17,9 @@ public interface ProfilEntityMapper {
     ProfilEntity toEntity(Profil profil);
 
     @Mapping(target = "profilId", source = "id")
+    @Mapping(target = "aufgabeList", source = "aufgabeEntities")
     @Mapping(target = "bewerteterAufgabentagList", ignore = true)
     @Mapping(target = "aufgabenhistorieList", ignore = true)
-    @Mapping(target = "aufgabeList", ignore = true)
     @Mapping(target = "punkte", ignore = true)
     @Mapping(target = "rang", ignore = true)
     Profil toDomain(ProfilEntity profilEntity);

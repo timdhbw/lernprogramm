@@ -10,5 +10,5 @@ public interface AufgabeRepository {
 
     List<Integer> getAllPossibleAufgabenIds();
 
-    Aufgabe getAufgabeById(Integer aufgabeId);
+    Aufgabe getAufgabeById(Integer aufgabeId) ;
 }

@@ -2,6 +2,7 @@ package de.master.lernprogramm.frontend;
 
 import de.master.lernprogramm.domain.User;
 import de.master.lernprogramm.domain.objekt.Aufgabe;
+import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.domain.service.AufgabeService;
 import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -65,7 +67,11 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
 
     @Override
     public ResponseEntity<List<AufgabeUiDto>> getAufgabenByUserId(String userId) {
-        return ResponseEntity.ok(Arrays.asList(new AufgabeUiDto()));
+        Profil profil = profilService.getProfilById(getUserId().toString());
+        if (profil != null) {
+            ResponseEntity.ok(frontendMapper.toAufgabeUiDtoList(profil.getAufgabeList()));
+        }
+        return ResponseEntity.ok(new ArrayList<>());
     }
 
     @Override

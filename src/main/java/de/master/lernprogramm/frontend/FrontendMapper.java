@@ -8,11 +8,15 @@ import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 /**
  * @author tiedet (PiAL Consult GmbH) 2021.
  */
 @Mapper
 public interface FrontendMapper {
+
+    List<AufgabeUiDto> toAufgabeUiDtoList(List<Aufgabe> aufgabeList);
 
     @Mapping(target = "profilId", source = "id")
     @Mapping(target = "vorname", source = "firstName")

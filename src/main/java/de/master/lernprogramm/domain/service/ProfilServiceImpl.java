@@ -33,6 +33,7 @@ public class ProfilServiceImpl implements ProfilService {
         }
         log.info("Suche Profil für ProfilId: '{}'", profilId);
         Profil profil = profilRepository.getProfilByProfilId(profilId);
+//        List<Aufgabe> aufgabeList = aufgabeRepository.getAufgabeById()
         log.info("Gefundenes Profil für ProfilId '{}' : {}", profilId, profil);
 //        profil.setProfilId(profilId);
 //        profil.setNachname("vName" + profilId);
