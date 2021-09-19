@@ -54,7 +54,21 @@ public class AufgabeServiceImpl implements AufgabeService {
     public String getRandomNextAufgabeForUser(User user) {
         final List<Integer> possibleIds = aufgabeRepository.getAllPossibleAufgabenIds();
         getAbgeschlosseneAufgabenIdsVonUser(user).forEach(possibleIds::remove);
+        getAufgabenVonUser(user).forEach(possibleIds::remove);
         return Randomizer.getRandomItemOfList(possibleIds).toString();
+    }
+
+    private List<Integer> getAufgabenVonUser(User user) {
+        if (user == null || user.getId() == null) {
+            log.error("Keine Aufgabe von User: {}", user);
+            return new ArrayList<>();
+        }
+        Profil profil = profilService.getProfilById(user.getId().toString());
+        if (profil == null || profil.getAufgabeList() == null) {
+            log.error("Keine Aufgaben von Profil: {}", profil);
+            return new ArrayList<>();
+        }
+        return profil.getAufgabeList().stream().map(Aufgabe::getAufgabeId).collect(Collectors.toList());
     }
 
     @Override
