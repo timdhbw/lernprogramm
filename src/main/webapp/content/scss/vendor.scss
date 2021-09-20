@@ -4,7 +4,6 @@
 put Sass variables here:
 eg $input-color: red;
 ****************************/
-@import '~bootswatch/dist/darkly/variables';
 // Override Bootstrap variables
 @import 'material-variables';
 // Import Bootstrap source files from node_modules

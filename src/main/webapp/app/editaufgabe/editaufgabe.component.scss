@@ -4,3 +4,11 @@
   max-width: fit-content;
   border-radius: $input-border-radius;
 }
+
+.bg-secondary .btn-secondary {
+  background-color: transparent !important;
+  border: none !important;
+  &:hover {
+   opacity: 0.8;
+  }
+}

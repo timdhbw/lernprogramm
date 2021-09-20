@@ -4,7 +4,8 @@
         <label>Meine erstellten Aufgaben</label>
         <ul>
             <li *ngFor="let aufgabe of eigeneAufgaben">
-                {{aufgabe.aufgabentitel}} (AufgabeId: {{aufgabe.aufgabeId}})
+                <button (click)="navigateToEditAufgabe(aufgabe.aufgabeId)" [title]="'bearbeite ' + aufgabe.aufgabentitel" class="btn btn-sm"><fa-icon icon="edit"></fa-icon></button>
+                <label>{{aufgabe.aufgabentitel}}</label>
             </li>
         </ul>
     </div>

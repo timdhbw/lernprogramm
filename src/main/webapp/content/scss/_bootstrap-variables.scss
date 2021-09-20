@@ -7,6 +7,10 @@
 //
 // Color system
 //
+$border-radius:               0 !default;
+$border-radius-lg:            0 !default;
+$border-radius-sm:0 !default;
+
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -34,6 +38,7 @@ $cyan:    #3498DB !default;
 $primary:       $blue !default;
 $font-color-primary: $white !default;
 $secondary:     $gray-700 !default;
+$font-color-secondary: $white !default;
 $success:       $green !default;
 $font-color-success: $white !default;
 $info:          $cyan !default;
@@ -47,8 +52,8 @@ $yiq-contrasted-threshold:  175 !default;
 
 // Body
 
-$body-bg:                   $gray-900 !default;
-$body-color:                $white !default;
+$body-bg:                   $white !default;
+$body-color:                $gray-800 !default;
 
 // Links
 
@@ -138,8 +143,8 @@ $jumbotron-bg:                      $gray-800 !default;
 
 // Cards
 
-$card-cap-bg:                       $gray-700 !default;
-$card-bg:                           $gray-800 !default;
+$card-cap-bg:                       $gray-400 !default;
+$card-bg:                           $gray-200 !default;
 
 // Popovers
 

@@ -1,6 +1,5 @@
 @import 'material-variables';
 @import '~bootstrap/scss/functions';
-@import '~bootswatch/dist/darkly/variables';
 @import '~bootstrap/scss/variables';
 
 /* ==============================================================
@@ -163,4 +162,12 @@ ui bootstrap tweaks
   white-space: nowrap;
 }
 
+.bg-secondary {
+  color: $font-color-secondary;
+  opacity: 0.8;
+}
+
+.mat-form-field-flex {
+  padding-left: 0 !important;
+}
 /* jhipster-needle-scss-add-main JHipster will add new css style */
