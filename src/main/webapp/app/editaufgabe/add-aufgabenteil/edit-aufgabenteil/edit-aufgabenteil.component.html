@@ -1,0 +1,22 @@
+<div>
+    <select [(ngModel)]="aufgabenteil.aufgabenteiltyp" class="form-control">
+        <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
+                [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
+    </select>
+    <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'YOUTUBE' && aufgabenteil.aufgabenteiltyp !== 'HTML'">
+        <label for="textfeld">Text</label>
+        <input id="textfeld" type="text" [(ngModel)]="aufgabenteil.text"/>
+    </div>
+    <jhi-edit-multiple-choice
+        *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'"></jhi-edit-multiple-choice>
+    <div *ngIf="aufgabenteil.aufgabenteiltyp === 'YOUTUBE'" class="form-group">
+        <label for="youtubeLink">YoutubeVideo</label>
+        <input id="youtubeLink" type="url" [(ngModel)]="aufgabenteil.text"/>
+    </div>
+    <div *ngIf="aufgabenteil.aufgabenteiltyp === 'HTML'" class="form-group">
+        <label for="newHTMLText">Plain HTML</label>
+        <textarea id="newHTMLText" class="form-control" rows="5" [(ngModel)]="aufgabenteil.text"></textarea>
+    </div>
+    <button class="btn btn-success" (click)="clickOnSave($event)">
+        <fa-icon icon="check"></fa-icon> {{speicherBtnText}}</button>
+</div>

@@ -41,9 +41,10 @@
             <h4>Aufgabenteile</h4>
             <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
         </div>
-        <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList" class="col-12">
+        <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList; let i=index" class="col-12">
             <div class="bg-secondary p-2 my-2">
-                <div class="row">
+                <jhi-edit-aufgabenteil class="row" *ngIf="ediatable.indexOf(i) > -1" (saveClick)="removeFromEditable(i)"></jhi-edit-aufgabenteil>
+                <div class="row" *ngIf="ediatable.indexOf(i) === -1">
                     <div class="col-1">
                         <label>{{aufgabenteil.laufenNr}}.</label>
                     </div>
@@ -71,7 +72,9 @@
                         </div>
                     </div>
                     <div class="col-1">
-                        <button class="btn btn-sm btn-secondary"><fa-icon icon="edit"></fa-icon></button>
+                        <button class="btn btn-sm btn-secondary" (click)="ediatable.push(0)">
+                            <fa-icon icon="edit"></fa-icon>
+                        </button>
                     </div>
                 </div>
             </div>

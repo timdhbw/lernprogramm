@@ -7,11 +7,12 @@ import { AddTagComponent } from './add-tag/add-tag.component';
 import { AddAufgabenteilComponent } from './add-aufgabenteil/add-aufgabenteil.component';
 import { EditMultipleChoiceComponent } from './add-aufgabenteil/edit-multiple-choice/edit-multiple-choice.component';
 import {LernprogrammAufgabenseiteModule} from "app/aufgabenseite/aufgabenseite.module";
+import { EditAufgabenteilComponent } from './add-aufgabenteil/edit-aufgabenteil/edit-aufgabenteil.component';
 
 
 
 @NgModule({
-  declarations: [EditaufgabeComponent, AddTagComponent, AddAufgabenteilComponent, EditMultipleChoiceComponent],
+  declarations: [EditaufgabeComponent, AddTagComponent, AddAufgabenteilComponent, EditMultipleChoiceComponent, EditAufgabenteilComponent],
   exports: [
   ],
   imports: [

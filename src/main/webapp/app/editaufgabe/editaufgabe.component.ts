@@ -19,8 +19,11 @@ export class EditaufgabeComponent implements OnInit {
 
   aufgabeNeuanlage: boolean;
 
+  ediatable: number[]
+
   constructor(private route: ActivatedRoute, private frontendService: FrontendService, private router: Router, private enumUtil: EnumUtil, private alertService: JhiAlertService) {
     this.aufgabe = {} as AufgabeUiDto;
+    this.ediatable = [];
     const aufgabeId: string | null = this.route.snapshot.paramMap.get("aufgabeId");
     this.aufgabeNeuanlage = aufgabeId === null || aufgabeId === "new";
     if (this.aufgabeNeuanlage) {
@@ -32,6 +35,17 @@ export class EditaufgabeComponent implements OnInit {
 
   getAufgabe(): AufgabeUiDto {
     return this.aufgabe;
+  }
+
+  getAufgabenteilList(): AufgabenteilUiDto[] | undefined {
+    return this.aufgabe.aufgabenteilList;
+  }
+
+  removeFromEditable(index: number): void {
+    const i = this.ediatable.indexOf(index);
+    if (i > -1) {
+      this.ediatable.splice(i, 1);
+    }
   }
 
   addAufgabenteil(): void {

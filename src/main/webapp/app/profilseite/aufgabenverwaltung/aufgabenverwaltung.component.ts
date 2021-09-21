@@ -22,7 +22,9 @@ export class AufgabenverwaltungComponent implements OnInit {
     this.router.navigate(["editaufgabe/new"]);
   }
 
-  navigateToEditAufgabe(aufgabeId: number): void {
-    this.router.navigate(["editaufgabe/" + aufgabeId]);
+  navigateToEditAufgabe(aufgabeId: number | undefined): void {
+    if (aufgabeId !== undefined) {
+      this.router.navigate(["editaufgabe/" + aufgabeId]);
+    }
   }
 }
