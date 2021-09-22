@@ -17,73 +17,73 @@
                 </a>
             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-<!--            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">-->
-<!--                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">-->
-<!--                    <span>-->
-<!--                        <fa-icon icon="th-list"></fa-icon>-->
-<!--                        <span jhiTranslate="global.menu.entities.main">-->
-<!--                            Entities-->
-<!--                        </span>-->
-<!--                    </span>-->
-<!--                </a>-->
-<!--                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="produkt-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.produktEntity">Produkt Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="profil-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.profilEntity">Profil Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="aufgabenhistorie-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.aufgabenhistorieEntity">Aufgabenhistorie Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="bewerteter-aufgabentag-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.bewerteterAufgabentagEntity">Bewerteter Aufgabentag Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="aufgabe-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.aufgabeEntity">Aufgabe Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="aufgabentag-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.aufgabentagEntity">Aufgabentag Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="aufgabenteil-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.aufgabenteilEntity">Aufgabenteil Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="multiple-choice-antwort-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.multipleChoiceAntwortEntity">Multiple Choice Antwort Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a class="dropdown-item" routerLink="aufgabenbwtunghist-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">-->
-<!--                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
-<!--                            <span jhiTranslate="global.menu.entities.aufgabenbwtunghistEntity">Aufgabenbwtunghist Entity</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    &lt;!&ndash; jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here &ndash;&gt;-->
-<!--                </ul>-->
-<!--            </li>-->
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span jhiTranslate="global.menu.entities.main">
+                            Entities
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="produkt-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.produktEntity">Produkt Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="profil-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.profilEntity">Profil Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="aufgabenhistorie-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.aufgabenhistorieEntity">Aufgabenhistorie Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="bewerteter-aufgabentag-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.bewerteterAufgabentagEntity">Bewerteter Aufgabentag Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="aufgabe-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.aufgabeEntity">Aufgabe Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="aufgabentag-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.aufgabentagEntity">Aufgabentag Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="aufgabenteil-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.aufgabenteilEntity">Aufgabenteil Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="multiple-choice-antwort-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.multipleChoiceAntwortEntity">Multiple Choice Antwort Entity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="aufgabenbwtunghist-entity" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.aufgabenbwtunghistEntity">Aufgabenbwtunghist Entity</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>

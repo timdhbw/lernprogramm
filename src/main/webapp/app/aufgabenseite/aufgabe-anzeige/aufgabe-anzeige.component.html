@@ -7,8 +7,7 @@
 
         <div class="col">
             <p>Kategorie: {{aufgabe?.kategorie}}</p>
-            <label>Tags:</label>
-            <jhi-edit-tag-leiste [aufgabe]="aufgabe" [addAble]="false" [selectable]="false" [removable]="false"></jhi-edit-tag-leiste>
+            <jhi-edit-tag-leiste [label]="'Tags:'" [aufgabe]="aufgabe" [addAble]="false" [selectable]="false" [removable]="false"></jhi-edit-tag-leiste>
         </div>
         <div class="col">
             <p>Aufgabe Schwierigkeit:</p>

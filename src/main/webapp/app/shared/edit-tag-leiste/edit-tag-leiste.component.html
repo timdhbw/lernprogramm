@@ -1,3 +1,5 @@
+<label *ngIf="label !== undefined">{{label}}</label>
+<p class="small" *ngIf="subLabel !== undefined">{{subLabel}}</p>
 <mat-form-field class="example-chip-list" appearance="fill">
     <mat-chip-list #chipList>
         <mat-chip class="bg-secondary" *ngFor="let tag of aufgabe?.aufgabentagList" [selectable]="selectable"

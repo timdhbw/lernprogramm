@@ -21,6 +21,10 @@ export class EditTagLeisteComponent implements OnInit {
   addAble = true;
   @Input()
   aufgabe: AufgabeUiDto | undefined;
+  @Input()
+  label: string | undefined;
+  @Input()
+  subLabel: string | undefined;
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 

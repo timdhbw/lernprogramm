@@ -23,27 +23,15 @@
             </select>
         </div>
         <div class="col-12 pb-3 pb-md-4">
-            <label>Tags:</label>
-            <p style="font-size: 10px">Zum hinzufügen text eingeben und Enter oder "," Tippen</p>
-            <jhi-edit-tag-leiste [aufgabe]="getAufgabe()"></jhi-edit-tag-leiste>
+            <jhi-edit-tag-leiste [label]="'Tags:'" [subLabel]="'Zum hinzufügen text eingeben und Enter oder , Tippen'"  [aufgabe]="getAufgabe()"></jhi-edit-tag-leiste>
         </div>
-        <!--        <div class="col-12">-->
-        <!--            <label for="tags">tags</label>-->
-        <!--            <div id="tags" class="row mx-1">-->
-        <!--                <div class="border col mr-1 px-0" *ngFor="let tag of getAufgabe().aufgabentagList">-->
-        <!--                    <label class="px-1">{{tag.tag}}</label>-->
-        <!--                    <button class="btn btn-danger" (click)="removeTag(tag)">X</button>-->
-        <!--                </div>-->
-        <!--                <jhi-add-tag [aufgabe]="getAufgabe()" class="col"></jhi-add-tag>-->
-        <!--            </div>-->
-        <!--        </div>-->
         <div class="col-12 pt-md-4 pt-2">
             <h4>Aufgabenteile</h4>
             <jhi-add-aufgabenteil [aufgabe]="getAufgabe()" [laufendeNr]="0"></jhi-add-aufgabenteil>
         </div>
         <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList; let i=index" class="col-12">
             <div class="bg-secondary p-2 my-2">
-                <jhi-edit-aufgabenteil class="row" *ngIf="ediatable.indexOf(i) > -1" (saveClick)="removeFromEditable(i)"></jhi-edit-aufgabenteil>
+                <jhi-edit-aufgabenteil *ngIf="ediatable.indexOf(i) > -1" (saveClick)="removeFromEditable(i)" [aufgabenteil]="aufgabenteil"></jhi-edit-aufgabenteil>
                 <div class="row" *ngIf="ediatable.indexOf(i) === -1">
                     <div class="col-1">
                         <label>{{aufgabenteil.laufenNr}}.</label>
@@ -72,7 +60,7 @@
                         </div>
                     </div>
                     <div class="col-1">
-                        <button class="btn btn-sm btn-secondary" (click)="ediatable.push(0)">
+                        <button class="btn btn-sm btn-secondary" (click)="ediatable.push(i)">
                             <fa-icon icon="edit"></fa-icon>
                         </button>
                     </div>
