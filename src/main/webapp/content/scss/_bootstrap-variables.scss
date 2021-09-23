@@ -45,7 +45,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $font-color-danger: $white !default;
-$light:         $gray-500 !default;
+$light:         $gray-200 !default;
 $dark:          $gray-800 !default;
 
 $yiq-contrasted-threshold:  175 !default;
@@ -144,7 +144,7 @@ $jumbotron-bg:                      $gray-800 !default;
 // Cards
 
 $card-cap-bg:                       $gray-400 !default;
-$card-bg:                           $gray-200 !default;
+$card-bg:                           $light !default;
 
 // Popovers
 
@@ -190,3 +190,7 @@ $close-text-shadow:                 none !default;
 $pre-color:                         inherit !default;
 
 $input-border-color:  $secondary;
+
+$modal-lg:                    800px !default;
+$modal-md:                    800px !default;
+$modal-sm:                    100% !default;
