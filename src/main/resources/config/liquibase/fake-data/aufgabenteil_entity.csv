@@ -1,6 +1,6 @@
 id;laufen_nr;aufgabenteiltyp;text;aufgabe_id
-1;1;TEXT;Text1;1
-2;2;TEXT;Text2;1
+1;1;TEXT;Diese Aufgabe beschäftigt sich mit den den Daten Sharing von Componenten in Angular. Infos gibt es hier: https://angular.io/guide/component-interaction;1
+2;2;MULTIPLECHOICE;Ein Test Component hat den member "@Input() test:string", wie kann eine andere Componente einen Wert an die Variable Test übergeben?;1
 3;1;TEXT;Text3;2
 4;1;TEXT;Text4;3
 5;1;TEXT;Text5;4
@@ -10,7 +10,7 @@ id;laufen_nr;aufgabenteiltyp;text;aufgabe_id
 9;1;TEXT;Text9;8
 10;1;TEXT;Text10;9
 11;1;TEXT;Text11;10
-12;3;MULTIPLECHOICE;Was ist ein korrekte HTML Syntax?;1
+12;3;MULTIPLECHOICE;Ein Test Component wird in HTML so definiert: "<testc (test)="testaufruf($event)"></testc>", was muss in testc definiert werden?;1
 13;2;MULTIPLECHOICE;Text2;10
 14;2;MULTIPLECHOICE;Text3;2
 15;2;MULTIPLECHOICE;Text4;3
