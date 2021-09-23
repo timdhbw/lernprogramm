@@ -1,6 +1,6 @@
 id;checked;checked_richtig;label;aufgabenteil_id
 2;false;false;Corporate Metal monitoring;13
-3;false;true;quantify paradigms;14
+3;false;false;Home Tool Markup Language;14
 4;false;true;even-keeled;15
 5;false;false;Ball Avon Assurance;16
 6;false;true;Florida invoice;17
@@ -9,7 +9,7 @@ id;checked;checked_richtig;label;aufgabenteil_id
 9;false;false;deposit;20
 10;false;true;Small Cotton Ball e-markets;21
 11;false;false;black Legacy methodologies;21
-12;false;false;Corporate Metal monitoring;14
+12;false;false;Hyperlinks and Text Markup Language;14
 14;false;true;even-keeled;13
 15;false;false;Ball Avon Assurance;17
 16;false;true;Florida invoice;15
@@ -26,3 +26,15 @@ id;checked;checked_richtig;label;aufgabenteil_id
 28;false;true;@Output() test = new EventEmitter<Event> + Methode event auf test absetzt;12
 29;false;false;@Output() test: EventEmitter<string> + Methode event auf test absetzt;12
 30;false;false;@Output() test = new EventEmitter<string> + Methode event auf test absetzt;12
+31;false;true;Hyper Text Markup Language;14
+32;false;false;Microsoft;22
+33;false;false;Google;22
+34;false;true;The World Wide Web Consortium;22
+35;false;false;Mozilla;22
+36;false;false;<heading>;23
+37;false;false;<head>;23
+38;false;true;<h1>;23
+39;false;false;<h6>;23
+40;false;false;<break>;24
+41;false;false;<break>;24
+42;false;true;<br>;24
