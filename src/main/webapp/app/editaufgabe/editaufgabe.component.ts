@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AufgabeUiDto} from "target/model/aufgabe";
-import {AufgabentagUiDto} from "target/model/aufgabentag";
 import {AufgabenteilUiDto} from "target/model/aufgabenteil";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FrontendService} from "target/api/frontend.service";
 import {EnumUtil} from "app/shared/util/enum-util";
 import KategorieUiDtoEnum = AufgabeUiDto.KategorieUiDtoEnum;
 import {JhiAlertService} from "ng-jhipster";
+import {AufgabentagMitSelectUiDto} from "target/model/aufgabentagMitSelect";
 
 @Component({
   selector: 'jhi-createaufgabe',
@@ -66,7 +66,7 @@ export class EditaufgabeComponent implements OnInit {
     this.frontendService.getAufgabeById(aufgabeId).toPromise().then(aufgabe => this.aufgabe = aufgabe);
   }
 
-  removeTag(tag: AufgabentagUiDto): void {
+  removeTag(tag: AufgabentagMitSelectUiDto): void {
     const index: number | undefined = this.aufgabe.aufgabentagList?.indexOf(tag);
     if (index !== undefined && index !== -1) {
       this.aufgabe.aufgabentagList?.splice(index, 1);

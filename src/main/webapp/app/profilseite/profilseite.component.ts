@@ -18,8 +18,18 @@ export class ProfilseiteComponent implements OnInit {
     this.profil = {} as ProfilUiDto;
     this.newAufgabeId = 'FEHLER';
     this.fillProfil();
-    this.frontendService.getRandomNextAufgabe().toPromise()
-      .then(randomId => this.newAufgabeId = randomId);
+
+  }
+
+  ngOnInit(): void {
+    this.refreshNextAufgabe();
+  }
+
+  refreshNextAufgabe(): void {
+    if (this.profil.allPossibleTagList) {
+      this.frontendService.getRandomNextAufgabe(this.profil.allPossibleTagList).toPromise()
+        .then(randomId => this.newAufgabeId = randomId);
+    }
   }
 
   private fillProfil(): void {
@@ -36,10 +46,6 @@ export class ProfilseiteComponent implements OnInit {
 
   navigateToAufgabeEins(): void {
     this.router.navigate(["aufgabenseite"], { queryParams: { aufgabeId: 1 } });
-  }
-
-
-  ngOnInit(): void {
   }
 
 }

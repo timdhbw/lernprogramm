@@ -16,7 +16,7 @@ properties:
   aufgabentagList:
     type: array
     items:
-      $ref: "aufgabentag.yml"
+      $ref: "aufgabentagMitSelect.yml"
   aufgabenteilList:
     type: array
     items:

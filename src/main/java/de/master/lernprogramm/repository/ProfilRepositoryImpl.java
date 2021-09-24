@@ -19,11 +19,14 @@ public class ProfilRepositoryImpl implements ProfilRepository{
 
     private final AufgabenhistorieEntityRepository aufgabenhistorieEntityRepository;
 
-    public ProfilRepositoryImpl(ProfilEntityRepository profilEntityRepository, ProfilEntityMapper profilEntityMapper, AufgabeEntityRepository aufgabeEntityRepository, AufgabenhistorieEntityRepository aufgabenhistorieEntityRepository) {
+    private final AufgabentagEntityRepository aufgabentagEntityRepository;
+
+    public ProfilRepositoryImpl(ProfilEntityRepository profilEntityRepository, ProfilEntityMapper profilEntityMapper, AufgabeEntityRepository aufgabeEntityRepository, AufgabenhistorieEntityRepository aufgabenhistorieEntityRepository, AufgabentagEntityRepository aufgabentagEntityRepository) {
         this.profilEntityRepository = profilEntityRepository;
         this.profilEntityMapper = profilEntityMapper;
         this.aufgabeEntityRepository = aufgabeEntityRepository;
         this.aufgabenhistorieEntityRepository = aufgabenhistorieEntityRepository;
+        this.aufgabentagEntityRepository = aufgabentagEntityRepository;
     }
 
     @Override
@@ -31,7 +34,9 @@ public class ProfilRepositoryImpl implements ProfilRepository{
         if (profilId == null) {
             return null;
         }
-        return profilEntityMapper.toDomain(profilEntityRepository.findFirstByProfilId(profilId));
+        Profil profil = profilEntityMapper.toDomain(profilEntityRepository.findFirstByProfilId(profilId));
+        profil.setAllPossibleTagList(profilEntityMapper.toAufgabentagDomainList(aufgabentagEntityRepository.findAll()));
+        return profil;
     }
 
     @Override

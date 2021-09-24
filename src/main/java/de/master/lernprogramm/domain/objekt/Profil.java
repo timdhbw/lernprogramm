@@ -15,6 +15,7 @@ public class Profil {
     private List<BewerteterAufgabentag> bewerteterAufgabentagList;
     private List<Aufgabenhistorie> aufgabenhistorieList;
     private List<Aufgabe> aufgabeList;
+    private List<Aufgabentag> allPossibleTagList;
 
     private int punkte;
     private int rang;

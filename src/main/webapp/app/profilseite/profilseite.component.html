@@ -6,6 +6,8 @@
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-6">
+        <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="profil?.allPossibleTagList"
+                             [selectable]="true" [removable]="false" [addAble]="false" (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
         <label jhiTranslate="profilseite.begruessung.rangTitle"></label>
         <label>1203</label>
     </div>

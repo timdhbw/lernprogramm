@@ -1,8 +1,7 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, Input, OnInit} from '@angular/core';
-import {AufgabeUiDto} from "target/model/aufgabe";
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {MatChipInputEvent} from "@angular/material/chips";
-import {AufgabentagUiDto} from "target/model/aufgabentag";
+import {AufgabentagMitSelectUiDto} from "target/model/aufgabentagMitSelect";
 
 @Component({
   selector: 'jhi-edit-tag-leiste',
@@ -20,11 +19,13 @@ export class EditTagLeisteComponent implements OnInit {
   @Input()
   addAble = true;
   @Input()
-  aufgabe: AufgabeUiDto | undefined;
+  aufgabentagList: AufgabentagMitSelectUiDto[] | undefined;
   @Input()
   label: string | undefined;
   @Input()
   subLabel: string | undefined;
+  @Output()
+  selectClick = new EventEmitter();
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -38,10 +39,10 @@ export class EditTagLeisteComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if (this.aufgabe?.aufgabentagList) {
+    if (this.aufgabentagList) {
       // Add our tag
       if ((value || '').trim()) {
-        this.aufgabe.aufgabentagList.push({tag: value.trim()});
+        this.aufgabentagList.push({tag: value.trim()});
       }
 
       // Reset the input value
@@ -51,14 +52,20 @@ export class EditTagLeisteComponent implements OnInit {
     }
   }
 
-  remove(tag: AufgabentagUiDto): void {
-    if (this.aufgabe?.aufgabentagList) {
-      const index = this.aufgabe.aufgabentagList.indexOf(tag);
+  remove(tag: AufgabentagMitSelectUiDto): void {
+    if (this.aufgabentagList) {
+      const index = this.aufgabentagList.indexOf(tag);
 
       if (index >= 0) {
-        this.aufgabe.aufgabentagList.splice(index, 1);
+        this.aufgabentagList.splice(index, 1);
       }
     }
   }
 
+  toggleTag(tag: AufgabentagMitSelectUiDto): void {
+    if (this.selectable) {
+      tag.selected = !tag.selected;
+      this.selectClick.emit();
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AufgabentagUiDto} from "target/model/aufgabentag";
 import {FrontendService} from "target/api/frontend.service";
 import {AufgabeUiDto} from "target/model/aufgabe";
+import {AufgabentagMitSelectUiDto} from "target/model/aufgabentagMitSelect";
 
 @Component({
   selector: 'jhi-add-tag',
@@ -12,9 +12,9 @@ export class AddTagComponent implements OnInit {
 
   showSelect: boolean;
 
-  newTag: AufgabentagUiDto | undefined;
+  newTag: AufgabentagMitSelectUiDto | undefined;
 
-  possibleTags: AufgabentagUiDto[];
+  possibleTags: AufgabentagMitSelectUiDto[];
 
   @Input()
   aufgabe: AufgabeUiDto | undefined;

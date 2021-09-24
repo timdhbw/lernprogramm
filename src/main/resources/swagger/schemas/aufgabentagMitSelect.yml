@@ -1,5 +1,5 @@
 type: object
-name: Aufgabentag
+name: AufgabentagMitSelect
 properties:
   aufgabentagId:
     type: integer
@@ -7,3 +7,5 @@ properties:
     type: string
   text:
     type: string
+  selected:
+    type: boolean

@@ -7,11 +7,12 @@ import de.master.lernprogramm.domain.service.AufgabeService;
 import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
-import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
+import de.master.lernprogramm.web.api.dtos.AufgabentagMitSelectUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabenbewertungUiDto;
 import de.master.lernprogramm.web.api.dtos.InlineResponse200UiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -64,8 +65,8 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     }
 
     @Override
-    public ResponseEntity<List<AufgabentagUiDto>> getExistingTagList() {
-        return ResponseEntity.ok(Arrays.asList(new AufgabentagUiDto().tag("TestTAg")));
+    public ResponseEntity<List<AufgabentagMitSelectUiDto>> getExistingTagList() {
+        return ResponseEntity.ok(Arrays.asList(new AufgabentagMitSelectUiDto().tag("TestTAg")));
     }
 
     @Override
@@ -78,12 +79,16 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     }
 
     @Override
-    public ResponseEntity<String> getRandomNextAufgabe() {
+    public ResponseEntity<String> getRandomNextAufgabe(List<AufgabentagMitSelectUiDto> selectedTagsList) {
         Optional<User> optionalUser = userService.getUserWithAuthorities();
         if (!optionalUser.isPresent()) {
             return null;
         }
-        return ResponseEntity.ok(aufgabeService.getRandomNextAufgabeForUser(optionalUser.get()));
+        String randomNextAufgabeId = aufgabeService.getRandomNextAufgabeForUser(optionalUser.get());
+        if (randomNextAufgabeId == null) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.ok(randomNextAufgabeId);
     }
 
     @Override

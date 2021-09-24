@@ -11,6 +11,10 @@ properties:
     type: array
     items:
       $ref: 'aufgabentagbewertet.yml'
+  allPossibleTagList:
+    type: array
+    items:
+      $ref: 'aufgabentagMitSelect.yml'
   punkte:
     type: integer
   rang:

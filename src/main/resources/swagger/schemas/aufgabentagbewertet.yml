@@ -4,6 +4,6 @@ properties:
   aufgabentagBewertetId:
     type: integer
   aufgabentag:
-    $ref: 'aufgabentag.yml'
+    $ref: 'aufgabentagMitSelect.yml'
   bewertung:
     type: integer
