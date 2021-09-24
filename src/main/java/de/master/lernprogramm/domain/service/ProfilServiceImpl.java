@@ -43,14 +43,14 @@ public class ProfilServiceImpl implements ProfilService {
     }
 
     @Override
-    public void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, Integer ergebnisUser) {
+    public void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, double ergebnisUser) {
         Profil profil = profilRepository.getProfilByProfilId(userId.toString());
         Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
 
         Aufgabenhistorie aufgabenhistorie = new Aufgabenhistorie();
-        aufgabenhistorie.setAufgabe(aufgabe);
         aufgabenhistorie.setDatum(LocalDate.now());
         aufgabenhistorie.setBewertungsveraenderung(ergebnisUser);
+        profilRepository.addAufgabenhistorie(userId, aufgabeId, aufgabenhistorie);
         profil.addAufgabenhistorie(aufgabenhistorie);
     }
 }

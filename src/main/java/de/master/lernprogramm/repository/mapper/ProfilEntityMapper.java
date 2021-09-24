@@ -14,9 +14,13 @@ public interface ProfilEntityMapper {
     @Mapping(target = "removeAufgabenhistorieEntity", ignore = true)
     @Mapping(target = "removeAufgabeEntity", ignore = true)
     @Mapping(target = "bewerteterAufgabentagEntities", ignore = true)
-    @Mapping(target = "aufgabenhistorieEntities", ignore = true)
+    @Mapping(target = "aufgabenhistorieEntities", source = "aufgabenhistorieList")
     @Mapping(target = "aufgabeEntities", ignore = true)
     ProfilEntity toEntity(Profil profil);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "profil", ignore = true)
+    AufgabenhistorieEntity toEntity(Aufgabenhistorie aufgabenhistorie);
 
     @Mapping(target = "profilId", source = "id")
     @Mapping(target = "aufgabeList", source = "aufgabeEntities")

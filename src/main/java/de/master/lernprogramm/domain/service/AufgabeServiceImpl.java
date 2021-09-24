@@ -81,9 +81,14 @@ public class AufgabeServiceImpl implements AufgabeService {
     }
 
     @Override
-    public double berechneErgebnis(Aufgabe toDomain) {
-        // TODO Ergebnis berechnen
-        return 0;
+    public double berechneErgebnis(Aufgabe aufgabe) {
+        if (aufgabe == null || aufgabe.getAufgabenteilList() == null) {
+            return 0;
+        }
+        return aufgabe.getAufgabenteilList().stream()
+            .mapToDouble(Aufgabenteil::werteAufgabenteilAus)
+            .filter(doub -> doub > -1)
+            .average().orElse(5);
     }
 
     private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {

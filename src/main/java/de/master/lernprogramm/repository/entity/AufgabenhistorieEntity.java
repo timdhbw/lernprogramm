@@ -26,7 +26,7 @@ public class AufgabenhistorieEntity implements Serializable {
     private LocalDate datum;
 
     @Column(name = "bewertungsveraenderung")
-    private Integer bewertungsveraenderung;
+    private Double bewertungsveraenderung;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "aufgabenhistorieEntities", allowSetters = true)
@@ -58,16 +58,16 @@ public class AufgabenhistorieEntity implements Serializable {
         this.datum = datum;
     }
 
-    public Integer getBewertungsveraenderung() {
+    public Double getBewertungsveraenderung() {
         return bewertungsveraenderung;
     }
 
-    public AufgabenhistorieEntity bewertungsveraenderung(Integer bewertungsveraenderung) {
+    public AufgabenhistorieEntity bewertungsveraenderung(Double bewertungsveraenderung) {
         this.bewertungsveraenderung = bewertungsveraenderung;
         return this;
     }
 
-    public void setBewertungsveraenderung(Integer bewertungsveraenderung) {
+    public void setBewertungsveraenderung(Double bewertungsveraenderung) {
         this.bewertungsveraenderung = bewertungsveraenderung;
     }
 

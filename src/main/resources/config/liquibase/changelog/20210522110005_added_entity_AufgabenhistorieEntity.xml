@@ -18,7 +18,7 @@
             <column name="datum" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="bewertungsveraenderung" type="integer">
+            <column name="bewertungsveraenderung" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="profil_id" type="bigint">

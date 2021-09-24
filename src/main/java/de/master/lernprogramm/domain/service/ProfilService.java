@@ -6,5 +6,5 @@ public interface ProfilService {
 
     Profil getProfilById(String profilId);
 
-    void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, Integer ergebnisUser);
+    void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, double ergebnisUser);
 }

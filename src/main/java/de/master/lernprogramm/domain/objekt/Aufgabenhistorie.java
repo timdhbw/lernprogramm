@@ -9,10 +9,10 @@ import java.time.temporal.ChronoUnit;
 public class Aufgabenhistorie {
 
     private LocalDate datum;
-    private Integer bewertungsveraenderung;
+    private Double bewertungsveraenderung;
     private Aufgabe aufgabe;
 
-    public Integer getBewertungNachFormel() {
+    public Double getBewertungNachFormel() {
         long daysBetween = ChronoUnit.DAYS.between(datum, LocalDate.now());
         return (aufgabe.getBewertung() + bewertungsveraenderung) / (int) ((daysBetween < 1) ? 1 : daysBetween);
     }

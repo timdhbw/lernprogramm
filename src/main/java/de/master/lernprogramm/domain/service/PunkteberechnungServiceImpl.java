@@ -13,8 +13,8 @@ public class PunkteberechnungServiceImpl implements PunkteberechnungService {
             //TODO das jetzt nicht so geil, andere Exception?
             return 0;
         }
-        return profil.getAufgabenhistorieList().stream()
-            .mapToInt(Aufgabenhistorie::getBewertungNachFormel)
+        return (int) profil.getAufgabenhistorieList().stream()
+            .mapToDouble(Aufgabenhistorie::getBewertungNachFormel)
             .sum();
     }
 }
