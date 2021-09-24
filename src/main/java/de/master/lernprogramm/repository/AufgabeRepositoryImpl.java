@@ -1,8 +1,10 @@
 package de.master.lernprogramm.repository;
 
 import de.master.lernprogramm.domain.objekt.Aufgabe;
+import de.master.lernprogramm.domain.objekt.AufgabenbewertungHistorie;
 import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.repository.entity.AufgabeEntity;
+import de.master.lernprogramm.repository.entity.AufgabenbwtunghistEntity;
 import de.master.lernprogramm.repository.entity.AufgabenteilEntity;
 import de.master.lernprogramm.repository.mapper.AufgabeEntityMapper;
 import de.master.lernprogramm.repository.mapper.ProfilEntityMapper;
@@ -26,12 +28,15 @@ public class AufgabeRepositoryImpl implements AufgabeRepository{
 
     private final AufgabenteilEntityRepository aufgabenteilEntityRepository;
 
-    public AufgabeRepositoryImpl(AufgabeEntityRepository aufgabeEntityRepository, ProfilRepository profilRepository, AufgabeEntityMapper aufgabeEntityMapper, ProfilEntityMapper profilEntityMapper, AufgabenteilEntityRepository aufgabenteilEntityRepository) {
+    private final AufgabenbwtunghistEntityRepository aufgabenbwtunghistEntityRepository;
+
+    public AufgabeRepositoryImpl(AufgabeEntityRepository aufgabeEntityRepository, ProfilRepository profilRepository, AufgabeEntityMapper aufgabeEntityMapper, ProfilEntityMapper profilEntityMapper, AufgabenteilEntityRepository aufgabenteilEntityRepository, AufgabenbwtunghistEntityRepository aufgabenbwtunghistEntityRepository) {
         this.aufgabeEntityRepository = aufgabeEntityRepository;
         this.profilRepository = profilRepository;
         this.aufgabeEntityMapper = aufgabeEntityMapper;
         this.profilEntityMapper = profilEntityMapper;
         this.aufgabenteilEntityRepository = aufgabenteilEntityRepository;
+        this.aufgabenbwtunghistEntityRepository = aufgabenbwtunghistEntityRepository;
     }
 
     @Override
@@ -62,6 +67,14 @@ public class AufgabeRepositoryImpl implements AufgabeRepository{
         }
         return aufgabeEntityMapper.toDomain(aufgabeEntityRepository
             .findById(aufgabeId.longValue()).orElse(null));
+    }
+
+    @Override
+    public void setAufgabeBewertung(Integer aufgabeId, AufgabenbewertungHistorie aufgabenbewertungHistorie) {
+        AufgabenbwtunghistEntity aufgabenbwtunghistEntity = aufgabeEntityMapper.toEntity(aufgabenbewertungHistorie);
+        aufgabenbwtunghistEntity.setAufgabe(aufgabeEntityRepository.findById(aufgabeId.longValue()).orElse(null));
+        aufgabenbwtunghistEntityRepository.save(aufgabenbwtunghistEntity);
+
     }
 
     private void saveAufgabenteile(AufgabenteilEntity aufgabenteilEntity) {

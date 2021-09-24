@@ -8,6 +8,7 @@ import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
+import de.master.lernprogramm.web.api.dtos.AufgabenbewertungUiDto;
 import de.master.lernprogramm.web.api.dtos.InlineResponse200UiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import lombok.extern.slf4j.Slf4j;
@@ -100,6 +101,16 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
         return ResponseEntity.ok(new InlineResponse200UiDto().ergenisUser(BigDecimal.valueOf(ergebnis)));
     }
 
+    @Override
+    public ResponseEntity<Boolean> setAufgabenbewertung(AufgabenbewertungUiDto aufgabenbewertungUiDto) {
+        try {
+            aufgabeService.bewerteAufgabe(aufgabenbewertungUiDto.getAufgabeId(), aufgabenbewertungUiDto.getBewertung());
+            ResponseEntity.ok(true);
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return ResponseEntity.ok(false);
+    }
 
     private Integer getUserId() {
         Optional<User> optionalUser = userService.getUserWithAuthorities();

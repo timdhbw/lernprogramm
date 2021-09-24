@@ -73,11 +73,10 @@ public class AufgabeServiceImpl implements AufgabeService {
 
     @Override
     public void bewerteAufgabe(Integer aufgabeId, Integer aufgabeBewertung) {
-        Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
         AufgabenbewertungHistorie aufgabenbewertungHistorie = new AufgabenbewertungHistorie();
         aufgabenbewertungHistorie.setDatum(LocalDate.now());
         aufgabenbewertungHistorie.setBewertungsveraenderung(aufgabeBewertung);
-        aufgabe.addAufgabenbewertungHistorie(aufgabenbewertungHistorie);
+        aufgabeRepository.setAufgabeBewertung(aufgabeId, aufgabenbewertungHistorie);
     }
 
     @Override
