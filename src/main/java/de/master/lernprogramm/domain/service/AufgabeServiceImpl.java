@@ -80,6 +80,12 @@ public class AufgabeServiceImpl implements AufgabeService {
         aufgabe.addAufgabenbewertungHistorie(aufgabenbewertungHistorie);
     }
 
+    @Override
+    public double berechneErgebnis(Aufgabe toDomain) {
+        // TODO Ergebnis berechnen
+        return 0;
+    }
+
     private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {
         Profil profil = profilService.getProfilById(user.getId().toString());
         if (profil.getAufgabeList() == null) {

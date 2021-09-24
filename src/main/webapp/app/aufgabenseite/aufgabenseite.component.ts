@@ -33,7 +33,12 @@ export class AufgabenseiteComponent implements OnInit {
 
   schliesseAufgabe(): void {
     if (this.aufgabe) {
-      this.aufgabenabschlussModalService.open(this.aufgabe);
+      this.frontendService.aufgabenAbschluss(this.aufgabe).toPromise()
+        .then(res => {
+          if (res.ergenisUser && this.aufgabe) {
+              this.aufgabenabschlussModalService.open(this.aufgabe, res.ergenisUser);
+          }
+        })
     }
   }
 

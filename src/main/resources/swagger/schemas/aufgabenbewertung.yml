@@ -1,0 +1,7 @@
+type: object
+name: Aufgabenbewertung
+properties:
+  aufgabeId:
+    type: integer
+  bewertung:
+    type: integer

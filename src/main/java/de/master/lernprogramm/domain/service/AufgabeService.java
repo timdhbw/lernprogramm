@@ -12,4 +12,6 @@ public interface AufgabeService {
     String getRandomNextAufgabeForUser(User user);
 
     void bewerteAufgabe(Integer aufgabeId, Integer aufgabeBewertung);
+
+    double berechneErgebnis(Aufgabe toDomain);
 }

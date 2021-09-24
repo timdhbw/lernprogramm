@@ -8,11 +8,13 @@ import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.service.UserService;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabentagUiDto;
+import de.master.lernprogramm.web.api.dtos.InlineResponse200UiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -91,17 +93,14 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     }
 
     @Override
-    public ResponseEntity<Boolean> getAufgabeIstAbgeschlossen(Integer aufgabeId, Integer ergebnisUser, Integer bewertungAufgabe) {
-        try {
-            Integer userId = getUserId();
-            aufgabeService.bewerteAufgabe(aufgabeId, bewertungAufgabe);
-            profilService.setAufgabeVonProfilAbgeschlossen(userId, aufgabeId, ergebnisUser);
-        } catch (Exception e) {
-            log.error(e.toString());
-            return ResponseEntity.ok(false);
-        }
-        return ResponseEntity.ok(true);
+    public ResponseEntity<InlineResponse200UiDto> aufgabenAbschluss(AufgabeUiDto aufgabeUiDto) {
+        Integer userId = getUserId();
+        double ergebnis = aufgabeService.berechneErgebnis(frontendMapper.toDomain(aufgabeUiDto));
+        // TODO richtiges ERgebnis
+        profilService.setAufgabeVonProfilAbgeschlossen(userId, aufgabeUiDto.getAufgabeId(), 1);
+        return ResponseEntity.ok(new InlineResponse200UiDto().ergenisUser(BigDecimal.valueOf(ergebnis)));
     }
+
 
     private Integer getUserId() {
         Optional<User> optionalUser = userService.getUserWithAuthorities();
