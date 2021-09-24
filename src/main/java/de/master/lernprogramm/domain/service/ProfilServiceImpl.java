@@ -1,6 +1,5 @@
 package de.master.lernprogramm.domain.service;
 
-import de.master.lernprogramm.domain.objekt.Aufgabe;
 import de.master.lernprogramm.domain.objekt.Aufgabenhistorie;
 import de.master.lernprogramm.domain.objekt.Profil;
 import de.master.lernprogramm.repository.AufgabeRepository;
@@ -44,13 +43,11 @@ public class ProfilServiceImpl implements ProfilService {
 
     @Override
     public void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, double ergebnisUser) {
-        Profil profil = profilRepository.getProfilByProfilId(userId.toString());
-        Aufgabe aufgabe = aufgabeRepository.getAufgabeById(aufgabeId);
 
         Aufgabenhistorie aufgabenhistorie = new Aufgabenhistorie();
         aufgabenhistorie.setDatum(LocalDate.now());
         aufgabenhistorie.setBewertungsveraenderung(ergebnisUser);
         profilRepository.addAufgabenhistorie(userId, aufgabeId, aufgabenhistorie);
-        profil.addAufgabenhistorie(aufgabenhistorie);
+        log.info("Aufgabenhistoriesi von ProfilId: {} nach: {}", userId, profilRepository.getProfilByProfilId(userId.toString()).getAufgabenhistorieList());
     }
 }

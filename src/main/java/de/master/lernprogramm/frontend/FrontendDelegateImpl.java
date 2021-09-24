@@ -96,8 +96,7 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
     public ResponseEntity<InlineResponse200UiDto> aufgabenAbschluss(AufgabeUiDto aufgabeUiDto) {
         Integer userId = getUserId();
         double ergebnis = aufgabeService.berechneErgebnis(frontendMapper.toDomain(aufgabeUiDto));
-        // TODO richtiges ERgebnis
-        profilService.setAufgabeVonProfilAbgeschlossen(userId, aufgabeUiDto.getAufgabeId(), 1);
+        profilService.setAufgabeVonProfilAbgeschlossen(userId, aufgabeUiDto.getAufgabeId(), ergebnis);
         return ResponseEntity.ok(new InlineResponse200UiDto().ergenisUser(BigDecimal.valueOf(ergebnis)));
     }
 

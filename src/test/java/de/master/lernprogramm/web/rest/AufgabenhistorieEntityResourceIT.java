@@ -41,8 +41,8 @@ public class AufgabenhistorieEntityResourceIT {
     private static final LocalDate DEFAULT_DATUM = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATUM = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_BEWERTUNGSVERAENDERUNG = 1;
-    private static final Integer UPDATED_BEWERTUNGSVERAENDERUNG = 2;
+    private static final Double DEFAULT_BEWERTUNGSVERAENDERUNG = 1D;
+    private static final Double UPDATED_BEWERTUNGSVERAENDERUNG = 2D;
 
     @Autowired
     private AufgabenhistorieEntityRepository aufgabenhistorieEntityRepository;

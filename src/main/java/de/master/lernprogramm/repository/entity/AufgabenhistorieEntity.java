@@ -20,6 +20,7 @@ public class AufgabenhistorieEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(nullable = false, unique = true)
     private Long id;
 
     @Column(name = "datum")
