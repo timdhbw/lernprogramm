@@ -101,17 +101,10 @@ public class AufgabeServiceImpl implements AufgabeService {
     }
 
     private Aufgabe createNewAufgabe() {
-        return getAufgabe(1);
-    }
-
-    private Aufgabe getAufgabe(Integer aufgabeId) {
         Aufgabe aufgabe = new Aufgabe();
-        aufgabe.setAufgabeId(aufgabeId);
-        aufgabe.setAutorId(1);
-        aufgabe.setAufgabentitel("Aufgabe " + aufgabeId);
+        aufgabe.setAufgabenteilList(new ArrayList<>());
+        aufgabe.setAufgabentagList(new ArrayList<>());
         aufgabe.setKategorie(AufgabenkategorieEnum.SOFTWAREENTWICKLUNG);
-        aufgabe.setAufgabentagList(getAufgabentagList(aufgabeId));
-        aufgabe.setAufgabenteilList(getAufgabenteilList(aufgabeId));
         return aufgabe;
     }
 
