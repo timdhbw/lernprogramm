@@ -33,6 +33,9 @@ public class ProfilEntity implements Serializable {
     @Column(name = "nachname")
     private String nachname;
 
+    @Column(name = "gewaehlte_tags")
+    private String gewaehlteTags;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "profil")
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
@@ -85,6 +88,19 @@ public class ProfilEntity implements Serializable {
 
     public void setNachname(String nachname) {
         this.nachname = nachname;
+    }
+
+    public String getGewaehlteTags() {
+        return gewaehlteTags;
+    }
+
+    public ProfilEntity gewaehlteTags(String gewaehlteTags) {
+        this.gewaehlteTags = gewaehlteTags;
+        return this;
+    }
+
+    public void setGewaehlteTags(String gewaehlteTags) {
+        this.gewaehlteTags = gewaehlteTags;
     }
 
     public Set<AufgabenhistorieEntity> getAufgabenhistorieEntities() {
@@ -162,6 +178,7 @@ public class ProfilEntity implements Serializable {
             ", profilId='" + getProfilId() + "'" +
             ", vorname='" + getVorname() + "'" +
             ", nachname='" + getNachname() + "'" +
+            ", gewaehlteTags='" + getGewaehlteTags() + "'" +
             "}";
     }
 }

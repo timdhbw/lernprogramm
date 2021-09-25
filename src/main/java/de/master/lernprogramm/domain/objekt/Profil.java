@@ -4,6 +4,7 @@ package de.master.lernprogramm.domain.objekt;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Data
@@ -12,6 +13,7 @@ public class Profil {
     private String profilId;
     private String vorname;
     private String nachname;
+    private String gewaehlteTags;
     private List<Aufgabenhistorie> aufgabenhistorieList;
     private List<Aufgabe> aufgabeList;
     private List<Aufgabentag> allPossibleTagList;
@@ -36,7 +38,15 @@ public class Profil {
                 result.setBewertung(Double.valueOf(bewertung).intValue());
                 bewerteterAufgabentagList.add(result);
             });
+        setSelectedIfTagIsSelected(bewerteterAufgabentagList);
         return bewerteterAufgabentagList;
+    }
+
+    private void setSelectedIfTagIsSelected(List<BewerteterAufgabentag> bewerteterAufgabentagList) {
+        if (gewaehlteTags != null) {
+            List<String> tagList = Arrays.asList(gewaehlteTags.split(","));
+            bewerteterAufgabentagList.forEach(tag -> tag.setSelected(tagList.contains(tag.getAufgabentag().getTag())));
+        }
     }
 
 }

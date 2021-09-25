@@ -1,12 +1,13 @@
 entity ProfilEntity {
   	profilId String required,
  	vorname String,
- 	nachname String
+ 	nachname String,
+ 	gewaehlteTags String
 }
 
 entity AufgabenhistorieEntity {
 	datum LocalDate,
-    bewertungsveraenderung Integer
+    bewertungsveraenderung Double
 }
 
 entity AufgabenbwtunghistEntity {

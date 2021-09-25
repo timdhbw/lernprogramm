@@ -1,3 +1,3 @@
-id;profil_id;vorname;nachname
-1;3;Software;Entwickler
-2;4;Entwickler;von der Software
+id;profil_id;vorname;nachname;gewaehlte_tags
+1;3;Software;Entwickler;quiz,json,typescript
+2;4;Entwickler;von der Software;quiz,json,typescript
