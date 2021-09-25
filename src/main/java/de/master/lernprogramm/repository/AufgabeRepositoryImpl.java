@@ -49,19 +49,23 @@ public class AufgabeRepositoryImpl implements AufgabeRepository {
         if (aufgabeToSave == null) {
             return null;
         }
-        log.info("Versuche Aufgabe zu speichern: {}", aufgabeToSave);
         Profil profil = profilRepository.getProfilByProfilId(aufgabeToSave.getAutorId().toString());
-        log.info("Profil geholt");
         AufgabeEntity aufgabeEntityToSave = aufgabeEntityMapper.toEntity(aufgabeToSave);
-        log.info("Mapped to entity");
         aufgabeEntityToSave.setAutor(profilEntityMapper.toEntity(profil));
-        aufgabeEntityToSave.getAufgabenteilEntities().forEach(this::saveAufgabenteile);
-        log.info("Aufgabenteile gespeichert");
-        AufgabeEntity aufgabeEntity = aufgabeEntityRepository.save(aufgabeEntityToSave);
-        log.info("Aufgabe gespeichert: {}", aufgabeEntity);
-        saveAufgabentagsAnAufgabe(aufgabeEntity, aufgabeToSave.getAufgabentagList());
-        log.info("Aufgabentags gespeichert");
-        return aufgabeEntityMapper.toDomain(aufgabeEntityRepository.findById(aufgabeEntity.getId()).orElse(null));
+        aufgabeEntityToSave.setAufgabenteilEntities(aufgabeEntityToSave.getAufgabenteilEntities().stream()
+            .map(this::saveAufgabenteile)
+        .collect(Collectors.toSet()));
+        if (aufgabeToSave.getAufgabeId() != null) {
+            AufgabeEntity oldAufgabe = aufgabeEntityRepository.findById(aufgabeToSave.getAufgabeId().longValue()).orElse(null);
+            if (oldAufgabe != null) {
+                aufgabeEntityToSave.setAufgabenbwtunghistEntities(oldAufgabe.getAufgabenbwtunghistEntities());
+                aufgabeEntityToSave.setAufgabenhistorieEntities(oldAufgabe.getAufgabenhistorieEntities());
+            }
+        } else {
+            aufgabeEntityToSave = aufgabeEntityRepository.save(aufgabeEntityToSave);
+        }
+        saveAufgabentagsAnAufgabe(aufgabeEntityToSave, aufgabeToSave.getAufgabentagList());
+        return aufgabeEntityMapper.toDomain(aufgabeEntityRepository.findById(aufgabeEntityToSave.getId()).orElse(null));
     }
 
     @Override
@@ -92,15 +96,18 @@ public class AufgabeRepositoryImpl implements AufgabeRepository {
 
     private void saveAufgabentagsAnAufgabe(AufgabeEntity aufgabeEntity, List<Aufgabentag> aufgabentagListToSave) {
         List<AufgabentagEntity> exitstingAufgabentags = aufgabentagEntityRepository.findAll();
+        aufgabeEntity.getAufgabentags().clear();
         aufgabentagListToSave.forEach(tagToSave -> {
                 AufgabentagEntity aufgabentagEntity = exitstingAufgabentags.stream()
                     .filter(existTag -> tagToSave.getTag().equals(existTag.getTag()))
                     .findAny()
                     .orElse(saveNewAufgabentagEntity(tagToSave.getTag()));
                 aufgabentagEntity.addAufgabe(aufgabeEntity);
-                aufgabentagEntityRepository.save(aufgabentagEntity);
+                aufgabeEntity.addAufgabentag(aufgabentagEntity);
             }
         );
+        log.info("save Aufgabe: {}", aufgabeEntity);
+        aufgabeEntityRepository.save(aufgabeEntity);
     }
 
     private AufgabentagEntity saveNewAufgabentagEntity(String tagToSave) {
@@ -110,7 +117,7 @@ public class AufgabeRepositoryImpl implements AufgabeRepository {
         return aufgabentagEntityRepository.save(toSave);
     }
 
-    private void saveAufgabenteile(AufgabenteilEntity aufgabenteilEntity) {
-        aufgabenteilEntity = aufgabenteilEntityRepository.save(aufgabenteilEntity);
+    private AufgabenteilEntity saveAufgabenteile(AufgabenteilEntity aufgabenteilEntity) {
+        return aufgabenteilEntityRepository.save(aufgabenteilEntity);
     }
 }

@@ -1,15 +1,16 @@
 package de.master.lernprogramm.frontend;
 
-import de.master.lernprogramm.domain.objekt.Aufgabe;
-import de.master.lernprogramm.domain.objekt.Aufgabentag;
-import de.master.lernprogramm.domain.objekt.BewerteterAufgabentag;
-import de.master.lernprogramm.domain.objekt.Profil;
+import de.master.lernprogramm.domain.objekt.*;
 import de.master.lernprogramm.web.api.dtos.AufgabeUiDto;
 import de.master.lernprogramm.web.api.dtos.AufgabentagMitSelectUiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,5 +39,15 @@ public interface FrontendMapper {
     @Mapping(target = "aufgabenberwtungHistList", ignore = true)
     Aufgabe toDomain(AufgabeUiDto aufgabeUiDto);
 
+    @AfterMapping
+    default void afterMapping(@MappingTarget Aufgabe aufgabe, AufgabeUiDto aufgabeUiDto) {
+        // wenn Aufgabe neu angelegt wird, initiale Bewertung mitgeben
+        if (aufgabeUiDto.getAufgabeId() == null) {
+            AufgabenbewertungHistorie aufgabenbewertungHistorie = new AufgabenbewertungHistorie();
+            aufgabenbewertungHistorie.setBewertungsveraenderung(aufgabeUiDto.getBewertung());
+            aufgabenbewertungHistorie.setDatum(LocalDate.now());
+            aufgabe.setAufgabenberwtungHistList(Arrays.asList(aufgabenbewertungHistorie));
+        }
+    }
 
 }

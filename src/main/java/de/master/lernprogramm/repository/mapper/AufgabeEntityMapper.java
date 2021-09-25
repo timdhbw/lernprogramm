@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(uses = {ProfilEntityMapper.class})
 public interface AufgabeEntityMapper {
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "id", source = "aufgabeId")
     @Mapping(target = "aufgabenteilEntities", source = "aufgabenteilList")
     @Mapping(target = "aufgabenbwtunghistEntities", source = "aufgabenberwtungHistList")
     @Mapping(target = "removeAufgabenteilEntity", ignore = true)
