@@ -3,10 +3,18 @@
 </div>
 <div class="row justify-content-center mb-2">
     <p class="col-12" jhiTranslate="profilseite.begruessung.anredeText"></p>
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 bg-warning" *ngIf="aufgabeHeuteAbgeschlossen">
+        <label>Du hast heute bereits eine Aufgabe abgeschlossen. Du musst bis morgen warten, bis du wieder eine Aufgabe
+            ausführen kannst. ({{newAufgabeId}})</label>
+    </div>
+    <div class="col-12 col-md-6 bg-warning" *ngIf="aufgabeIdnichtGefunden">
+        <label>Für dich und deine aktuelle Tag-Auswahl wurden leider keine neuen Aufgaben gefunden. Wenn du gerne eine
+            Aufgabe machen möchtest, versuche mehr Tags zu wählen</label>
+    </div>
+    <div class="col-12 col-md-6" *ngIf="isAufgabeIdValid">
         <label class="col-12 p-0" jhiTranslate="profilseite.begruessung.aufgabenTitle"></label>
         <button class="btn btn-success btn-block" (click)="navigateToAufgabe()">Aufgabe (id: {{newAufgabeId}})</button>
-        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>
+        <!--        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>-->
     </div>
 </div>
 <div class="row">

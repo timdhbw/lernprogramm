@@ -17,7 +17,7 @@ export class ProfilseiteComponent implements OnInit {
 
   constructor(private frontendService: FrontendService, private router:Router) {
     this.profil = {} as ProfilUiDto;
-    this.newAufgabeId = 'FEHLER';
+    this.newAufgabeId = '';
     this.fillProfil();
 
   }
@@ -48,8 +48,22 @@ export class ProfilseiteComponent implements OnInit {
     return this.profil.vorname + ' ' + this.profil.nachname;
   }
 
+  get aufgabeIdnichtGefunden(): boolean {
+    return this.newAufgabeId === '';
+  }
+
+  get aufgabeHeuteAbgeschlossen(): boolean {
+    return this.newAufgabeId.startsWith('abgeschlossen')
+  }
+
+  get isAufgabeIdValid(): boolean {
+    return !this.aufgabeIdnichtGefunden && !this.aufgabeHeuteAbgeschlossen;
+  }
+
   navigateToAufgabe(): void {
-    this.router.navigate(["aufgabenseite"], { queryParams: { aufgabeId: this.newAufgabeId } });
+    if (this.isAufgabeIdValid) {
+      this.router.navigate(["aufgabenseite"], {queryParams: {aufgabeId: this.newAufgabeId}});
+    }
   }
 
   navigateToAufgabeEins(): void {

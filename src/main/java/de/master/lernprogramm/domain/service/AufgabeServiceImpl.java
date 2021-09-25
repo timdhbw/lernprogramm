@@ -52,10 +52,24 @@ public class AufgabeServiceImpl implements AufgabeService {
 
     @Override
     public String getRandomNextAufgabeForUser(User user) {
+        if (hasUserAufgabeTodayAbgeschlossen(user)) {
+            return "abgeschlossen" + LocalDate.now().toString();
+        }
         final List<Integer> possibleIds = aufgabeRepository.getAllPossibleAufgabenIds();
         getAbgeschlosseneAufgabenIdsVonUser(user).forEach(possibleIds::remove);
         getAufgabenVonUser(user).forEach(possibleIds::remove);
+        if (possibleIds.isEmpty()) {
+            return null;
+        }
         return Randomizer.getRandomItemOfList(possibleIds).toString();
+    }
+
+    private boolean hasUserAufgabeTodayAbgeschlossen(User user) {
+        Profil profil = profilService.getProfilById(user.getId().toString());
+        if (profil.getAufgabenhistorieList() != null) {
+            return profil.getAufgabenhistorieList().stream().anyMatch(aufgHist -> LocalDate.now().equals(aufgHist.getDatum()));
+        }
+        return false;
     }
 
     private List<Integer> getAufgabenVonUser(User user) {
@@ -92,10 +106,11 @@ public class AufgabeServiceImpl implements AufgabeService {
 
     private List<Integer> getAbgeschlosseneAufgabenIdsVonUser(User user) {
         Profil profil = profilService.getProfilById(user.getId().toString());
-        if (profil.getAufgabeList() == null) {
+        if (profil.getAufgabenhistorieList() == null) {
           return new ArrayList<>();
         }
-        return profil.getAufgabeList().stream()
+        return profil.getAufgabenhistorieList().stream()
+            .map(Aufgabenhistorie::getAufgabe)
             .map(Aufgabe::getAufgabeId)
             .collect(Collectors.toList());
     }

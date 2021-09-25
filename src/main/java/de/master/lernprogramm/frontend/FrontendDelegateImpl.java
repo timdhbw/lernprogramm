@@ -12,7 +12,6 @@ import de.master.lernprogramm.web.api.dtos.AufgabenbewertungUiDto;
 import de.master.lernprogramm.web.api.dtos.InlineResponse200UiDto;
 import de.master.lernprogramm.web.api.dtos.ProfilUiDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -86,7 +85,7 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
         }
         String randomNextAufgabeId = aufgabeService.getRandomNextAufgabeForUser(optionalUser.get());
         if (randomNextAufgabeId == null) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            return ResponseEntity.ok("");
         }
         return ResponseEntity.ok(randomNextAufgabeId);
     }
