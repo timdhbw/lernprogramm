@@ -1,21 +1,23 @@
 <div class="row">
     <h2 class="col">{{'profilseite.begruessung.anrede' | translate}} {{getName()}},</h2>
 </div>
-<div class="row">
-    <p class="col" jhiTranslate="profilseite.begruessung.anredeText"></p>
+<div class="row justify-content-center mb-2">
+    <p class="col-12" jhiTranslate="profilseite.begruessung.anredeText"></p>
+    <div class="col-12 col-md-6">
+        <label class="col-12 p-0" jhiTranslate="profilseite.begruessung.aufgabenTitle"></label>
+        <button class="btn btn-success btn-block" (click)="navigateToAufgabe()">Aufgabe (id: {{newAufgabeId}})</button>
+        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-6">
         <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="allTagsBewertetList"
-                             [selectable]="true" [removable]="false" [addAble]="false" (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
-        <label jhiTranslate="profilseite.begruessung.rangTitle"></label>
+                             [selectable]="true" [removable]="false" [addAble]="false"
+                             (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
+        <label class="p-0" jhiTranslate="profilseite.begruessung.rangTitle"></label>
         <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList"></jhi-tag-bewertung-anzeige>
-        <label>1203</label>
     </div>
-    <div class="col-sm-12 col-md-6 row">
-        <label class="col-12" jhiTranslate="profilseite.begruessung.aufgabenTitle"></label>
-        <button class="btn btn-success col-12" (click)="navigateToAufgabe()">Aufgabe (id: {{newAufgabeId}})</button>
-        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>
-        <jhi-aufgabenverwaltung [eigeneAufgaben]="profil.aufgaben"></jhi-aufgabenverwaltung>
+    <div class="col-sm-12 col-md-6 row mt-0 mt-md-4">
+        <jhi-aufgabenverwaltung class="col-12 p-0" [eigeneAufgaben]="profil.aufgaben"></jhi-aufgabenverwaltung>
     </div>
 </div>

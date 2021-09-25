@@ -1,3 +1,7 @@
-.btn:hover {
-  opacity: 0.7 !important;
+ul {
+  list-style-type: none;
+  padding: 0;
+  & .btn:hover {
+    opacity: 0.7 !important;
+  }
 }
