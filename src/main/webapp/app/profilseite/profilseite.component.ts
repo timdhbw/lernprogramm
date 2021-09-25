@@ -53,7 +53,7 @@ export class ProfilseiteComponent implements OnInit {
   }
 
   get aufgabeHeuteAbgeschlossen(): boolean {
-    return this.newAufgabeId.startsWith('abgeschlossen')
+    return this.newAufgabeId.length > 13 && this.newAufgabeId.startsWith('abgeschlossen');
   }
 
   get isAufgabeIdValid(): boolean {
