@@ -18,7 +18,6 @@ public interface AufgabeEntityMapper {
     @Mapping(target = "removeAufgabentag", ignore = true)
     @Mapping(target = "autor", ignore = true)
     @Mapping(target = "removeAufgabenbwtunghistEntity", ignore = true)
-    @Mapping(target = "aufgabentags", ignore = true)
     AufgabeEntity toEntity(Aufgabe aufgabe);
 
     @Mapping(target = "id", source = "aufgabenteilId")
