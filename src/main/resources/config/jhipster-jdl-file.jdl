@@ -14,10 +14,6 @@ entity AufgabenbwtunghistEntity {
     bewertungsveraenderung Integer
 }
 
-entity BewerteterAufgabentagEntity {
-	bewertung Integer
-}
-
 entity AufgabeEntity {
     aufgabentitel String,
     kategorie KategorieEnum required,
@@ -48,8 +44,6 @@ relationship OneToMany {
 	AufgabeEntity to AufgabenteilEntity{aufgabe},
 	AufgabeEntity to AufgabenbwtunghistEntity{aufgabe},
 	AufgabenteilEntity to MultipleChoiceAntwortEntity{aufgabenteil}
-    AufgabentagEntity to BewerteterAufgabentagEntity{aufgabentag}
-    ProfilEntity to BewerteterAufgabentagEntity{profil}
     ProfilEntity to AufgabenhistorieEntity{profil}
     AufgabeEntity to AufgabenhistorieEntity{aufgabe}
     ProfilEntity to AufgabeEntity{autor}

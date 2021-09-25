@@ -1,9 +1,0 @@
-type: object
-name: AufgabentagBewertet
-properties:
-  aufgabentagBewertetId:
-    type: integer
-  aufgabentag:
-    $ref: 'aufgabentagMitSelect.yml'
-  bewertung:
-    type: integer

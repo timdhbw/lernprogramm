@@ -20,12 +20,6 @@
   "relationships": [
     {
       "relationshipType": "one-to-many",
-      "otherEntityName": "bewerteterAufgabentagEntity",
-      "otherEntityRelationshipName": "profil",
-      "relationshipName": "bewerteterAufgabentagEntity"
-    },
-    {
-      "relationshipType": "one-to-many",
       "otherEntityName": "aufgabenhistorieEntity",
       "otherEntityRelationshipName": "profil",
       "relationshipName": "aufgabenhistorieEntity"

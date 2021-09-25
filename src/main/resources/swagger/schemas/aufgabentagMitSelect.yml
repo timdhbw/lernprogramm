@@ -9,3 +9,5 @@ properties:
     type: string
   selected:
     type: boolean
+  bewertung:
+    type: number

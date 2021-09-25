@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FrontendService} from "target/api/frontend.service";
 import {ProfilUiDto} from "target/model/profil";
 import {Router} from "@angular/router";
+import {AufgabentagMitSelectUiDto} from "target/model/aufgabentagMitSelect";
 
 @Component({
   selector: 'jhi-profilseite',
@@ -26,10 +27,17 @@ export class ProfilseiteComponent implements OnInit {
   }
 
   refreshNextAufgabe(): void {
-    if (this.profil.allPossibleTagList) {
-      this.frontendService.getRandomNextAufgabe(this.profil.allPossibleTagList).toPromise()
+    if (this.profil.allTagsBewertetList) {
+      this.frontendService.getRandomNextAufgabe(this.profil.allTagsBewertetList).toPromise()
         .then(randomId => this.newAufgabeId = randomId);
     }
+  }
+
+  get allTagsBewertetList(): AufgabentagMitSelectUiDto[] {
+    if (this.profil.allTagsBewertetList) {
+      return this.profil.allTagsBewertetList;
+    }
+    return [];
   }
 
   private fillProfil(): void {

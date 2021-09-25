@@ -12,7 +12,6 @@ public class Profil {
     private String profilId;
     private String vorname;
     private String nachname;
-    private List<BewerteterAufgabentag> bewerteterAufgabentagList;
     private List<Aufgabenhistorie> aufgabenhistorieList;
     private List<Aufgabe> aufgabeList;
     private List<Aufgabentag> allPossibleTagList;
@@ -20,11 +19,24 @@ public class Profil {
     private int punkte;
     private int rang;
 
-    public void addAufgabenhistorie(Aufgabenhistorie newAufgabenhistorie) {
-        if (aufgabenhistorieList == null) {
-            aufgabenhistorieList = new ArrayList<>();
+    public List<BewerteterAufgabentag> getAllTagListBewertet() {
+        List<BewerteterAufgabentag> bewerteterAufgabentagList = new ArrayList<>();
+        if (aufgabenhistorieList == null || allPossibleTagList == null) {
+            return bewerteterAufgabentagList;
         }
-        aufgabenhistorieList.add(newAufgabenhistorie);
+        allPossibleTagList
+            .forEach(tag -> {
+                double bewertung = aufgabenhistorieList.stream()
+                    .filter(aufgabenhistorie -> aufgabenhistorie.getAufgabe().getAufgabentagList().stream()
+                        .anyMatch(aufgtag -> tag.getAufgabentagId().equals(aufgtag.getAufgabentagId())))
+                    .mapToDouble(Aufgabenhistorie::getBewertungNachFormel)
+                    .average().orElse(0);
+                BewerteterAufgabentag result = new BewerteterAufgabentag();
+                result.setAufgabentag(tag);
+                result.setBewertung(Double.valueOf(bewertung).intValue());
+                bewerteterAufgabentagList.add(result);
+            });
+        return bewerteterAufgabentagList;
     }
 
 }

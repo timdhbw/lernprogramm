@@ -31,9 +31,6 @@ public class AufgabentagEntity implements Serializable {
     @Column(name = "text")
     private String text;
 
-    @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL, mappedBy = "aufgabentag")
-    private Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities = new HashSet<>();
-
     @ManyToMany(mappedBy = "aufgabentags", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<AufgabeEntity> aufgabes = new HashSet<>();
@@ -71,31 +68,6 @@ public class AufgabentagEntity implements Serializable {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public Set<BewerteterAufgabentagEntity> getBewerteterAufgabentagEntities() {
-        return bewerteterAufgabentagEntities;
-    }
-
-    public AufgabentagEntity bewerteterAufgabentagEntities(Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities) {
-        this.bewerteterAufgabentagEntities = bewerteterAufgabentagEntities;
-        return this;
-    }
-
-    public AufgabentagEntity addBewerteterAufgabentagEntity(BewerteterAufgabentagEntity bewerteterAufgabentagEntity) {
-        this.bewerteterAufgabentagEntities.add(bewerteterAufgabentagEntity);
-        bewerteterAufgabentagEntity.setAufgabentag(this);
-        return this;
-    }
-
-    public AufgabentagEntity removeBewerteterAufgabentagEntity(BewerteterAufgabentagEntity bewerteterAufgabentagEntity) {
-        this.bewerteterAufgabentagEntities.remove(bewerteterAufgabentagEntity);
-        bewerteterAufgabentagEntity.setAufgabentag(null);
-        return this;
-    }
-
-    public void setBewerteterAufgabentagEntities(Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities) {
-        this.bewerteterAufgabentagEntities = bewerteterAufgabentagEntities;
     }
 
     public Set<AufgabeEntity> getAufgabes() {

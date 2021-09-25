@@ -7,11 +7,7 @@ properties:
     type: string
   nachname:
     type: string
-  thementypen:
-    type: array
-    items:
-      $ref: 'aufgabentagbewertet.yml'
-  allPossibleTagList:
+  allTagsBewertetList:
     type: array
     items:
       $ref: 'aufgabentagMitSelect.yml'

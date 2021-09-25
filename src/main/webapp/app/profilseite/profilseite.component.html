@@ -6,9 +6,10 @@
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-6">
-        <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="profil?.allPossibleTagList"
+        <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="allTagsBewertetList"
                              [selectable]="true" [removable]="false" [addAble]="false" (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
         <label jhiTranslate="profilseite.begruessung.rangTitle"></label>
+        <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList"></jhi-tag-bewertung-anzeige>
         <label>1203</label>
     </div>
     <div class="col-sm-12 col-md-6 row">

@@ -14,10 +14,8 @@ import java.util.List;
 @Mapper(uses = {AufgabeEntityMapper.class})
 public interface ProfilEntityMapper {
     @Mapping(target = "id", source = "profilId")
-    @Mapping(target = "removeBewerteterAufgabentagEntity", ignore = true)
     @Mapping(target = "removeAufgabenhistorieEntity", ignore = true)
     @Mapping(target = "removeAufgabeEntity", ignore = true)
-    @Mapping(target = "bewerteterAufgabentagEntities", ignore = true)
     @Mapping(target = "aufgabenhistorieEntities", source = "aufgabenhistorieList")
     @Mapping(target = "aufgabeEntities", ignore = true)
     ProfilEntity toEntity(Profil profil);
@@ -28,7 +26,7 @@ public interface ProfilEntityMapper {
 
     @Mapping(target = "profilId", source = "id")
     @Mapping(target = "aufgabeList", source = "aufgabeEntities")
-    @Mapping(target = "bewerteterAufgabentagList", ignore = true)
+    @Mapping(target = "allTagListBewertet", ignore = true)
     @Mapping(target = "aufgabenhistorieList", source = "aufgabenhistorieEntities")
     @Mapping(target = "punkte", ignore = true)
     @Mapping(target = "allPossibleTagList", ignore = true)

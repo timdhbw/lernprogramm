@@ -1,0 +1,11 @@
+<p>tag-bewertung-anzeige works!</p>
+<table>
+    <tr>
+        <td>Tag Name</td>
+        <td>Bewertung</td>
+    </tr>
+    <tr *ngFor="let tag of getSortSelectedTags">
+        <td>{{tag.tag}}</td>
+        <td>{{tag.bewertung}}</td>
+    </tr>
+</table>

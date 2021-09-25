@@ -34,9 +34,6 @@ public class ProfilEntity implements Serializable {
     private String nachname;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "profil")
-    private Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "profil")
     private Set<AufgabenhistorieEntity> aufgabenhistorieEntities = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "autor")
@@ -88,31 +85,6 @@ public class ProfilEntity implements Serializable {
 
     public void setNachname(String nachname) {
         this.nachname = nachname;
-    }
-
-    public Set<BewerteterAufgabentagEntity> getBewerteterAufgabentagEntities() {
-        return bewerteterAufgabentagEntities;
-    }
-
-    public ProfilEntity bewerteterAufgabentagEntities(Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities) {
-        this.bewerteterAufgabentagEntities = bewerteterAufgabentagEntities;
-        return this;
-    }
-
-    public ProfilEntity addBewerteterAufgabentagEntity(BewerteterAufgabentagEntity bewerteterAufgabentagEntity) {
-        this.bewerteterAufgabentagEntities.add(bewerteterAufgabentagEntity);
-        bewerteterAufgabentagEntity.setProfil(this);
-        return this;
-    }
-
-    public ProfilEntity removeBewerteterAufgabentagEntity(BewerteterAufgabentagEntity bewerteterAufgabentagEntity) {
-        this.bewerteterAufgabentagEntities.remove(bewerteterAufgabentagEntity);
-        bewerteterAufgabentagEntity.setProfil(null);
-        return this;
-    }
-
-    public void setBewerteterAufgabentagEntities(Set<BewerteterAufgabentagEntity> bewerteterAufgabentagEntities) {
-        this.bewerteterAufgabentagEntities = bewerteterAufgabentagEntities;
     }
 
     public Set<AufgabenhistorieEntity> getAufgabenhistorieEntities() {

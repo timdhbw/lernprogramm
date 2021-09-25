@@ -15,12 +15,6 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "bewerteterAufgabentagEntity",
-      "otherEntityRelationshipName": "aufgabentag",
-      "relationshipName": "bewerteterAufgabentagEntity"
-    },
-    {
       "relationshipType": "many-to-many",
       "otherEntityName": "aufgabeEntity",
       "otherEntityRelationshipName": "aufgabentag",

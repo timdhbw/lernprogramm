@@ -5,7 +5,11 @@ import lombok.Data;
 @Data
 public class BewerteterAufgabentag {
 
-    private Integer aufgabentagBewertetId;
-    private Integer bewertung;
+    private double bewertung;
     private Aufgabentag aufgabentag;
+
+    public boolean isSelected() {
+        return bewertung > 0;
+    }
+
 }
