@@ -40,17 +40,24 @@ export class AddAufgabenteilComponent implements OnInit {
 
   saveNewAufgabenteil(): void {
     if (this.newAufgabenteil !== undefined) {
+      if (this.laufendeNr === 0) {
+        this.laufendeNr = 1;
+      }
       this.newAufgabenteil.laufenNr = this.laufendeNr;
+      this.erhoeheHoehereLaufendeNummern(this.laufendeNr);
       this.showNeuTeil = false;
       this.aufgabe?.aufgabenteilList?.push(this.newAufgabenteil);
-      this.aufgabe?.aufgabenteilList?.forEach(aufgabenteil => {
-        if (aufgabenteil.laufenNr && this.newAufgabenteil?.laufenNr && aufgabenteil.laufenNr >= this.newAufgabenteil?.laufenNr) {
-          aufgabenteil.laufenNr++;
-        }
-      });
       this.orderAufgabenteile();
       this.newAufgabenteil = {} as AufgabenteilUiDto;
     }
+  }
+
+  private erhoeheHoehereLaufendeNummern(laufNr: number | undefined): void {
+    this.aufgabe?.aufgabenteilList?.forEach(teil => {
+      if (teil.laufenNr && laufNr && teil.laufenNr >= laufNr) {
+        teil.laufenNr++;
+      }
+    })
   }
 
   private orderAufgabenteile(): void {
