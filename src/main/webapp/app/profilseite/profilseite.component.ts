@@ -29,7 +29,11 @@ export class ProfilseiteComponent implements OnInit {
   refreshNextAufgabe(): void {
     if (this.profil.allTagsBewertetList) {
       this.frontendService.getRandomNextAufgabe(this.profil.allTagsBewertetList).toPromise()
-        .then(randomId => this.newAufgabeId = randomId);
+        .then(randomId => this.newAufgabeId = randomId)
+        .catch(err => {
+          // Probleme bei Parsen von Datum, deshalb Text aus Error Message
+          this.newAufgabeId = err.error.text
+        });
     }
   }
 
