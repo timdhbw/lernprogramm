@@ -1,7 +1,7 @@
 <div class="row">
     <h2 class="col">{{'profilseite.begruessung.anrede' | translate}} {{getName()}},</h2>
 </div>
-<div class="row justify-content-center mb-2">
+<div class="row justify-content-center mb-2 mb-md-4">
     <p class="col-12" jhiTranslate="profilseite.begruessung.anredeText"></p>
     <div class="col-12 col-md-6 bg-success" *ngIf="aufgabeHeuteAbgeschlossen">
         <label>Du hast heute bereits eine Aufgabe abgeschlossen. Du musst bis morgen warten, bis du wieder eine Aufgabe
@@ -21,6 +21,7 @@
     <div class="col-sm-12 col-md-6">
         <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="allTagsBewertetList"
                              [selectable]="true" [removable]="false" [addAble]="false"
+                             [subLabel]="'Wähle deine Tags aus, die Zufallsaufgabe enthält mindestens einen der Tags.'"
                              (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
         <label class="p-0" jhiTranslate="profilseite.begruessung.rangTitle"></label>
         <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList"></jhi-tag-bewertung-anzeige>

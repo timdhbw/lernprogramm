@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FrontendService} from "target/api/frontend.service";
 import {AufgabeUiDto} from "target/model/aufgabe";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AufgabenabschlussModalService} from "app/aufgabenseite/aufgabeabschluss-modal/aufgabenabschluss-modal.service";
 
 @Component({
@@ -17,7 +17,7 @@ export class AufgabenseiteComponent implements OnInit {
 
   queryParams: string | undefined;
 
-  constructor(private frontendService: FrontendService, private route: ActivatedRoute, private aufgabenabschlussModalService: AufgabenabschlussModalService) {
+  constructor(private frontendService: FrontendService, private route: ActivatedRoute, private aufgabenabschlussModalService: AufgabenabschlussModalService, private router: Router) {
     this.aufgabeId = 0;
   }
 
@@ -36,7 +36,8 @@ export class AufgabenseiteComponent implements OnInit {
       this.frontendService.aufgabenAbschluss(this.aufgabe).toPromise()
         .then(res => {
           if (res.ergenisUser && this.aufgabe) {
-              this.aufgabenabschlussModalService.open(this.aufgabe, res.ergenisUser);
+            this.router.navigate(['/profilseite']);
+            this.aufgabenabschlussModalService.open(this.aufgabe, res.ergenisUser);
           }
         })
     }

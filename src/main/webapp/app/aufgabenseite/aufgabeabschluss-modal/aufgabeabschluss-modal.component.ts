@@ -3,6 +3,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {AufgabeUiDto} from "target/model/aufgabe";
 import {FrontendService} from "target/api/frontend.service";
 import {AufgabenteilUiDto} from "target/model/aufgabenteil";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'jhi-aufgabeabschluss-modal',
@@ -17,7 +18,7 @@ export class AufgabeabschlussModalComponent implements OnInit, OnDestroy {
 
   ergebnisUser: number | undefined;
 
-  constructor(public activeModal: NgbActiveModal, private frontendService: FrontendService) {
+  constructor(public activeModal: NgbActiveModal, private frontendService: FrontendService, private router: Router) {
     this.bewertung = 0;
   }
 

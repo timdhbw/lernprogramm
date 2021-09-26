@@ -169,6 +169,9 @@ ui bootstrap tweaks
 
 .mat-form-field-flex {
   padding: 0 !important;
+  & .selectable:hover {
+    cursor: pointer;
+  }
   & .bg-secondary.selected {
     background-color: $gray-900 !important;
   }

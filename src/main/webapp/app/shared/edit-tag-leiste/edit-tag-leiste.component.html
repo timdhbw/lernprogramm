@@ -3,7 +3,8 @@
 <mat-form-field class="example-chip-list" appearance="fill">
     <mat-chip-list #chipList [selectable]="selectable">
         <mat-chip class="bg-secondary" *ngFor="let tag of aufgabentagList" (click)="toggleTag(tag)"
-                  [removable]="removable" (removed)="remove(tag)" [class.selected]="tag.selected">
+                  [removable]="removable" (removed)="remove(tag)" [class.selected]="tag.selected"
+                  [class.selectable]="selectable">
             {{tag.tag}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
