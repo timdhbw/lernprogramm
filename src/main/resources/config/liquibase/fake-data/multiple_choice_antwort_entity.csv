@@ -1,8 +1,8 @@
 id;checked;checked_richtig;label;aufgabenteil_id
 2;false;false;Corporate Metal monitoring;13
 3;false;false;Home Tool Markup Language;14
-4;false;true;even-keeled;15
-5;false;false;Ball Avon Assurance;16
+4;false;false;PERSIST;15
+5;false;false;@Mapping(target = "test1.test", constant = "test");16
 6;false;true;Florida invoice;17
 7;false;false;definition reboot;18
 8;false;false;Chief Auto Loan Account;19
@@ -12,8 +12,8 @@ id;checked;checked_richtig;label;aufgabenteil_id
 12;false;false;Hyperlinks and Text Markup Language;14
 14;false;true;even-keeled;13
 15;false;false;Ball Avon Assurance;17
-16;false;true;Florida invoice;15
-17;false;false;definition reboot;16
+16;false;false;ALL;15
+17;false;true;@Mapping(target = "test", constant = "3001");16
 18;false;false;Chief Auto Loan Account;20
 19;false;false;deposit;18
 20;false;true;Small Cotton Ball e-markets;19
@@ -38,3 +38,10 @@ id;checked;checked_richtig;label;aufgabenteil_id
 40;false;false;<break>;24
 41;false;false;<break>;24
 42;false;true;<br>;24
+43;false;true;NONE;15
+44;false;false;MERGE;15
+45;false;false;REMOVE;15
+46;false;false;REFRESH;15
+47;false;false;DETACH;15
+48;false;false;@Mapping(target = "test1.test", source = "test2.test", defaultValue = "test");16
+49;false;false;@Mapping(target = "test", source = "test", defaultValue = "test");16
