@@ -4,10 +4,10 @@ id;laufen_nr;aufgabenteiltyp;text;aufgabe_id
 3;1;TEXT;Das ist ein kleines Quiz zum Thema HTML.;2
 4;1;TEXT;Cascade (Kaskadierung) in JPA definiert, welche Operationen des EntityManagers an abhängige Entitäten weitergegeben wird. (https://www.baeldung.com/jpa-cascade-types);3
 5;1;TEXT;Mapstruct ist ein Code Generator für Java Mapper. Aus einen Interface werden Methoden generiert, die zwei Objekte zueinander Mappen (die Member müssen die gleichen Namen haben)(Mehr Infos: https://mapstruct.org/documentation/dev/reference/html/).;4
-6;1;TEXT;Text6;5
-7;1;TEXT;Text7;6
-8;1;TEXT;Text8;7
-9;1;TEXT;Text9;8
+6;1;TEXT;Bootstrap kann am einfachsten über die in Bootstrap definierten Variablen customized werden. ()https://getbootstrap.com/docs/4.0/getting-started/theming/;5
+7;1;TEXT;Angular-Module sind Datenstrukturen, die zusammengehörige Building-Blocks wie Komponenten zusammenfassen. Technisch gesehen handelt es sich dabei um eine weitere Klasse. Sie ist in den meisten Fällen leer und dient lediglich als Träger.;6
+8;1;TEXT;Mit der Openapi Definition können REST-Schnittstellen definiert werden. OpenapiGenerator kann daraus Sever und Client in div. Programmiersprachen generiert werden. (https://swagger.io/docs/specification/data-models/data-types/);7
+9;1;TEXT;Java Stream ermöglicht es mit einfacher Syntax, diverse modifikationen an Listen durchzuführen. (https://javabeginners.de/Arrays_und_Verwandtes/Streams.php);8
 10;1;TEXT;Text10;9
 11;1;TEXT;Text11;10
 12;3;MULTIPLECHOICE;Ein Test Component wird in HTML so definiert: "<testc (test)="testaufruf($event)"></testc>", was muss in testc definiert werden?;1
@@ -15,10 +15,10 @@ id;laufen_nr;aufgabenteiltyp;text;aufgabe_id
 14;2;MULTIPLECHOICE;Wofür steht HTML?;2
 15;2;MULTIPLECHOICE;Was ist kein Cascade Typ?;3
 16;2;MULTIPLECHOICE;Angenommen im Mapper-Interface ist eineMethode "Test1 toTest1(Test2 test2);" definiert, welche Mapping annotationen sind für den Member test (string, ist in beiden Klassen) zulässig?;4
-17;2;MULTIPLECHOICE;Text6;5
-18;2;MULTIPLECHOICE;Text7;6
-19;2;MULTIPLECHOICE;Text8;7
-20;2;MULTIPLECHOICE;Text9;8
+17;2;MULTIPLECHOICE;Nutzt man Bootstrap mit SASS, so könen unter "$theme-colors: ('$theme-color': #FFF);" theme-colors überschreiben, welche theme-colors hat bootstrap?;5
+18;2;YOUTUBE;https://www.youtube.com/watch?v=oqZ4-ULwfbc;6
+19;2;MULTIPLECHOICE;Welche Datentypen können in Openapi definiert werden?;7
+20;2;MULTIPLECHOICE;Bei flatMap wird eine Liste von Listen (derselben Klasse) zu einer Liste gemapped, wie ist die richtige Syntax?;8
 21;2;MULTIPLECHOICE;Text10;9
 22;3;MULTIPLECHOICE;Wer macht die Web Standards?;2
 23;4;MULTIPLECHOICE;Was ist der HTML Tag für die größte Überschrift?;2
