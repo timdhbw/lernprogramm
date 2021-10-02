@@ -12,6 +12,14 @@ export class AufgabenverwaltungComponent implements OnInit {
   @Input()
   eigeneAufgaben: AufgabeUiDto[] | undefined;
 
+  @Input()
+  aufgabenverwaltungLabel: string | undefined;
+
+  @Input()
+  initialShownAufgaben: number | undefined;
+
+  showMore = false;
+
   constructor(private router: Router) {
   }
 
@@ -26,5 +34,22 @@ export class AufgabenverwaltungComponent implements OnInit {
     if (aufgabeId !== undefined) {
       this.router.navigate(["editaufgabe/" + aufgabeId]);
     }
+  }
+
+  get eigeneAufgabenBySize(): AufgabeUiDto[] {
+    if (this.eigeneAufgaben) {
+      if (!this.showMore && this.initialShownAufgaben) {
+        return this.eigeneAufgaben.slice(0, this.initialShownAufgaben);
+      }
+      return this.eigeneAufgaben;
+    }
+    return [];
+  }
+
+  get showButton(): boolean {
+    if (this.eigeneAufgaben?.length && this.initialShownAufgaben) {
+      return this.eigeneAufgaben.length > this.initialShownAufgaben;
+    }
+    return false;
   }
 }

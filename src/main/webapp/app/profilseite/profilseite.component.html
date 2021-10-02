@@ -3,29 +3,36 @@
 </div>
 <div class="row justify-content-center mb-2 mb-md-4">
     <p class="col-12" jhiTranslate="profilseite.begruessung.anredeText"></p>
-    <div class="col-12 col-md-6 bg-success" *ngIf="aufgabeHeuteAbgeschlossen">
-        <label>Du hast heute bereits eine Aufgabe abgeschlossen. Du musst bis morgen warten, bis du wieder eine Aufgabe
-            ausführen kannst. ({{newAufgabeId}})</label>
-    </div>
-    <div class="col-12 col-md-6 bg-warning" *ngIf="aufgabeIdnichtGefunden">
-        <label>Für dich und deine aktuelle Tag-Auswahl wurden leider keine neuen Aufgaben gefunden. Wenn du gerne eine
-            Aufgabe machen möchtest, versuche mehr Tags zu wählen</label>
-    </div>
-    <div class="col-12 col-md-6" *ngIf="isAufgabeIdValid">
-        <label class="col-12 p-0" jhiTranslate="profilseite.begruessung.aufgabenTitle"></label>
-        <button class="btn btn-success btn-block" (click)="navigateToAufgabe()">Aufgabe (id: {{newAufgabeId}})</button>
-        <!--        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>-->
+    <div class="col-12 col-md-6">
+        <div class="bg-success p-2" *ngIf="aufgabeHeuteAbgeschlossen">
+            <label>Du hast heute bereits eine Aufgabe abgeschlossen. Du musst bis morgen warten, bis du wieder eine
+                Aufgabe
+                ausführen kannst. ({{newAufgabeId}})</label>
+        </div>
+        <div class="bg-warning p-2" *ngIf="aufgabeIdnichtGefunden">
+            <label>Für dich und deine aktuelle Tag-Auswahl wurden leider keine neuen Aufgaben gefunden. Wenn du gerne
+                eine
+                Aufgabe machen möchtest, versuche mehr Tags zu wählen</label>
+        </div>
+        <div class="p-2" *ngIf="isAufgabeIdValid">
+            <label class="col-12 p-0" jhiTranslate="profilseite.begruessung.aufgabenTitle"></label>
+            <button class="btn btn-success btn-block" (click)="navigateToAufgabe()">Aufgabe (id: {{newAufgabeId}})
+            </button>
+            <!--        <button class="btn btn-success col-12" (click)="navigateToAufgabeEins()">Aufgabe (id: 1)</button>-->
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-12 mb-md-3 order-first">
         <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="allTagsBewertetList"
                              [selectable]="true" [removable]="false" [addAble]="false"
                              [subLabel]="'Wähle deine Tags aus, die Zufallsaufgabe enthält mindestens einen der Tags.'"
                              (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
-        <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList"></jhi-tag-bewertung-anzeige>
     </div>
-    <div class="col-sm-12 col-md-6 row mt-0 mt-md-4">
-        <jhi-aufgabenverwaltung class="col-12 p-0" [eigeneAufgaben]="profil.aufgaben"></jhi-aufgabenverwaltung>
+    <div class="col-12 col-md-6 mt-md-4 order-md-2 order-last">
+        <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList" [bewertungLabel]="'Meine Bewertungen:'" [initialShowenSize]="3"></jhi-tag-bewertung-anzeige>
+    </div>
+    <div class="col-12 col-md-6 mt-4 order-md-last order-2">
+        <jhi-aufgabenverwaltung [eigeneAufgaben]="profil.aufgaben" [aufgabenverwaltungLabel]="'Meine Aufgaben:'" [initialShownAufgaben]="5"></jhi-aufgabenverwaltung>
     </div>
 </div>

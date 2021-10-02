@@ -176,4 +176,9 @@ ui bootstrap tweaks
     background-color: $gray-900 !important;
   }
 }
+
+.btn.no-focus {
+  box-shadow: none !important;
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */

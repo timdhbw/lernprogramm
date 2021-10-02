@@ -1,11 +1,15 @@
 <div>
+    <label *ngIf="aufgabenverwaltungLabel !== undefined">{{aufgabenverwaltungLabel}}</label>
     <button class="btn btn-secondary btn-block" (click)="navigateToNewAufgabe()" jhiTranslate="profilseite.begruessung.neueAufgabe"></button>
     <div>
         <label class="font-weight-bold my-2">Deine bereits erstellten Aufgaben</label>
         <ul>
-            <li *ngFor="let aufgabe of eigeneAufgaben">
+            <li *ngFor="let aufgabe of eigeneAufgabenBySize">
                 <button (click)="navigateToEditAufgabe(aufgabe.aufgabeId)" [title]="'bearbeite ' + aufgabe.aufgabentitel" class="btn btn-sm"><fa-icon icon="edit"></fa-icon></button>
                 <label>{{aufgabe.aufgabentitel}}</label>
+            </li>
+            <li *ngIf="showButton">
+                <button class="btn btn-link no-focus" (click)="showMore = !showMore"><fa-icon [icon]="showMore ? 'chevron-up':'chevron-down'"></fa-icon>{{ showMore ? ' weniger' : ' mehr'}}</button>
             </li>
         </ul>
     </div>

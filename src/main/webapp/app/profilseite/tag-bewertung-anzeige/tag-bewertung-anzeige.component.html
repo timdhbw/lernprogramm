@@ -1,3 +1,4 @@
+<label *ngIf="bewertungLabel !== undefined">{{bewertungLabel}}</label>
 <table class="w-100">
     <tr>
         <th>Tag Name</th>
@@ -6,5 +7,10 @@
     <tr *ngFor="let tag of getSortSelectedTags">
         <td>{{tag.tag}}</td>
         <td>{{tag.bewertung}}</td>
+    </tr>
+    <tr *ngIf="showButton">
+        <td>
+            <button class="btn btn-link no-focus" (click)="showMore = !showMore"><fa-icon [icon]="showMore ? 'chevron-up':'chevron-down'"></fa-icon>{{ showMore ? ' weniger' : ' mehr'}}</button>
+        </td>
     </tr>
 </table>
