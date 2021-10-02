@@ -1,17 +1,25 @@
 <div>
-    <div class="form-group">
-        <label for="aufgabenteilTyp">Aufgabenteil Typ</label>
-        <select id="aufgabenteilTyp" [(ngModel)]="aufgabenteil.aufgabenteiltyp" class="form-control">
-            <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
-                    [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
-        </select>
+    <div class="row justify-content-between">
+        <div class="form-group col-9">
+            <label for="aufgabenteilTyp">Aufgabenteil Typ</label>
+            <select id="aufgabenteilTyp" [(ngModel)]="aufgabenteil.aufgabenteiltyp" class="form-control">
+                <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
+                        [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
+            </select>
+        </div>
+        <div class="col-3 text-right">
+            <button class="btn btn-sm btn-danger" (click)="deleteAufgabenteil($event)">
+                <fa-icon icon="times"></fa-icon>
+            </button>
+        </div>
     </div>
-    <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'YOUTUBE' && aufgabenteil.aufgabenteiltyp !== 'HTML'" class="form-group">
+    <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'YOUTUBE' && aufgabenteil.aufgabenteiltyp !== 'HTML'"
+         class="form-group">
         <label for="textfeld">Text</label>
         <input id="textfeld" type="text" [(ngModel)]="aufgabenteil.text" class="form-control"/>
     </div>
     <jhi-edit-multiple-choice
-        *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'"></jhi-edit-multiple-choice>
+        *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'" [aufgabenteil]="aufgabenteil"></jhi-edit-multiple-choice>
     <div *ngIf="aufgabenteil.aufgabenteiltyp === 'YOUTUBE'" class="form-group">
         <label for="youtubeLink">YoutubeVideo</label>
         <input id="youtubeLink" type="url" [(ngModel)]="aufgabenteil.text"/>

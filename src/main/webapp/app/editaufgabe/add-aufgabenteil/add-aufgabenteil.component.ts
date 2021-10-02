@@ -52,6 +52,17 @@ export class AddAufgabenteilComponent implements OnInit {
     }
   }
 
+  deleteAufgabenteil(): void {
+    if (this.aufgabe?.aufgabenteilList) {
+      const index = this.aufgabe.aufgabenteilList.indexOf(this.newAufgabenteil);
+      if (index > -1) {
+        this.aufgabe.aufgabenteilList.splice(index, 1);
+      }
+    }
+    this.newAufgabenteil = {} as AufgabenteilUiDto;
+    this.showNeuTeil = false;
+  }
+
   private erhoeheHoehereLaufendeNummern(laufNr: number | undefined): void {
     this.aufgabe?.aufgabenteilList?.forEach(teil => {
       if (teil.laufenNr && laufNr && teil.laufenNr >= laufNr) {
@@ -69,5 +80,9 @@ export class AddAufgabenteilComponent implements OnInit {
         return 0;
       });
     }
+  }
+
+  get newObject(): string {
+    return JSON.stringify(this.newAufgabenteil);
   }
 }

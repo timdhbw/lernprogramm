@@ -85,10 +85,35 @@ export class EditaufgabeComponent implements OnInit {
       this.alertService.success("Aufgabe erfolgreich gespeichert!")
       this.router.navigate(['profilseite']);
     })
-  .catch(() => this.alertService.error("Aufgabe konnte nicht gespeichert werden!"));
+      .catch(() => this.alertService.error("Aufgabe konnte nicht gespeichert werden!"));
   }
 
   abbrechen(): void {
     this.router.navigate(['profilseite']);
+  }
+
+  deleteAufgabenteil(aufgabenteil: AufgabenteilUiDto, index: number): void {
+    this.removeFromEditable(index);
+    if (this.aufgabe.aufgabenteilList) {
+      const aufgabenteilIndex = this.aufgabe.aufgabenteilList?.indexOf(aufgabenteil);
+      if (aufgabenteilIndex > -1) {
+        this.aufgabe.aufgabenteilList?.splice(aufgabenteilIndex, 1);
+        this.updateEditableListAfterDelete(index);
+      }
+    }
+  }
+
+  private updateEditableListAfterDelete(indexDeleted: number): void {
+    if (this.ediatable) {
+      const list = Object.assign([], this.ediatable);
+      list.forEach(value => {
+        if (value > indexDeleted) {this.removeFromEditable(value);}
+      })
+      list.forEach(value => {
+        if (value > indexDeleted) {
+          this.ediatable.push(value-1);
+        }
+      })
+    }
   }
 }

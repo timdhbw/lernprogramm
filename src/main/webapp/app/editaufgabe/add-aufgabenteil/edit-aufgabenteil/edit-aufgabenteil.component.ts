@@ -19,6 +19,8 @@ export class EditAufgabenteilComponent implements OnInit {
   @Output()
   saveClick = new EventEmitter<MouseEvent>();
 
+  @Output()
+  deleteClick = new EventEmitter<MouseEvent>();
 
   constructor(private enumUtil: EnumUtil) {
     this.aufgabenteil = {};
@@ -29,6 +31,10 @@ export class EditAufgabenteilComponent implements OnInit {
 
   getAufgabenteilTypList(): AufgabenteiltypUiDtoEnum[] {
     return this.enumUtil.getWerteOfEnum(AufgabenteiltypUiDtoEnum);
+  }
+
+  deleteAufgabenteil(event: MouseEvent): void {
+    this.deleteClick.emit(event);
   }
 
   clickOnSave(event: MouseEvent): void {

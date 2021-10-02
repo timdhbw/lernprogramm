@@ -181,4 +181,18 @@ ui bootstrap tweaks
   box-shadow: none !important;
 }
 
+fa-icon.truefalseshow {
+  margin-left: 0.25rem;
+
+  &[ng-reflect-icon="check"] {
+    color: $green;
+    margin-right: 0.1875rem;
+  }
+
+  &[ng-reflect-icon="times"] {
+    color: $red;
+    margin-right: 0.4375rem;
+  }
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */

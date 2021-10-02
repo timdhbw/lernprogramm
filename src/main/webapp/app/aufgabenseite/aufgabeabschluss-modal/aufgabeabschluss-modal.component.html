@@ -10,7 +10,7 @@
             <label>{{aufgabenteil.text}}</label>
             <div *ngFor="let multiAntwort of aufgabenteil.multiplechoiceAntwortenList; let i = index">
                 <input type="checkbox" id="'checkbox' + i" disabled [(ngModel)]="multiAntwort.checked">
-                <fa-icon [icon]="multiAntwort.checked === multiAntwort.checkedRichtig ? 'check':'times'"></fa-icon>
+                <fa-icon class="truefalseshow" [icon]="multiAntwort.checked === multiAntwort.checkedRichtig ? 'check':'times'"></fa-icon>
                 <label for="'checkbox' + i">{{multiAntwort.label}}</label>
             </div>
         </div>

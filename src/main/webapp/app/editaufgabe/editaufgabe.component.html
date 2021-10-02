@@ -31,7 +31,7 @@
         </div>
         <div *ngFor="let aufgabenteil of getAufgabe().aufgabenteilList; let i=index" class="col-12">
             <div class="bg-secondary p-2 my-2">
-                <jhi-edit-aufgabenteil *ngIf="ediatable.indexOf(i) > -1" (saveClick)="removeFromEditable(i)" [aufgabenteil]="aufgabenteil"></jhi-edit-aufgabenteil>
+                <jhi-edit-aufgabenteil *ngIf="ediatable.indexOf(i) > -1" (saveClick)="removeFromEditable(i)" (deleteClick)="deleteAufgabenteil(aufgabenteil, i)" [aufgabenteil]="aufgabenteil"></jhi-edit-aufgabenteil>
                 <div class="row" *ngIf="ediatable.indexOf(i) === -1">
                     <div class="col-1">
                         <label>{{aufgabenteil.laufenNr}}.</label>

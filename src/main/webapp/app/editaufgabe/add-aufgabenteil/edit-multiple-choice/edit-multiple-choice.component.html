@@ -1,12 +1,24 @@
 <div [ngSwitch]="showNeuMultiple">
-    <div *ngFor="let multipleChoice of aufgabenteil?.multiplechoiceAntwortenList">
-        <label>{{multipleChoice.label}}</label><label> isCheckedRichtig: {{multipleChoice.checkedRichtig}}</label>
+    <div *ngFor="let multipleChoice of aufgabenteil?.multiplechoiceAntwortenList" class="row justify-content-between">
+        <label class="col-10"><fa-icon class="truefalseshow" [icon]="multipleChoice.checkedRichtig ? 'check': 'times'"></fa-icon>{{multipleChoice.label}}</label>
+        <div class="col-2 text-right">
+        <button class="btn btn-sm btn-danger" (click)="removeMultiPleChoice(multipleChoice)"><fa-icon icon="times"></fa-icon></button>
+        </div>
     </div>
-    <button *ngSwitchCase="false">Add new MultipleChoice</button>
-    <div *ngSwitchCase="true">
-        <label for="newMulti">ChoiceText</label>
-        <input type="text" id="newMulti"/>
-        <label for="isCorrect">isCorrect</label>
-        <input type="checkbox" id="isCorrect">
+    <button class="btn btn-secondary" *ngSwitchCase="false" (click)="showNeuMultiple = true">Add new Multi Antwort</button>
+    <div *ngSwitchCase="true" class="row">
+        <div class="col-9">
+            <div form-group>
+                <label for="newMulti">ChoiceText</label>
+                <input [(ngModel)]="newMultiTeil.label" class="form-control" type="text" id="newMulti"/>
+            </div>
+            <div>
+                <input type="checkbox" id="isCorrect" [(ngModel)]="newMultiTeil.checkedRichtig">
+                <label for="isCorrect">ist korrekt</label>
+            </div>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-block btn-secondary" (click)="addNewMultiToAufgabe()"><fa-icon icon="plus"></fa-icon> add Multi Antwort</button>
+        </div>
     </div>
 </div>

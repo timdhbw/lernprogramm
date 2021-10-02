@@ -2,19 +2,6 @@
 
 .card {
   border-width: 0px !important;
- & fa-icon {
-    margin-left: 0.25rem;
-
-    &[ng-reflect-icon="check"] {
-      color: $green;
-      margin-right: 0.1875rem;
-    }
-
-    &[ng-reflect-icon="times"] {
-      color: $red;
-      margin-right: 0.4375rem;
-    }
-  }
 
   &.bg-red {
     background-color: rgba($red, .3);

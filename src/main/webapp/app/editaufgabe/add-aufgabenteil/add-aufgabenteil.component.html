@@ -6,7 +6,8 @@
         </button>
     </div>
     <div class="bg-secondary p-2" *ngSwitchCase="true">
-        <jhi-edit-aufgabenteil (saveClick)="saveNewAufgabenteil()" [aufgabenteil]="newAufgabenteil"
+        {{newObject}}
+        <jhi-edit-aufgabenteil (saveClick)="saveNewAufgabenteil()" (deleteClick)="deleteAufgabenteil()" [aufgabenteil]="newAufgabenteil"
                                [speicherBtnText]="'Füge neuen Aufgabenteil hinzu'">
         </jhi-edit-aufgabenteil>
     </div>
