@@ -24,15 +24,15 @@
 </div>
 <div class="row">
     <div class="col-12 mb-md-3 order-first">
-        <jhi-edit-tag-leiste [label]="'Meine Tags:'" [aufgabentagList]="allTagsBewertetList"
+        <jhi-edit-tag-leiste [label]="'profilseite.tag.mytagslabel' | translate" [aufgabentagList]="allTagsBewertetList"
                              [selectable]="true" [removable]="false" [addAble]="false"
-                             [subLabel]="'Wähle deine Tags aus, die Zufallsaufgabe enthält mindestens einen der Tags.'"
+                             [subLabel]="'profilseite.tag.mytagssublabel' | translate"
                              (selectClick)="refreshNextAufgabe()"></jhi-edit-tag-leiste>
     </div>
     <div class="col-12 col-md-6 mt-md-4 order-md-2 order-last">
-        <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList" [bewertungLabel]="'Meine Bewertungen:'" [initialShowenSize]="3"></jhi-tag-bewertung-anzeige>
+        <jhi-tag-bewertung-anzeige [tagBewerrtungList]="allTagsBewertetList" [bewertungLabel]="'profilseite.begruessung.meineBewertungen' | translate" [initialShowenSize]="3"></jhi-tag-bewertung-anzeige>
     </div>
     <div class="col-12 col-md-6 mt-4 order-md-last order-2">
-        <jhi-aufgabenverwaltung [eigeneAufgaben]="profil.aufgaben" [aufgabenverwaltungLabel]="'Meine Aufgaben:'" [initialShownAufgaben]="5"></jhi-aufgabenverwaltung>
+        <jhi-aufgabenverwaltung [eigeneAufgaben]="profil.aufgaben" [aufgabenverwaltungLabel]="'profilseite.begruessung.meineAufgaben' | translate" [initialShownAufgaben]="5"></jhi-aufgabenverwaltung>
     </div>
 </div>

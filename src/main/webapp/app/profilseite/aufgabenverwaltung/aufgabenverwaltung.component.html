@@ -2,7 +2,7 @@
     <label *ngIf="aufgabenverwaltungLabel !== undefined">{{aufgabenverwaltungLabel}}</label>
     <button class="btn btn-secondary btn-block" (click)="navigateToNewAufgabe()" jhiTranslate="profilseite.begruessung.neueAufgabe"></button>
     <div>
-        <label class="font-weight-bold my-2">Deine bereits erstellten Aufgaben</label>
+        <label class="font-weight-bold my-2" jhiTranslate="profilseite.aufgabenverwaltung.erstellteaufgheader"></label>
         <ul>
             <li *ngFor="let aufgabe of eigeneAufgabenBySize">
                 <button (click)="navigateToEditAufgabe(aufgabe.aufgabeId)" [title]="'bearbeite ' + aufgabe.aufgabentitel" class="btn btn-sm"><fa-icon icon="edit"></fa-icon></button>

@@ -1,11 +1,25 @@
 {
   "profilseite": {
     "begruessung": {
-      "anrede": "Moin",
+      "anrede": "Hi",
       "anredeText": "Schön, dass du wieder da bist!",
       "rangTitle": "Mein Rang:",
       "aufgabenTitle": "Meine heutigen Aufgaben:",
-      "neueAufgabe": "Neue Aufgabe anlegen"
+      "neueAufgabe": "Neue Aufgabe anlegen",
+      "meineBewertungen": "Meine Bewertungen:",
+      "meineAufgaben": "Meine Aufgaben:"
+    },
+    "tag": {
+      "tagname": "Tag Name",
+      "tagbewertung": "Bewertung",
+      "weniger": "weniger",
+      "mehr": "mehr",
+      "mytagslabel": "Meine Tags:",
+      "mytagssublabel": "Wähle deine Tags aus, die Zufallsaufgabe enthält mindestens einen der Tags."
+    },
+    "aufgabenverwaltung":{
+      "erstellteaufgheader": "Deine bereits erstellten Aufgaben",
+      "bearbeitetitleprefix": "bearbeite"
     },
     "produktEntity": {
       "home": {

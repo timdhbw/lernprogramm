@@ -1,8 +1,8 @@
 <label *ngIf="bewertungLabel !== undefined">{{bewertungLabel}}</label>
 <table class="w-100">
     <tr>
-        <th>Tag Name</th>
-        <th>Bewertung</th>
+        <th jhiTranslate="profilseite.tag.tagname"></th>
+        <th jhiTranslate="profilseite.tag.tagbewertung"></th>
     </tr>
     <tr *ngFor="let tag of getSortSelectedTags">
         <td>{{tag.tag}}</td>
@@ -10,7 +10,7 @@
     </tr>
     <tr *ngIf="showButton">
         <td>
-            <button class="btn btn-link no-focus" (click)="showMore = !showMore"><fa-icon [icon]="showMore ? 'chevron-up':'chevron-down'"></fa-icon>{{ showMore ? ' weniger' : ' mehr'}}</button>
+            <button class="btn btn-link no-focus" (click)="showMore = !showMore"><fa-icon [icon]="showMore ? 'chevron-up':'chevron-down'"></fa-icon> {{ showMore ? 'profilseite.tag.weniger' : 'profilseite.tag.mehr' | translate}}</button>
         </td>
     </tr>
 </table>
