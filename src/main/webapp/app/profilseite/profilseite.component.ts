@@ -9,7 +9,7 @@ import {AufgabentagMitSelectUiDto} from "target/model/aufgabentagMitSelect";
   templateUrl: './profilseite.component.html',
   styleUrls: ['./profilseite.component.scss']
 })
-export class ProfilseiteComponent implements OnInit {
+export class ProfilseiteComponent {
 
   profil: ProfilUiDto;
 
@@ -20,10 +20,6 @@ export class ProfilseiteComponent implements OnInit {
     this.newAufgabeId = '';
     this.fillProfil();
 
-  }
-
-  ngOnInit(): void {
-    this.refreshNextAufgabe();
   }
 
   refreshNextAufgabe(): void {
@@ -45,7 +41,10 @@ export class ProfilseiteComponent implements OnInit {
   }
 
   private fillProfil(): void {
-    this.frontendService.getProfil().toPromise().then(value => this.profil = value);
+    this.frontendService.getProfil().toPromise().then(value => {
+      this.profil = value;
+      this.refreshNextAufgabe();
+    });
   }
 
   getName(): string {
