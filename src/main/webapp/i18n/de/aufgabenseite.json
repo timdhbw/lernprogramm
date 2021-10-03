@@ -1,0 +1,15 @@
+{
+  "aufgabenseite": {
+    "aufgabeAnzeige": {
+      "tags": "Tags:"
+    },
+    "aufgabenabschluss": {
+      "header": "OK Nice, du hast du Aufgabe Abgeschlossen!",
+      "ergebnis1": "Dein Ergebnis ist ",
+      "ergebnis2": " von 5 (",
+      "ergebnis3": "%)!",
+      "summary": "Ergebniss der Aufgabenteile",
+      "button": "Schließe Aufgabe ab"
+    }
+  }
+}

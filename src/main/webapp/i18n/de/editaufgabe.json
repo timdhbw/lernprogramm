@@ -1,0 +1,32 @@
+{
+  "editaufgabe": {
+    "newaufgabeheader": "Neue Aufgabe erstellen",
+    "aufgabenerstellungheader": "Aufgabenerstellung",
+    "saveaufgabe": "Speicher Aufgabe",
+    "abbruch": "Abbrechen",
+    "vorschauheader": "Vorschau",
+    "aufgabetitle": "Aufgabentitel",
+    "initschwierigkeit": "Initiale Bewertung der Schwierigkeit",
+    "kategorie": "Kategorie",
+    "aufgabenteileheader": "Aufgabenteile",
+    "tagleiste": {
+      "label": "Tags:",
+      "sublabel": "Zum hinzufügen text eingeben und Enter oder , Tippen"
+    },
+    "editaufgabeneteil": {
+      "typ": "Aufgabenteil Typ",
+      "textlabel": "Text",
+      "youtubelabel": "YoutubeVideo",
+      "htmllabel": "Plain HTML",
+      "addaufgabenteil": "Add aufgabenteil",
+      "aufgabenteilhinzu": "Füge neuen Aufgabenteil hinzu",
+      "saveaufgabenteil": "Speicher Aufgabenteil",
+      "multiplechoice": {
+        "addnew": "Add new Multi Antwort",
+        "newtext": "ChoiceText",
+        "iscorrect": "Ist korrekt",
+        "addbutton": " add Multi Antwort"
+      }
+    }
+  }
+}

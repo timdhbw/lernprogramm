@@ -11,7 +11,7 @@ import {EnumUtil} from "app/shared/util/enum-util";
 export class EditAufgabenteilComponent implements OnInit {
 
   @Input()
-  speicherBtnText = "Speicher Aufgabenteil";
+  speicherBtnText = "";
 
   @Input()
   aufgabenteil: AufgabenteilUiDto;

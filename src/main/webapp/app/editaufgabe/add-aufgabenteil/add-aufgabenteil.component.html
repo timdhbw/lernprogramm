@@ -2,13 +2,13 @@
     <div *ngSwitchCase="false" class="">
         <button class="btn btn-secondary" (click)="neuerAufgabenteil()">
             <fa-icon icon="plus"></fa-icon>
-            Add aufgabenteil
+            {{'editaufgabe.editaufgabeneteil.addaufgabenteil' | translate}}
         </button>
     </div>
     <div class="bg-secondary p-2" *ngSwitchCase="true">
         {{newObject}}
         <jhi-edit-aufgabenteil (saveClick)="saveNewAufgabenteil()" (deleteClick)="deleteAufgabenteil()" [aufgabenteil]="newAufgabenteil"
-                               [speicherBtnText]="'Füge neuen Aufgabenteil hinzu'">
+                               [speicherBtnText]="'editaufgabe.editaufgabeneteil.aufgabenteilhinzu' | translate">
         </jhi-edit-aufgabenteil>
     </div>
 </div>

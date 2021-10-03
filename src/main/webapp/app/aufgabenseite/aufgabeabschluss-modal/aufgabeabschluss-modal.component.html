@@ -1,26 +1,27 @@
 <div class="p-2 p-md-4 bg-light">
-<h3>OK Nice, du hast du Aufgabe Abgeschlossen!</h3>
-<p>Dein Ergebnis ist {{ergebnisUser}} von 5 ({{ergebnisUserInProzent}}%)!</p>
-<details>
-    <summary>Ergebniss der Aufgabenteile</summary>
-    <div *ngFor="let aufgabenteil of aufgabe?.aufgabenteilList">
-        <div *ngIf="aufgabenteil.aufgabenteiltyp==='MULTIPLECHOICE'" class="card my-1 p-1"
-             [class.bg-green]="isAufgabenteilCorrect(aufgabenteil)"
-             [class.bg-red]="!isAufgabenteilCorrect(aufgabenteil)">
-            <label>{{aufgabenteil.text}}</label>
-            <div *ngFor="let multiAntwort of aufgabenteil.multiplechoiceAntwortenList; let i = index">
-                <input type="checkbox" id="'checkbox' + i" disabled [(ngModel)]="multiAntwort.checked">
-                <fa-icon class="truefalseshow" [icon]="multiAntwort.checked === multiAntwort.checkedRichtig ? 'check':'times'"></fa-icon>
-                <label for="'checkbox' + i">{{multiAntwort.label}}</label>
+    <h3 jhiTranslate="aufgabenseite.aufgabenabschluss.header"></h3>
+    <p>{{'aufgabenseite.aufgabenabschluss.ergebnis1' | translate}}{{ergebnisUser}}{{'aufgabenseite.aufgabenabschluss.ergebnis2' | translate}}{{ergebnisUserInProzent}}{{'aufgabenseite.aufgabenabschluss.ergebnis3' | translate}}</p>
+    <details>
+        <summary jhiTranslate="aufgabenseite.aufgabenabschluss.summary"></summary>
+        <div *ngFor="let aufgabenteil of aufgabe?.aufgabenteilList">
+            <div *ngIf="aufgabenteil.aufgabenteiltyp==='MULTIPLECHOICE'" class="card my-1 p-1"
+                 [class.bg-green]="isAufgabenteilCorrect(aufgabenteil)"
+                 [class.bg-red]="!isAufgabenteilCorrect(aufgabenteil)">
+                <label>{{aufgabenteil.text}}</label>
+                <div *ngFor="let multiAntwort of aufgabenteil.multiplechoiceAntwortenList; let i = index">
+                    <input type="checkbox" id="'checkbox' + i" disabled [(ngModel)]="multiAntwort.checked">
+                    <fa-icon class="truefalseshow"
+                             [icon]="multiAntwort.checked === multiAntwort.checkedRichtig ? 'check':'times'"></fa-icon>
+                    <label for="'checkbox' + i">{{multiAntwort.label}}</label>
+                </div>
             </div>
         </div>
-    </div>
-</details>
-<p>Wenn du willst, kannst du die Aufgabe noch bewerten:</p>
-<ng-rating-bar
-    [(value)]="bewertung"
-    [ratingCount]="5"
-></ng-rating-bar>
-<p>Aktuelle Bewertung: {{bewertung}}</p>
-<button class="btn btn-success" (click)="close()">Mach nen Closer</button>
+    </details>
+    <p>Wenn du willst, kannst du die Aufgabe noch bewerten:</p>
+    <ng-rating-bar
+        [(value)]="bewertung"
+        [ratingCount]="5"
+    ></ng-rating-bar>
+    <p>Aktuelle Bewertung: {{bewertung}}</p>
+    <button class="btn btn-success" (click)="close()">Mach nen Closer</button>
 </div>

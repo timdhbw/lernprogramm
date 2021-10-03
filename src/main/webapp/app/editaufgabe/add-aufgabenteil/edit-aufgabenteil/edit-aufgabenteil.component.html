@@ -1,7 +1,7 @@
 <div>
     <div class="row justify-content-between">
         <div class="form-group col-9">
-            <label for="aufgabenteilTyp">Aufgabenteil Typ</label>
+            <label for="aufgabenteilTyp" jhiTranslate="editaufgabe.editaufgabeneteil.typ"></label>
             <select id="aufgabenteilTyp" [(ngModel)]="aufgabenteil.aufgabenteiltyp" class="form-control">
                 <option *ngFor="let aufgabenTyp of getAufgabenteilTypList()"
                         [ngValue]="aufgabenTyp">{{aufgabenTyp}}</option>
@@ -15,17 +15,17 @@
     </div>
     <div *ngIf="aufgabenteil.aufgabenteiltyp !== 'YOUTUBE' && aufgabenteil.aufgabenteiltyp !== 'HTML'"
          class="form-group">
-        <label for="textfeld">Text</label>
+        <label for="textfeld" jhiTranslate="editaufgabe.editaufgabeneteil.textlabel"></label>
         <input id="textfeld" type="text" [(ngModel)]="aufgabenteil.text" class="form-control"/>
     </div>
     <jhi-edit-multiple-choice
         *ngIf="aufgabenteil.aufgabenteiltyp === 'MULTIPLECHOICE'" [aufgabenteil]="aufgabenteil"></jhi-edit-multiple-choice>
     <div *ngIf="aufgabenteil.aufgabenteiltyp === 'YOUTUBE'" class="form-group">
-        <label for="youtubeLink">YoutubeVideo</label>
+        <label for="youtubeLink" jhiTranslate="editaufgabe.editaufgabeneteil.youtubelabel"></label>
         <input id="youtubeLink" type="url" [(ngModel)]="aufgabenteil.text"/>
     </div>
     <div *ngIf="aufgabenteil.aufgabenteiltyp === 'HTML'" class="form-group">
-        <label for="newHTMLText">Plain HTML</label>
+        <label for="newHTMLText" jhiTranslate="editaufgabe.editaufgabeneteil.htmllabel"></label>
         <textarea id="newHTMLText" class="form-control" rows="5" [(ngModel)]="aufgabenteil.text"></textarea>
     </div>
     <button class="btn btn-success" (click)="clickOnSave($event)">
