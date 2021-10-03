@@ -44,7 +44,8 @@ public class Profil {
     }
 
     private void setSelectedIfTagIsSelected(List<BewerteterAufgabentag> bewerteterAufgabentagList) {
-        if (gewaehlteTags != null) {
+        bewerteterAufgabentagList.forEach(tag -> tag.setSelected(true));
+        if (gewaehlteTags != null && !gewaehlteTags.equals("")) {
             List<String> tagList = Arrays.asList(gewaehlteTags.split(","));
             bewerteterAufgabentagList.forEach(tag -> tag.setSelected(tagList.contains(tag.getAufgabentag().getTag())));
         }
