@@ -49,6 +49,7 @@ export class RegisterComponent implements AfterViewInit {
     private loginModalService: LoginModalService,
     private registerService: RegisterService,
     private fb: FormBuilder,
+    private loginService: LoginService,
     private router: Router,
   ) {}
 
@@ -75,11 +76,16 @@ export class RegisterComponent implements AfterViewInit {
       this.profil.vorname = this.registerForm.get(['vorname'])!.value;
       this.profil.nachname = this.registerForm.get(['nachname'])!.value;
       this.registerService.save({ login, email, firstName, lastName, password, langKey: this.languageService.getCurrentLanguage() }).subscribe(
-        () => {this.router.navigate(['']);
+        () => {this.loginAndNavigate(login, password);
         },
         response => this.processError(response)
       );
     }
+  }
+
+  private loginAndNavigate(user: string, pw: string): void {
+    this.loginService.login({username: user, password: pw, rememberMe:false})
+      .toPromise().then(value => this.router.navigate(['']));
   }
 
   openLogin(): void {
