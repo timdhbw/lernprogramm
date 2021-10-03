@@ -6,6 +6,11 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/constants/error.constants';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { RegisterService } from './register.service';
+import {ProfilUiDto} from "target/model/profil";
+import {Router} from "@angular/router";
+import {LoginService} from "../../core/login/login.service";
+import {Observable} from "rxjs";
+import {Account} from "../../core/user/account.model";
 
 @Component({
   selector: 'jhi-register',
@@ -20,6 +25,7 @@ export class RegisterComponent implements AfterViewInit {
   errorEmailExists = false;
   errorUserExists = false;
   success = false;
+  profil: ProfilUiDto = {} as ProfilUiDto;
 
   registerForm = this.fb.group({
     login: [
@@ -34,13 +40,16 @@ export class RegisterComponent implements AfterViewInit {
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+    vorname: ['', [Validators.required]],
+    nachname: ['', [Validators.required]],
   });
 
   constructor(
     private languageService: JhiLanguageService,
     private loginModalService: LoginModalService,
     private registerService: RegisterService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
   ) {}
 
   ngAfterViewInit(): void {
@@ -61,8 +70,13 @@ export class RegisterComponent implements AfterViewInit {
     } else {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
-      this.registerService.save({ login, email, password, langKey: this.languageService.getCurrentLanguage() }).subscribe(
-        () => (this.success = true),
+      const firstName = this.registerForm.get(['vorname'])!.value;
+      const lastName = this.registerForm.get(['nachname'])!.value;
+      this.profil.vorname = this.registerForm.get(['vorname'])!.value;
+      this.profil.nachname = this.registerForm.get(['nachname'])!.value;
+      this.registerService.save({ login, email, firstName, lastName, password, langKey: this.languageService.getCurrentLanguage() }).subscribe(
+        () => {this.router.navigate(['']);
+        },
         response => this.processError(response)
       );
     }

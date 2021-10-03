@@ -3,8 +3,8 @@
         <div class="col-md-8">
             <h1 jhiTranslate="register.title">Registration</h1>
 
-            <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+            <div class="alert alert-success" *ngIf="success">
+                User registriert, du kannst jetzt noch ein paar Infos über dich geben.
             </div>
 
             <div class="alert alert-danger" *ngIf="error" jhiTranslate="register.messages.error.fail">
@@ -58,6 +58,15 @@
                             Your username can only contain letters and digits.
                         </small>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vorname">Vorname</label>
+                    <input id="vorname" class="form-control"name="vorname" formControlName="vorname" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="nachname">Nachname</label>
+                    <input id="nachname" class="form-control" name="nachname" formControlName="nachname" type="text" />
                 </div>
 
                 <div class="form-group">

@@ -42,6 +42,14 @@ public class ProfilServiceImpl implements ProfilService {
     }
 
     @Override
+    public Profil saveProfil(Profil profilToSave) {
+        if (profilToSave == null) {
+            return null;
+        }
+        return profilRepository.saveProfil(profilToSave);
+    }
+
+    @Override
     public void setAufgabeVonProfilAbgeschlossen(Integer userId, Integer aufgabeId, double ergebnisUser) {
 
         Aufgabenhistorie aufgabenhistorie = new Aufgabenhistorie();

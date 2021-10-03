@@ -116,6 +116,19 @@ public class FrontendDelegateImpl implements de.master.lernprogramm.web.api.Fron
         return ResponseEntity.ok(false);
     }
 
+    @Override
+    public ResponseEntity<ProfilUiDto> saveProfil(ProfilUiDto profilUiDto) {
+        Integer userId = getUserId();
+        if (userId != null) {
+            log.info("UserId: {}, SaveProfil: {}", userId, profilUiDto);
+            Profil profil = profilService.saveProfil(frontendMapper.toDomain(profilUiDto));
+            if (profil != null) {
+                return ResponseEntity.ok(frontendMapper.toUiDto(profil));
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     private Integer getUserId() {
         Optional<User> optionalUser = userService.getUserWithAuthorities();
         if (optionalUser.isPresent()) {

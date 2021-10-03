@@ -31,6 +31,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - frontend
+      description: Speicher eine neues Profil
+      operationId: saveProfil
+      requestBody:
+        description: Zu speicherndes Profil
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/profil.yml'
+      security:
+        - jwt: [ ]
+      responses:
+        '200':
+          description: Antwort auf saveProfil
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/profil.yml'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /frontend/aufgabe:
     get:
       tags:

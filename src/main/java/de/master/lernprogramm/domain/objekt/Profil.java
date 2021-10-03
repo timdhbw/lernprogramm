@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 public class Profil {
 
+    private Long id;
     private String profilId;
     private String vorname;
     private String nachname;

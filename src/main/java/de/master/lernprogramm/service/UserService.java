@@ -3,6 +3,8 @@ package de.master.lernprogramm.service;
 import de.master.lernprogramm.config.Constants;
 import de.master.lernprogramm.domain.Authority;
 import de.master.lernprogramm.domain.User;
+import de.master.lernprogramm.domain.objekt.Profil;
+import de.master.lernprogramm.domain.service.ProfilService;
 import de.master.lernprogramm.repository.AuthorityRepository;
 import de.master.lernprogramm.repository.UserRepository;
 import de.master.lernprogramm.repository.search.UserSearchRepository;
@@ -46,12 +48,15 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserSearchRepository userSearchRepository, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    private final ProfilService profilService;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserSearchRepository userSearchRepository, AuthorityRepository authorityRepository, CacheManager cacheManager, ProfilService profilService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.userSearchRepository = userSearchRepository;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.profilService = profilService;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -118,7 +123,7 @@ public class UserService {
         newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
@@ -128,6 +133,12 @@ public class UserService {
         userSearchRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
+        Profil profilForuser = new Profil();
+        profilForuser.setProfilId(newUser.getId().toString());
+        profilForuser.setVorname(newUser.getFirstName());
+        profilForuser.setNachname(newUser.getLastName());
+        Profil savedProfil = profilService.saveProfil(profilForuser);
+        log.info("Saved Profil: {}", savedProfil);
         return newUser;
     }
 

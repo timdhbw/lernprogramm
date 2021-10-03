@@ -8,4 +8,6 @@ public interface ProfilRepository {
     Profil getProfilByProfilId(String profilId);
 
     void addAufgabenhistorie(Integer userId, Integer aufgabeId, Aufgabenhistorie aufgabenhistorie);
+
+    Profil saveProfil(Profil profilToSave);
 }

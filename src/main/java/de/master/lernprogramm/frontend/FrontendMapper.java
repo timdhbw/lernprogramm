@@ -39,6 +39,14 @@ public interface FrontendMapper {
     @Mapping(target = "aufgabenberwtungHistList", ignore = true)
     Aufgabe toDomain(AufgabeUiDto aufgabeUiDto);
 
+    @Mapping(target = "aufgabeList", source = "aufgaben")
+    @Mapping(target = "allTagListBewertet", ignore = true)
+    @Mapping(target = "gewaehlteTags", ignore = true)
+    @Mapping(target = "aufgabenhistorieList", ignore = true)
+    @Mapping(target = "allPossibleTagList", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    Profil toDomain(ProfilUiDto profilUiDto);
+
     @AfterMapping
     default void afterMapping(@MappingTarget Aufgabe aufgabe, AufgabeUiDto aufgabeUiDto) {
         // wenn Aufgabe neu angelegt wird, initiale Bewertung mitgeben

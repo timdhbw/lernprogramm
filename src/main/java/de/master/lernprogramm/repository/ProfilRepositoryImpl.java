@@ -46,4 +46,9 @@ public class ProfilRepositoryImpl implements ProfilRepository{
         aufgabenhistorieEntity.setProfil(profilEntityRepository.findFirstByProfilId(userId.toString()));
         aufgabenhistorieEntityRepository.save(aufgabenhistorieEntity);
     }
+
+    @Override
+    public Profil saveProfil(Profil profilToSave) {
+        return profilEntityMapper.toDomain(profilEntityRepository.save(profilEntityMapper.toEntity(profilToSave)));
+    }
 }

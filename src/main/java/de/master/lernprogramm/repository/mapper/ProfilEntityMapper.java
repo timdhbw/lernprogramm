@@ -13,7 +13,7 @@ import java.util.List;
 
 @Mapper(uses = {AufgabeEntityMapper.class})
 public interface ProfilEntityMapper {
-    @Mapping(target = "id", source = "profilId")
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "removeAufgabenhistorieEntity", ignore = true)
     @Mapping(target = "removeAufgabeEntity", ignore = true)
     @Mapping(target = "aufgabenhistorieEntities", source = "aufgabenhistorieList")
