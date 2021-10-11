@@ -16,7 +16,8 @@
       "forgot": "Sie haben Ihr Passwort vergessen?"
     },
     "register": {
-      "registerNow": "Noch nicht registriert? Mach nen Klicker hier, um dich zu registrieren!",
+      "registerNow": "Hier Registrieren",
+      "notregistered": "Noch nicht angemeldet? Registriere dich hier:",
       "why": "Warum soll ich mich registrieren?"
     }
   }

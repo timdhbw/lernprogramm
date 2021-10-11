@@ -23,6 +23,7 @@ import {SERVER_API_URL} from "app/app.constants";
 import {LernprogrammFaqModule} from './faq/faq.module';
 import { LernprogrammEditaufgabeModule } from './editaufgabe/editaufgabe.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LernprogrammImpressumModule} from "app/impressum/impressum.module";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     LernprogrammCoreModule,
     LernprogrammHomeModule,
     LernprogrammFaqModule,
+    LernprogrammImpressumModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     LernprogrammEntityModule,
     LernprogrammProfilseiteModule,

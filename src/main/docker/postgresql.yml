@@ -1,7 +1,7 @@
 version: '2'
 services:
   lernprogramm-postgresql:
-    image: postgres:12.3
+    image: 17031962/lernplattform:dbtest
     # volumes:
     #     - ~/volumes/jhipster/lernprogramm/postgresql/:/var/lib/postgresql/data/
     environment:

@@ -16,6 +16,9 @@ public class Aufgabenhistorie {
 
     public Double getBewertungNachFormel() {
         log.info("Aufgabenhistorie, datum {}, Aufgabe {}", datum, aufgabe);
+        if (aufgabe == null || aufgabe.getBewertung() == null) {
+            return 0.0;
+        }
         long daysBetween = ChronoUnit.DAYS.between(datum, LocalDate.now());
         return (aufgabe.getBewertung() + bewertungsveraenderung) / (int) ((daysBetween < 1) ? 1 : daysBetween);
     }

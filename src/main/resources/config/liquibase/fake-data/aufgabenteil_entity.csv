@@ -15,7 +15,7 @@ id;laufen_nr;aufgabenteiltyp;text;aufgabe_id
 14;2;MULTIPLECHOICE;Wofür steht HTML?;2
 15;2;MULTIPLECHOICE;Was ist kein Cascade Typ?;3
 16;2;MULTIPLECHOICE;Angenommen im Mapper-Interface ist eineMethode "Test1 toTest1(Test2 test2);" definiert, welche Mapping annotationen sind für den Member test (string, ist in beiden Klassen) zulässig?;4
-17;2;MULTIPLECHOICE;Nutzt man Bootstrap mit SASS, so könen unter "$theme-colors: ('$theme-color': #FFF);" theme-colors überschreiben, welche theme-colors hat bootstrap?;5
+17;2;MULTIPLECHOICE;Nutzt man Bootstrap mit SASS, so könen unter "$theme-colors: ('$theme-color': #FFF)" theme-colors überschreiben, welche theme-colors hat bootstrap?;5
 18;2;YOUTUBE;https://www.youtube.com/watch?v=oqZ4-ULwfbc;6
 19;2;MULTIPLECHOICE;Welche Datentypen können in Openapi definiert werden?;7
 20;2;MULTIPLECHOICE;Bei flatMap wird eine Liste von Listen (derselben Klasse) zu einer Liste gemapped, wie ist die richtige Syntax?;8

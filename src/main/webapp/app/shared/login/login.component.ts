@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  register(): void {
+    this.router.navigate(['/account/register']);
+  }
+
   login(): void {
     // eslint-disable-next-line no-console
     console.log('infoLogin' + this.rememberMe)

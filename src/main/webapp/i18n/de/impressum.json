@@ -1,0 +1,9 @@
+{
+  "impressum": {
+    "title": "Impressum",
+    "headline": "Warum das ganze?",
+    "mainText": "Du kannst dich hier anmelden und jeden Tag eine kurze Aufgabe erledigen, in der du etwas über Softwareentwicklung lernst. Dadurch soll dich dieses Tool beim Lebenslangen Lernen unterstützen. Durch das kontinuierliche Bearbeiten von Aufgaben lernst du nicht nur etwas, sondern bekommst Punkte, deinen Punktestand kannst du jederzeit einsehen und dich mit anderen Nutzern vergleichen.",
+    "createAufgabe": "Wie erstelle ich eine Aufgabe?",
+    "createAufgabeSteps": "1.\tNeue Aufgabe erstellen klicken\n2.\tAufgabentitel angeben\n3.\t(Aufgabenkabenkategorie wählen)\n4.\tAufgabentags für die Aufgabe wählen\n5.\tSchwierigkeit definieren\n6.\tKonkrete Aufgabe ausprägen mit den einzelnen Aufgabenteilen\n"
+  }
+}

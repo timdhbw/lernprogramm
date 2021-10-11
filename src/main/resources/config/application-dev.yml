@@ -42,8 +42,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/lernprogramm;DB_CLOSE_DELAY=-1
-#      url: jdbc:postgresql://161.97.185.158:5432/lernprogramm
+#    url: jdbc:h2:file:./target/h2db/db/lernprogramm;DB_CLOSE_DELAY=-1
+    url: jdbc:postgresql://localhost:5432/lernprogramm
     username: lernprogramm
     password:
     hikari:
